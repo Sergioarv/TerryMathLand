@@ -57,6 +57,7 @@ public class GameManagerGeneric : MonoBehaviour
 
     }
 
+    [ContextMenu("MostrarPregunta")]
     private void MostrarPregunta()
     {
 

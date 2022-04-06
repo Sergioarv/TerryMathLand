@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Jugador
   - Opcion
   - Imagen
+  - Jugador
   layers:
   - Default
   - TransparentFX
@@ -16,8 +16,8 @@ TagManager:
   - UI
   - 
   - 
-  - Background
-  - Enunciados
+  - tilemap
+  - 
   - 
   - 
   - 
@@ -45,14 +45,14 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Background
-    uniqueID: 2350917495
+    uniqueID: 2425651459
+    locked: 0
+  - name: TileMap
+    uniqueID: 4250941897
     locked: 0
   - name: UI
-    uniqueID: 3511640883
+    uniqueID: 1646952239
     locked: 0
-  - name: Suelo
-    uniqueID: 388284069
-    locked: 0
-  - name: Player
-    uniqueID: 1808265641
+  - name: Opciones
+    uniqueID: 1586176597
     locked: 0
