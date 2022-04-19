@@ -1,0 +1,671 @@
+fileFormatVersion: 2
+guid: ceeb2b3453b815b43af2837ee11efdb0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2924154996811204928
+    second: book animation_0
+  - first:
+      213: -1700392516602085931
+    second: book animation_1
+  - first:
+      213: 8874191307522757233
+    second: book animation_2
+  - first:
+      213: 8831759784618222385
+    second: book animation_3
+  - first:
+      213: 8532363952760290191
+    second: book animation_4
+  - first:
+      213: -1501870693180258111
+    second: book animation_5
+  - first:
+      213: 7361132131253134033
+    second: book animation_6
+  - first:
+      213: -1340430049407411692
+    second: book animation_7
+  - first:
+      213: 5637937136851931382
+    second: book animation_8
+  - first:
+      213: -8372681650544415233
+    second: book animation_9
+  - first:
+      213: -5816644522991561668
+    second: book animation_10
+  - first:
+      213: 3371818719866274514
+    second: book animation_11
+  - first:
+      213: 6091284131566316
+    second: book animation_12
+  - first:
+      213: 179439570442201459
+    second: book animation_13
+  - first:
+      213: -5619335074774674711
+    second: book animation_14
+  - first:
+      213: -4510650774258496674
+    second: book animation_15
+  - first:
+      213: 4231764182891824089
+    second: book animation_16
+  - first:
+      213: 5963331567137573385
+    second: book animation_17
+  - first:
+      213: -7232285562281573989
+    second: book animation_18
+  - first:
+      213: 385866792842844347
+    second: book animation_19
+  - first:
+      213: 4299863967721392418
+    second: book animation_20
+  - first:
+      213: -8587002115283569163
+    second: book animation_0
+  - first:
+      213: 4439052185332464461
+    second: book animation_1
+  - first:
+      213: -7523440522780993714
+    second: book animation_2
+  - first:
+      213: -1498551248618850498
+    second: book animation_4
+  - first:
+      213: 3565670800233923345
+    second: book animation_5
+  - first:
+      213: -8816575582352215986
+    second: book animation_6
+  - first:
+      213: 981696501860884554
+    second: book animation_7
+  - first:
+      213: -3070884948933505515
+    second: book animation_8
+  - first:
+      213: 3965393086587789049
+    second: book animation_9
+  - first:
+      213: 9150080039709487508
+    second: book animation_10
+  - first:
+      213: 9024072271794961511
+    second: book animation_11
+  - first:
+      213: 933104746312102653
+    second: book animation_12
+  - first:
+      213: -465530696847774446
+    second: book animation_13
+  - first:
+      213: -7874447748466367255
+    second: book animation_14
+  - first:
+      213: 2213218677607728040
+    second: book animation_15
+  - first:
+      213: 1799852493804152721
+    second: book animation_16
+  - first:
+      213: 6449390020453783406
+    second: book animation_17
+  - first:
+      213: -1772758480276360550
+    second: book animation_18
+  - first:
+      213: -4144274031198407346
+    second: book animation_19
+  - first:
+      213: 6506416662916880421
+    second: book animation_20
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: book animation_0
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 1369
+        width: 172
+        height: 192
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f5bef07217d4d880800000000000000
+      internalID: -8587002115283569163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_1
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 1295
+        width: 179
+        height: 284
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4bb926817eaa9d30800000000000000
+      internalID: 4439052185332464461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_2
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 1342
+        width: 337
+        height: 211
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e471cd694be579790800000000000000
+      internalID: -7523440522780993714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_4
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 1342
+        width: 337
+        height: 225
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e37fa5c3493143be0800000000000000
+      internalID: -1498551248618850498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_5
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 1031
+        width: 337
+        height: 247
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1130de973becb7130800000000000000
+      internalID: 3565670800233923345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_6
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 1036
+        width: 337
+        height: 205
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e407386583b35a580800000000000000
+      internalID: -8816575582352215986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_7
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 1039
+        width: 339
+        height: 187
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4069a664cfaf9d00800000000000000
+      internalID: 981696501860884554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 774
+        width: 335
+        height: 189
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51e89b0c8660265d0800000000000000
+      internalID: -3070884948933505515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_9
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 777
+        width: 337
+        height: 188
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fedad0b008e70730800000000000000
+      internalID: 3965393086587789049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_10
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 774
+        width: 335
+        height: 206
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 491b641215d9bfe70800000000000000
+      internalID: 9150080039709487508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_11
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 525
+        width: 336
+        height: 247
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76c7acb6be1fb3d70800000000000000
+      internalID: 9024072271794961511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_12
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 516
+        width: 337
+        height: 256
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df2f92ea2dd03fc00800000000000000
+      internalID: 933104746312102653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_13
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 517
+        width: 337
+        height: 229
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21d29563c4a1a89f0800000000000000
+      internalID: -465530696847774446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_14
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 313
+        width: 337
+        height: 189
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e4a94e4e7758b290800000000000000
+      internalID: -7874447748466367255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_15
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 313
+        width: 337
+        height: 189
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a3811149aee6be10800000000000000
+      internalID: 2213218677607728040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_16
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 287
+        width: 348
+        height: 218
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1972c4d9e4c5af810800000000000000
+      internalID: 1799852493804152721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_17
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 29
+        width: 176
+        height: 283
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e67d813ad06d08950800000000000000
+      internalID: 6449390020453783406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_18
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 32
+        width: 179
+        height: 215
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a92f09efd85e567e0800000000000000
+      internalID: -1772758480276360550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_19
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 43
+        width: 170
+        height: 192
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e45fa86d9b49c76c0800000000000000
+      internalID: -4144274031198407346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: book animation_20
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 46
+        width: 170
+        height: 193
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 528d7d18b7f6b4a50800000000000000
+      internalID: 6506416662916880421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

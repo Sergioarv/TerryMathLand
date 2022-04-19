@@ -8,6 +8,9 @@ using TMPro;
 
 public class ControladorCarga : MonoBehaviour
 {
+    public web web;
+
+
     public GameObject PantallaDeCarga;
     public Slider sliderLoad;
     public GameObject errorTextObj;
@@ -17,18 +20,27 @@ public class ControladorCarga : MonoBehaviour
 
     public MyRutas.Rutass rutaList = new MyRutas.Rutass();
 
+    public pasajero p = new pasajero();
+    public bool busco = false;
+    public bool buscoP = false;
+
     private void Awake()
     {
         leerSimple();
     }
 
+    private void Start()
+    {
+        
+    }
 
     [ContextMenu("Leer simple")]
     public void leerSimple()
     {
-        StartCoroutine(CorrutinaLeerSimple());
+        StartCoroutine(web.CorrutinaCargar());
     }
 
+    /*
     private IEnumerator CorrutinaLeerSimple()
     {
         UnityWebRequest web = UnityWebRequest.Get("http://localhost:8080/ruta/2");
@@ -40,16 +52,20 @@ public class ControladorCarga : MonoBehaviour
             DatosEntreEscenas.instace.rutaList = rutaList;
             DatosEntreEscenas.instace.numPregunta = 0;
             DatosEntreEscenas.instace.contPrguntas = 0;
+            DatosEntreEscenas.instace.vida = rutaList.data.Count;
+            DatosEntreEscenas.instace.preguntasCorrectas = 0;
 
             StartCoroutine(CorrutinaCargarImagenes());
         }
         else
         {
             errorTextObj.SetActive(true);
+            errorTextObj.GetComponent<Image>().enabled = true;
             errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Hubo un error al leer, recargue la pagina por favor";
+            buscoP = true;
         }
     }
-
+    
     private IEnumerator CorrutinaCargarImagenes()
     {
         img = new Texture2D[rutaList.data.Count];
@@ -62,66 +78,80 @@ public class ControladorCarga : MonoBehaviour
             {
                 img[i] = DownloadHandlerTexture.GetContent(reg);
                 i++;
-                /*
-                Sprite sprite = Sprite.Create(img, new Rect(0, 0, 100, 100), Vector2.zero);
-                imagen.sprite = sprite;
-                */
             }
             else
             {
                 Debug.LogWarning("Hubo un error al leer");
             }
         }
-
+        buscoP = true;
         DatosEntreEscenas.instace.img = img;
     }
-
-
-    public void cargarEscena()
+    */
+    /*
+    private IEnumerator CorrutinaVerificarUsuario(string id)
     {
-        StartCoroutine(CargaEscenaSimple());
+        UnityWebRequest web = UnityWebRequest.Get("http://localhost:8080/pasajero?id="+id);
+        yield return web.SendWebRequest();
+
+        if (!web.isNetworkError && !web.isHttpError)
+        {
+            p = JsonUtility.FromJson<pasajero>(web.downloadHandler.text);
+            DatosEntreEscenas.instace.p = p;
+        }
+        else
+        {
+            errorTextObj.SetActive(true);
+            errorTextObj.GetComponent<Image>().enabled = false;
+            errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Por favor verifique el nombre";
+            busco = true;
+        }
     }
-    
-    private IEnumerator CargaEscenaSimple()
+    */
+
+    public void verificar()
+    {
+        StartCoroutine(Comenzar());
+    }
+
+    public IEnumerator Comenzar()
     {
         string txtUser = userInput.text;
         
-        if(txtUser == "")
+        if (txtUser == "")
         {
             errorTextObj.SetActive(true);
             errorTextObj.GetComponent<Image>().enabled = false;
             errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Por favor ingrese el nombre";
+            PantallaDeCarga.SetActive(false);
         }
         else
         {
             PantallaDeCarga.SetActive(true);
+            sliderLoad.gameObject.SetActive(true);
             sliderLoad.value = 0.0f;
-
-            while (rutaList.data.Count == 0 )
-            {
-                sliderLoad.value += sliderLoad.value > 0.9f ? 0f : 0.001f;
-                Debug.Log("Esperando ...");
-                yield return null;
-            }
-
-            while (img[rutaList.data.Count-1] == null)
-            {
-                sliderLoad.value += sliderLoad.value > 0.9f ? 0f : 0.001f;
-                Debug.Log("Esperando img...");
-                yield return null;
-            }
 
             if (rutaList.data.Count > 0)
             {
-                AsyncOperation loading = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+                StartCoroutine(web.CorrutinaVerificarUsuario(txtUser));
 
-                while (!loading.isDone)
+                if (p == null || p.nombre == "")
                 {
-                    float progress = Mathf.Clamp01(loading.progress / .09f);
-                    Debug.Log(progress);
-                    sliderLoad.value += progress;
+                    PantallaDeCarga.SetActive(false);
+                    errorTextObj.SetActive(true);
+                    errorTextObj.GetComponent<Image>().enabled = false;
+                    errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Por favor verifique el nombre";
+                }
+                else
+                {
+                    AsyncOperation loading = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
 
-                    yield return null;
+                    while (!loading.isDone)
+                    {
+                        float progress = Mathf.Clamp01(loading.progress / 0.9f);
+                        sliderLoad.value += progress;
+                        yield return null;
+                    }
                 }
             }
             else
@@ -130,5 +160,74 @@ public class ControladorCarga : MonoBehaviour
             }
         }
     }
+    /*
+    private IEnumerator CargaEscenaSimple()
+    {
+        string txtUser = userInput.text;
+        busco = false;
 
+        if (txtUser == "")
+        {
+            errorTextObj.SetActive(true);
+            errorTextObj.GetComponent<Image>().enabled = false;
+            errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Por favor ingrese el nombre";
+            PantallaDeCarga.SetActive(false);
+        }
+        else
+        {
+            PantallaDeCarga.SetActive(true);
+            sliderLoad.value = 0.0f;
+
+            while (rutaList.data.Count == 0 && !buscoP)
+            {
+                sliderLoad.value += sliderLoad.value > 0.9f ? 0f : 0.001f;
+                Debug.Log("Esperando ...");
+                yield return null;
+            }
+
+            while (rutaList.data != null && !buscoP)
+            {
+                sliderLoad.value += sliderLoad.value > 0.9f ? 0f : 0.001f;
+                Debug.Log("Esperando img...");
+                yield return null;
+            }         
+
+            if (rutaList.data.Count > 0 )
+            {
+                StartCoroutine(CorrutinaVerificarUsuario(txtUser));
+
+                while (!busco && !buscoP)
+                {
+                    sliderLoad.value += sliderLoad.value > 0.9f ? 0f : 0.001f;
+                    Debug.Log("Esperando pasajero...");
+                    yield return null;
+                }
+
+                if (p == null || p.nombre == "")
+                {
+                    PantallaDeCarga.SetActive(false);
+                    errorTextObj.SetActive(true);
+                    errorTextObj.GetComponent<Image>().enabled = false;
+                    errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Por favor verifique el nombre";
+                    busco = false;
+                }
+                else { 
+                    AsyncOperation loading = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+
+                    while (!loading.isDone)
+                    {
+                        float progress = Mathf.Clamp01(loading.progress / 0.9f);
+                        sliderLoad.value += progress;
+
+                        yield return null;
+                    }
+                }
+            }
+            else
+            {
+                PantallaDeCarga.SetActive(false);
+            }
+        }
+    }
+    */
 }

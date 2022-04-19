@@ -9,6 +9,10 @@ public class DatosEntreEscenas : MonoBehaviour
 
     public int numPregunta;
     public int contPrguntas;
+    public int vida;
+    public int preguntasCorrectas;
+
+    public pasajero p = new pasajero();
 
     public MyRutas.Rutass rutaList = new MyRutas.Rutass();
 

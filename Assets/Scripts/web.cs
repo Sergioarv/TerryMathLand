@@ -4,128 +4,99 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using TMPro;
 
 public class web : MonoBehaviour
 {
-
-    public Image imagen;
-
-    private void Awake()
-    {
-        CargarImagen();
-    }
-
-    public IEnumerator CargarImagen()
-    {
-        GameObject oI = GameObject.FindGameObjectsWithTag("Imagen")[0];
-        imagen = oI.GetComponentInChildren<Image>();
-
-        Debug.Log(imagen.name);
-        UnityWebRequest reg = UnityWebRequestTexture.GetTexture("https://images.vexels.com/media/users/3/155414/isolated/lists/6c5e852026e7fd11f79cf45a65299016-silueta-de-vista-lateral-de-coche-suv.png");
-        yield return reg.SendWebRequest();
-
-        if (!reg.isNetworkError && !reg.isHttpError)
-        {
-            Texture2D img = DownloadHandlerTexture.GetContent(reg);
-            Sprite sprite = Sprite.Create(img, new Rect(0, 0, 100, 100), Vector2.zero);
-            imagen.sprite = sprite;
-        }
-        else
-        {
-            Debug.LogWarning("Hubo un error al leer");
-        }
-    }
-
-    private IEnumerator CorrutinaLeerImagen(string url)
-    {
-        Debug.Log(imagen.name);
-        UnityWebRequest reg = UnityWebRequestTexture.GetTexture(url);
-        yield return reg.SendWebRequest();
-
-        if (!reg.isNetworkError && !reg.isHttpError)
-        {
-            Texture2D img = DownloadHandlerTexture.GetContent(reg);
-            Sprite sprite = Sprite.Create(img, new Rect(0, 0, 100, 100), Vector2.zero);
-            imagen.sprite = sprite;
-        }
-        else
-        {
-            Debug.LogWarning("Hubo un error al leer");
-        }
-    }
-
     /*
-    [System.Serializable]
-    public class Ciudades
+    public MyRutas.Rutass rutaList = new MyRutas.Rutass();
+    public GameObject PantallaDeCarga;
+    public Slider sliderLoad;
+    public GameObject errorTextObj;
+    public TMP_InputField userInput;
+
+    public pasajero p = new pasajero();
+
+    public Texture2D[] img;
+    */
+
+    public ControladorCarga ctrCarga;
+
+    public IEnumerator CorrutinaCargar()
     {
-        public List<Ciudad> data;
-    }
 
-    [System.Serializable]
-    public class Ciudad
-    {
-        public int idciudad;
-        public string nombreciudad;
-        public bool visado;
-    }
+        ctrCarga.PantallaDeCarga.SetActive(true);
+        ctrCarga.sliderLoad.gameObject.SetActive(false);
 
-    public Ciudades ciudadesList = new Ciudades();
-
-
-    [ContextMenu("Leer simple")]
-    public void leerSimple()
-    {
-        StartCoroutine(CorrutinaLeerSimple());
-    }
-
-    private IEnumerator CorrutinaLeerSimple()
-    {
-        UnityWebRequest web = UnityWebRequest.Get("https://bk-aerolinea-bajocosto.herokuapp.com/ciudad");
+        UnityWebRequest web = UnityWebRequest.Get("http://localhost:8080/ruta/2");
         yield return web.SendWebRequest();
-        //Debug.Log(web.downloadHandler.text);
+
         if (!web.isNetworkError && !web.isHttpError)
         {
-            ciudadesList = JsonUtility.FromJson<Ciudades>(web.downloadHandler.text);
-            foreach (Ciudad c in ciudadesList.data)
+            ctrCarga.rutaList = JsonUtility.FromJson<MyRutas.Rutass>(web.downloadHandler.text);
+            DatosEntreEscenas.instace.rutaList = ctrCarga.rutaList;
+            DatosEntreEscenas.instace.numPregunta = 0;
+            DatosEntreEscenas.instace.contPrguntas = 0;
+            DatosEntreEscenas.instace.vida = ctrCarga.rutaList.data.Count;
+            DatosEntreEscenas.instace.preguntasCorrectas = 0;
+
+            ctrCarga.PantallaDeCarga.SetActive(false);
+
+            StartCoroutine(CorrutinaCargarImagenes());
+        }
+        else
+        {
+            ctrCarga.errorTextObj.SetActive(true);
+            ctrCarga.errorTextObj.GetComponent<Image>().enabled = true;
+            ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Hubo un error al leer, recargue la pagina por favor";
+            ctrCarga.PantallaDeCarga.SetActive(false);
+        }
+    }
+
+    public IEnumerator CorrutinaCargarImagenes()
+    {
+        ctrCarga.PantallaDeCarga.SetActive(true);
+
+        ctrCarga.img = new Texture2D[ctrCarga.rutaList.data.Count];
+        for (int i = 0; i < ctrCarga.rutaList.data.Count;)
+        {
+            UnityWebRequest reg = UnityWebRequestTexture.GetTexture(ctrCarga.rutaList.data[i].destino.nombreciudad);
+            yield return reg.SendWebRequest();
+
+            if (!reg.isNetworkError && !reg.isHttpError)
             {
-                Debug.Log(c.nombreciudad);
+                ctrCarga.img[i] = DownloadHandlerTexture.GetContent(reg);
+                i++;
+            }
+            else
+            {
+                Debug.LogWarning("Hubo un error al leer");
             }
         }
-        else
-        {
-            Debug.LogWarning("Hubo un error al leer");
-        }
+
+        DatosEntreEscenas.instace.img = ctrCarga.img;
+
+        ctrCarga.PantallaDeCarga.SetActive(false);
     }
 
-    [ContextMenu("Escribir simple")]
-    public void escribirSimple()
+    public IEnumerator CorrutinaVerificarUsuario(string id)
     {
-        StartCoroutine(CorrutinaEscribirSimple());
-    }
-
-    private IEnumerator CorrutinaEscribirSimple()
-    {
-
-        Ciudad newCiudad = new Ciudad();
-        newCiudad.idciudad = 14;
-        newCiudad.nombreciudad = "SALENTO";
-        newCiudad.visado = true;
-        string newCiudadStr = JsonUtility.ToJson(newCiudad).ToString();
-
-        Debug.LogWarning(newCiudadStr.ToString());
-
-        UnityWebRequest web = UnityWebRequest.Put("http://localhost:8080/ciudad", newCiudadStr);
-        web.SetRequestHeader("Content-Type", "application/json;charset=UTF-8;application/x-www-form-urlencoded");
-        web.SetRequestHeader("Accept", "application/json");
+        UnityWebRequest web = UnityWebRequest.Get("http://localhost:8080/pasajero?id=" + id);
         yield return web.SendWebRequest();
+
         if (!web.isNetworkError && !web.isHttpError)
         {
-            Debug.Log(web.downloadHandler.text);
+            ctrCarga.p = JsonUtility.FromJson<pasajero>(web.downloadHandler.text);
+            DatosEntreEscenas.instace.p = ctrCarga.p;
+            ctrCarga.buscoP = true;
         }
         else
         {
-            Debug.LogWarning("Hubo un error al leer");
+            ctrCarga.errorTextObj.SetActive(true);
+            ctrCarga.errorTextObj.GetComponent<Image>().enabled = false;
+            ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Por favor verifique el nombre";
+            ctrCarga.buscoP = true;
         }
     }
-    */
+
 }
