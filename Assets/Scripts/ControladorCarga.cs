@@ -14,6 +14,7 @@ public class ControladorCarga : MonoBehaviour
     public GameObject PantallaDeCarga;
     public Slider sliderLoad;
     public GameObject errorTextObj;
+    public TextMeshProUGUI txtSliderLoad;
     public TMP_InputField userInput;
 
     public Texture2D[] img;
@@ -135,6 +136,8 @@ public class ControladorCarga : MonoBehaviour
             {
                 StartCoroutine(web.CorrutinaVerificarUsuario(txtUser));
 
+                yield return new WaitForSeconds(2);
+
                 if (p == null || p.nombre == "")
                 {
                     PantallaDeCarga.SetActive(false);
@@ -144,7 +147,22 @@ public class ControladorCarga : MonoBehaviour
                 }
                 else
                 {
-                    AsyncOperation loading = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+                    while (sliderLoad.value < 1f)
+                    {
+                        sliderLoad.value += 0.003f;
+                        txtSliderLoad.text = (int)(sliderLoad.value * 100) + "%";
+
+                        yield return null;
+                    }
+
+                    LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
+
+                    //AsyncOperation operation = SceneManager.LoadSceneAsync("ScreenLoad");
+                    /*
+                    LevelLoading.nextLevel = 1;
+                    AsyncOperation loading = SceneManager.LoadSceneAsync("ScreenLoad");
+                    //AsyncOperation loading = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+                    
 
                     while (!loading.isDone)
                     {
@@ -152,6 +170,7 @@ public class ControladorCarga : MonoBehaviour
                         sliderLoad.value += progress;
                         yield return null;
                     }
+                    */
                 }
             }
             else
@@ -160,6 +179,8 @@ public class ControladorCarga : MonoBehaviour
             }
         }
     }
+
+    
     /*
     private IEnumerator CargaEscenaSimple()
     {

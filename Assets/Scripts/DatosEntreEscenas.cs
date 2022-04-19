@@ -8,7 +8,7 @@ public class DatosEntreEscenas : MonoBehaviour
     public static DatosEntreEscenas instace;
 
     public int numPregunta;
-    public int contPrguntas;
+    public int contPreguntas;
     public int vida;
     public int preguntasCorrectas;
 

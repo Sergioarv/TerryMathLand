@@ -22,6 +22,8 @@ public class GameManagerGeneric : MonoBehaviour
     public int vida;
     public int preguntasCorrectas;
 
+    public pasajero p = new pasajero();
+
     public Image imagen;
 
     public MyRutas.Rutass rutaList = new MyRutas.Rutass();
@@ -37,20 +39,22 @@ public class GameManagerGeneric : MonoBehaviour
     {
         rutaList = DatosEntreEscenas.instace.rutaList;
         numPregunta = DatosEntreEscenas.instace.numPregunta;
-        contPregunta = DatosEntreEscenas.instace.contPrguntas;
+        contPregunta = DatosEntreEscenas.instace.contPreguntas;
         img = DatosEntreEscenas.instace.img;
         vida = DatosEntreEscenas.instace.vida;
         preguntasCorrectas = DatosEntreEscenas.instace.preguntasCorrectas;
+        p = DatosEntreEscenas.instace.p;
     }
 
     public void guardarSimple()
     {
         DatosEntreEscenas.instace.rutaList = rutaList;
         DatosEntreEscenas.instace.numPregunta = numPregunta + 1;
-        DatosEntreEscenas.instace.contPrguntas = contPregunta + 1;
+        DatosEntreEscenas.instace.contPreguntas = contPregunta + 1;
         DatosEntreEscenas.instace.img = img;
         DatosEntreEscenas.instace.vida = vida;
         DatosEntreEscenas.instace.preguntasCorrectas = preguntasCorrectas;
+        DatosEntreEscenas.instace.p = p;
     }
 
     // Start is called before the first frame update
@@ -119,14 +123,16 @@ public class GameManagerGeneric : MonoBehaviour
     {
         guardarSimple();
 
-        if (contPregunta == 5)
+        if (contPregunta == 4)
         {
-            DatosEntreEscenas.instace.contPrguntas = 0;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            DatosEntreEscenas.instace.contPreguntas = 0;
+            LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+            //SceneManager.LoadScene(1);
         }
 
     }

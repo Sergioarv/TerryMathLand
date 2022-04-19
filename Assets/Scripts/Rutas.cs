@@ -39,7 +39,7 @@ public class Rutas : MonoBehaviour
             rutaList = JsonUtility.FromJson<MyRutas.Rutass>(web.downloadHandler.text);
             DatosEntreEscenas.instace.rutaList = rutaList;
             DatosEntreEscenas.instace.numPregunta = 0;
-            DatosEntreEscenas.instace.contPrguntas = 0;
+            DatosEntreEscenas.instace.contPreguntas = 0;
         }
         else
         {
