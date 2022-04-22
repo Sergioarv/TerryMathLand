@@ -28,7 +28,7 @@ public class web : MonoBehaviour
 
         if (!web.isNetworkError && !web.isHttpError)
         {
-            ctrCarga.listaPreguntas = JsonUtility.FromJson<listPregunta>(web.downloadHandler.text);
+            ctrCarga.listaPreguntas = JsonUtility.FromJson<ListPregunta>(web.downloadHandler.text);
             DatosEntreEscenas.instace.listaPreguntas = ctrCarga.listaPreguntas;
             DatosEntreEscenas.instace.numPregunta = 0;
             DatosEntreEscenas.instace.contPreguntas = 0;
@@ -106,7 +106,7 @@ public class web : MonoBehaviour
         {
             ctrCarga.errorTextObj.SetActive(true);
             ctrCarga.errorTextObj.GetComponent<Image>().enabled = false;
-            ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Por favor verifique el nombre";
+            ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Por favor recargue la pagina, no hemos encontrado la base de datos";
             ctrCarga.buscoP = true;
         }
     }

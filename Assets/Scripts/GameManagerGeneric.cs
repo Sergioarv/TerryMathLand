@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 public class GameManagerGeneric : MonoBehaviour
 {
@@ -16,14 +17,19 @@ public class GameManagerGeneric : MonoBehaviour
 
     public int numPregunta;
     public int contPregunta;
+
     public int vida;
+
     public int preguntasCorrectas;
 
     public Usuario usuario = new Usuario();
 
     public Image imagen;
 
-    public listPregunta listaPreguntas = new listPregunta();
+    public ListPregunta listaPreguntas = new ListPregunta();
+
+    public Respuesta respuestaEst = new Respuesta();
+    public Solucion solucionEst;
 
     public Texture2D[] img;
 
@@ -41,6 +47,7 @@ public class GameManagerGeneric : MonoBehaviour
         vida = DatosEntreEscenas.instace.vida;
         preguntasCorrectas = DatosEntreEscenas.instace.preguntasCorrectas;
         usuario = DatosEntreEscenas.instace.usuario;
+        respuestaEst = DatosEntreEscenas.instace.respuestaEst;
     }
 
     public void guardarSimple()
@@ -52,6 +59,7 @@ public class GameManagerGeneric : MonoBehaviour
         DatosEntreEscenas.instace.vida = vida;
         DatosEntreEscenas.instace.preguntasCorrectas = preguntasCorrectas;
         DatosEntreEscenas.instace.usuario = usuario;
+        DatosEntreEscenas.instace.respuestaEst = respuestaEst;
     }
 
     // Start is called before the first frame update
@@ -91,15 +99,34 @@ public class GameManagerGeneric : MonoBehaviour
         }
         else
         {
-            Debug.Log("Se acabaron la preguntas o las vidas");
+            respuestaEst.acertadas = preguntasCorrectas;
+            respuestaEst.nota = (5.0f * preguntasCorrectas) / numPregunta;
         }
     }
 
-    public void responder(string opcion)
+    public void responder(string seleccion, string seleccioOpcion)
     {
-        switch (opcion)
+
+        solucionEst = new Solucion();
+
+        solucionEst.enunciadoPre = listaPreguntas.data[numPregunta].enunciado;
+        solucionEst.respuestaEst = seleccioOpcion;
+
+        for (int i = 0; i < listaPreguntas.data[numPregunta].opciones.Count; i++)
+        {
+            if (listaPreguntas.data[numPregunta].opciones[i].respuesta)
+            {
+                solucionEst.respuestaPre = listaPreguntas.data[numPregunta].opciones[i].enunciadoopcion;
+                break;
+            }
+        }
+
+        respuestaEst.soluciones.Add(solucionEst);
+
+        switch (seleccion)
         {
             case "OpcionA":
+
                 if (listaPreguntas.data[numPregunta].opciones[0].respuesta)
                 {
                     acerto();
@@ -110,6 +137,7 @@ public class GameManagerGeneric : MonoBehaviour
                 }
                 break;
             case "OpcionB":
+
                 if (listaPreguntas.data[numPregunta].opciones[1].respuesta)
                 {
                     acerto();
@@ -120,6 +148,7 @@ public class GameManagerGeneric : MonoBehaviour
                 }
                 break;
             case "OpcionC":
+
                 if (listaPreguntas.data[numPregunta].opciones[2].respuesta)
                 {
                     acerto();
@@ -130,6 +159,7 @@ public class GameManagerGeneric : MonoBehaviour
                 }
                 break;
             case "OpcionD":
+
                 if (listaPreguntas.data[numPregunta].opciones[3].respuesta)
                 {
                     acerto();
@@ -150,12 +180,10 @@ public class GameManagerGeneric : MonoBehaviour
         {
             DatosEntreEscenas.instace.contPreguntas = 0;
             LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else
         {
             LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex);
-            //SceneManager.LoadScene(1);
         }
 
     }

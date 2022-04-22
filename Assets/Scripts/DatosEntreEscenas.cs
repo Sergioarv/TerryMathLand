@@ -14,7 +14,9 @@ public class DatosEntreEscenas : MonoBehaviour
 
     public Usuario usuario = new Usuario();
 
-    public listPregunta listaPreguntas = new listPregunta();
+    public ListPregunta listaPreguntas = new ListPregunta();
+
+    public Respuesta respuestaEst = new Respuesta();
 
     public Texture2D[] img;
 

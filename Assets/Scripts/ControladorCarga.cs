@@ -17,7 +17,7 @@ public class ControladorCarga : MonoBehaviour
 
     public Texture2D[] img;
 
-    public listPregunta listaPreguntas = new listPregunta();
+    public ListPregunta listaPreguntas = new ListPregunta();
 
     public Usuario usuario = new Usuario();
 

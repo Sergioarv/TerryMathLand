@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 [Serializable]
 public class Pregunta
@@ -13,7 +11,7 @@ public class Pregunta
 }
 
 [Serializable]
-public class listPregunta
+public class ListPregunta
 {
     public List<Pregunta> data;
 }

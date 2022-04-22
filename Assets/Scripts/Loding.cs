@@ -54,7 +54,6 @@ public class Loding : MonoBehaviour
 
         while (sliderLoad.value < 1f && (numPregunta == 0 || numPregunta == 5 || numPregunta == 10 || numPregunta == 15 || numPregunta == 20))
         {
-            Debug.Log("cargando consejo " + sliderLoad.value);
             sliderLoad.value += 0.0006f;
             txtSliderLoad.text = (int)(sliderLoad.value * 100) + "%";
 
