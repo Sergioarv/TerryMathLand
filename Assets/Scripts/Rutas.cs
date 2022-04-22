@@ -15,7 +15,7 @@ public class Rutas : MonoBehaviour
     public bool errorWeb = false;
     public GameObject errorTextObj;
 
-    public MyRutas.Rutass rutaList = new MyRutas.Rutass();
+    //public MyRutas.Rutass rutaList = new MyRutas.Rutass();
 
     private void Awake()
     {
@@ -36,8 +36,8 @@ public class Rutas : MonoBehaviour
 
         if (!web.isNetworkError && !web.isHttpError)
         {
-            rutaList = JsonUtility.FromJson<MyRutas.Rutass>(web.downloadHandler.text);
-            DatosEntreEscenas.instace.rutaList = rutaList;
+            //rutaList = JsonUtility.FromJson<MyRutas.Rutass>(web.downloadHandler.text);
+            //DatosEntreEscenas.instace.rutaList = rutaList;
             DatosEntreEscenas.instace.numPregunta = 0;
             DatosEntreEscenas.instace.contPreguntas = 0;
         }
@@ -86,7 +86,7 @@ public class Rutas : MonoBehaviour
             Debug.LogWarning("Hubo un error al escribir ruta");
         }
     }
-
+    /*
     public void cargarEscena()
     {
         StartCoroutine(CargaEscenaSimple());
@@ -97,14 +97,14 @@ public class Rutas : MonoBehaviour
 
         PantallaDeCarga.SetActive(true);
         sliderLoad.value = 0.0f;
-
-        while (rutaList.data.Count == 0 && !errorWeb )
+        
+        while (rutaList.Count == 0 && !errorWeb )
         {
             sliderLoad.value += sliderLoad.value > 0.9f ? 0f : 0.01f;
             Debug.Log("Esperando ...");
             yield return null;
         }
-
+        
         if (rutaList.data.Count > 0 )
         {
             AsyncOperation loading = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex+1);
@@ -122,5 +122,7 @@ public class Rutas : MonoBehaviour
         {
             PantallaDeCarga.SetActive(false);
         }
+        
     }
+    */
 }

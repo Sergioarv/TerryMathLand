@@ -12,9 +12,9 @@ public class DatosEntreEscenas : MonoBehaviour
     public int vida;
     public int preguntasCorrectas;
 
-    public pasajero p = new pasajero();
+    public Usuario usuario = new Usuario();
 
-    public MyRutas.Rutass rutaList = new MyRutas.Rutass();
+    public listPregunta listaPreguntas = new listPregunta();
 
     public Texture2D[] img;
 

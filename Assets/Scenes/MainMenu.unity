@@ -461,19 +461,11 @@ MonoBehaviour:
   PantallaDeCarga: {fileID: 1391071428}
   sliderLoad: {fileID: 1090500838}
   errorTextObj: {fileID: 935753665}
-  txtSliderLoad: {fileID: 430811821}
+  txtSliderLoad: {fileID: 767699430}
   userInput: {fileID: 1257185207}
   img: []
   rutaList:
     data: []
-  p:
-    pasaporte: 0
-    nombre: 
-    apellido: 
-    telefono: 0
-    email: 
-    edad: 0
-    millasacumuladas: 0
   busco: 0
   buscoP: 0
 --- !u!4 &300603143
@@ -484,7 +476,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300603141}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 718.3066, y: 406.51434, z: -150.3}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1157,7 +1149,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &767699428
 GameObject:
@@ -2233,7 +2225,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2101054938
 GameObject:

@@ -1,15 +1,13 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
 
 public class ControladorCarga : MonoBehaviour
 {
     public web web;
-
 
     public GameObject PantallaDeCarga;
     public Slider sliderLoad;
@@ -19,9 +17,10 @@ public class ControladorCarga : MonoBehaviour
 
     public Texture2D[] img;
 
-    public MyRutas.Rutass rutaList = new MyRutas.Rutass();
+    public listPregunta listaPreguntas = new listPregunta();
 
-    public pasajero p = new pasajero();
+    public Usuario usuario = new Usuario();
+
     public bool busco = false;
     public bool buscoP = false;
 
@@ -132,13 +131,13 @@ public class ControladorCarga : MonoBehaviour
             sliderLoad.gameObject.SetActive(true);
             sliderLoad.value = 0.0f;
 
-            if (rutaList.data.Count > 0)
+            if (listaPreguntas.data.Count > 0)
             {
                 StartCoroutine(web.CorrutinaVerificarUsuario(txtUser));
 
                 yield return new WaitForSeconds(2);
 
-                if (p == null || p.nombre == "")
+                if (usuario == null || usuario.nombre == "")
                 {
                     PantallaDeCarga.SetActive(false);
                     errorTextObj.SetActive(true);

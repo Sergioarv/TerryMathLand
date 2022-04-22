@@ -1,10 +1,7 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Collections;
-using UnityEngine.Networking;
 
 public class GameManagerGeneric : MonoBehaviour
 {
@@ -22,11 +19,11 @@ public class GameManagerGeneric : MonoBehaviour
     public int vida;
     public int preguntasCorrectas;
 
-    public pasajero p = new pasajero();
+    public Usuario usuario = new Usuario();
 
     public Image imagen;
 
-    public MyRutas.Rutass rutaList = new MyRutas.Rutass();
+    public listPregunta listaPreguntas = new listPregunta();
 
     public Texture2D[] img;
 
@@ -37,24 +34,24 @@ public class GameManagerGeneric : MonoBehaviour
 
     public void leerSimple()
     {
-        rutaList = DatosEntreEscenas.instace.rutaList;
+        listaPreguntas = DatosEntreEscenas.instace.listaPreguntas;
         numPregunta = DatosEntreEscenas.instace.numPregunta;
         contPregunta = DatosEntreEscenas.instace.contPreguntas;
         img = DatosEntreEscenas.instace.img;
         vida = DatosEntreEscenas.instace.vida;
         preguntasCorrectas = DatosEntreEscenas.instace.preguntasCorrectas;
-        p = DatosEntreEscenas.instace.p;
+        usuario = DatosEntreEscenas.instace.usuario;
     }
 
     public void guardarSimple()
     {
-        DatosEntreEscenas.instace.rutaList = rutaList;
+        DatosEntreEscenas.instace.listaPreguntas = listaPreguntas;
         DatosEntreEscenas.instace.numPregunta = numPregunta + 1;
         DatosEntreEscenas.instace.contPreguntas = contPregunta + 1;
         DatosEntreEscenas.instace.img = img;
         DatosEntreEscenas.instace.vida = vida;
         DatosEntreEscenas.instace.preguntasCorrectas = preguntasCorrectas;
-        DatosEntreEscenas.instace.p = p;
+        DatosEntreEscenas.instace.usuario = usuario;
     }
 
     // Start is called before the first frame update
@@ -77,17 +74,25 @@ public class GameManagerGeneric : MonoBehaviour
 
     private void MostrarPregunta()
     {
-        enunciado.text = rutaList.data[numPregunta].idruta.ToString();
+        if (numPregunta < listaPreguntas.data.Count)
+        {
 
-        optionA.text = rutaList.data[numPregunta].origen.nombreciudad;
-        optionB.text = rutaList.data[numPregunta].origen.idciudad.ToString();
-        optionC.text = rutaList.data[numPregunta].origen.visado.ToString();
-        optionD.text = rutaList.data[numPregunta].origen.nombreciudad;
+            enunciado.text = listaPreguntas.data[numPregunta].enunciado;
 
-        imagen.sprite = Sprite.Create(img[numPregunta], new Rect(0, 0, img[numPregunta].width, img[numPregunta].height), Vector2.zero);
+            optionA.text = listaPreguntas.data[numPregunta].opciones[0].enunciadoopcion;
+            optionB.text = listaPreguntas.data[numPregunta].opciones[1].enunciadoopcion;
+            optionC.text = listaPreguntas.data[numPregunta].opciones[2].enunciadoopcion;
+            optionD.text = listaPreguntas.data[numPregunta].opciones[3].enunciadoopcion;
 
-        txtVida.text = vida.ToString();
-        txtPreguntasCorrectas.text = preguntasCorrectas.ToString();
+            imagen.sprite = Sprite.Create(img[numPregunta], new Rect(0, 0, img[numPregunta].width, img[numPregunta].height), Vector2.zero);
+
+            txtVida.text = vida.ToString();
+            txtPreguntasCorrectas.text = preguntasCorrectas.ToString();
+        }
+        else
+        {
+            Debug.Log("Se acabaron la preguntas o las vidas");
+        }
     }
 
     public void responder(string opcion)
@@ -95,7 +100,7 @@ public class GameManagerGeneric : MonoBehaviour
         switch (opcion)
         {
             case "OpcionA":
-                if (rutaList.data[numPregunta].origen.nombreciudad == "")
+                if (listaPreguntas.data[numPregunta].opciones[0].respuesta)
                 {
                     acerto();
                 }
@@ -104,9 +109,8 @@ public class GameManagerGeneric : MonoBehaviour
                     fallo();
                 }
                 break;
-            case "OpcionB": break;
-            case "OpcionC":
-                if (!rutaList.data[numPregunta].origen.visado)
+            case "OpcionB":
+                if (listaPreguntas.data[numPregunta].opciones[1].respuesta)
                 {
                     acerto();
                 }
@@ -114,8 +118,27 @@ public class GameManagerGeneric : MonoBehaviour
                 {
                     fallo();
                 }
-                break; ;
-            case "OpcionD": break;
+                break;
+            case "OpcionC":
+                if (listaPreguntas.data[numPregunta].opciones[2].respuesta)
+                {
+                    acerto();
+                }
+                else
+                {
+                    fallo();
+                }
+                break;
+            case "OpcionD":
+                if (listaPreguntas.data[numPregunta].opciones[3].respuesta)
+                {
+                    acerto();
+                }
+                else
+                {
+                    fallo();
+                }
+                break;
         }
     }
 

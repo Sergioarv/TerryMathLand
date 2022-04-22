@@ -12,12 +12,11 @@ public class web : MonoBehaviour
 
     public IEnumerator CorrutinaCargar()
     {
-
         ctrCarga.PantallaDeCarga.SetActive(true);
         ctrCarga.sliderLoad.value = 0f;
         ctrCarga.txtSliderLoad.text = ctrCarga.sliderLoad.value.ToString() + "%";
 
-        UnityWebRequest web = UnityWebRequest.Get("http://localhost:8080/ruta/2");
+        UnityWebRequest web = UnityWebRequest.Get("http://localhost:8080/pregunta");
         web.SendWebRequest();
 
         while (!web.isDone)
@@ -29,11 +28,11 @@ public class web : MonoBehaviour
 
         if (!web.isNetworkError && !web.isHttpError)
         {
-            ctrCarga.rutaList = JsonUtility.FromJson<MyRutas.Rutass>(web.downloadHandler.text);
-            DatosEntreEscenas.instace.rutaList = ctrCarga.rutaList;
+            ctrCarga.listaPreguntas = JsonUtility.FromJson<listPregunta>(web.downloadHandler.text);
+            DatosEntreEscenas.instace.listaPreguntas = ctrCarga.listaPreguntas;
             DatosEntreEscenas.instace.numPregunta = 0;
             DatosEntreEscenas.instace.contPreguntas = 0;
-            DatosEntreEscenas.instace.vida = ctrCarga.rutaList.data.Count;
+            DatosEntreEscenas.instace.vida = ctrCarga.listaPreguntas.data.Count;
             DatosEntreEscenas.instace.preguntasCorrectas = 0;
 
             ctrCarga.PantallaDeCarga.SetActive(false);
@@ -44,7 +43,7 @@ public class web : MonoBehaviour
         {
             ctrCarga.errorTextObj.SetActive(true);
             ctrCarga.errorTextObj.GetComponent<Image>().enabled = true;
-            ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Hubo un error al leer, recargue la pagina por favor";
+            ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Hubo un error al cargar las preguntas, por favor recargue la pagina";
             ctrCarga.PantallaDeCarga.SetActive(false);
         }
     }
@@ -53,15 +52,15 @@ public class web : MonoBehaviour
     {
         ctrCarga.PantallaDeCarga.SetActive(true);
 
-        ctrCarga.img = new Texture2D[ctrCarga.rutaList.data.Count];
-        for (int i = 0; i < ctrCarga.rutaList.data.Count;)
+        ctrCarga.img = new Texture2D[ctrCarga.listaPreguntas.data.Count];
+        for (int i = 0; i < ctrCarga.listaPreguntas.data.Count;)
         {
-            UnityWebRequest reg = UnityWebRequestTexture.GetTexture(ctrCarga.rutaList.data[i].destino.nombreciudad);
+            UnityWebRequest reg = UnityWebRequestTexture.GetTexture(ctrCarga.listaPreguntas.data[i].urlImg);
             reg.SendWebRequest();
 
             while (!reg.isDone)
             {
-                ctrCarga.sliderLoad.value += ctrCarga.sliderLoad.value < 0.85 ? 0.0005f : 0f;
+                ctrCarga.sliderLoad.value += ctrCarga.sliderLoad.value < 0.92 ? 0.0005f : 0f;
                 ctrCarga.txtSliderLoad.text = (int)(ctrCarga.sliderLoad.value * 100) + "%";
                 yield return null;
             }
@@ -73,7 +72,10 @@ public class web : MonoBehaviour
             }
             else
             {
-                Debug.LogWarning("Hubo un error al leer");
+                ctrCarga.errorTextObj.SetActive(true);
+                ctrCarga.errorTextObj.GetComponent<Image>().enabled = true;
+                ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Hubo un error al cargar las imagenes, por favor recargue la pagina";
+                ctrCarga.PantallaDeCarga.SetActive(false);
             }
         }
 
@@ -82,9 +84,9 @@ public class web : MonoBehaviour
         ctrCarga.PantallaDeCarga.SetActive(false);
     }
 
-    public IEnumerator CorrutinaVerificarUsuario(string id)
+    public IEnumerator CorrutinaVerificarUsuario(string nombre)
     {
-        UnityWebRequest web = UnityWebRequest.Get("http://localhost:8080/pasajero?id=" + id);
+        UnityWebRequest web = UnityWebRequest.Get("http://localhost:8080/usuario/usuarionombre?nombre=" + nombre);
         web.SendWebRequest();
 
         while (!web.isDone)
@@ -96,8 +98,8 @@ public class web : MonoBehaviour
 
         if (!web.isNetworkError && !web.isHttpError)
         {
-            ctrCarga.p = JsonUtility.FromJson<pasajero>(web.downloadHandler.text);
-            DatosEntreEscenas.instace.p = ctrCarga.p;
+            ctrCarga.usuario = JsonUtility.FromJson<Usuario>(web.downloadHandler.text);
+            DatosEntreEscenas.instace.usuario = ctrCarga.usuario;
             ctrCarga.buscoP = true;
         }
         else
