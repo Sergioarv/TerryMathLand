@@ -1,10 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Collections;
-using UnityEngine.Networking;
+using System;
 
 public class GameManagerGeneric : MonoBehaviour
 {
@@ -19,12 +17,19 @@ public class GameManagerGeneric : MonoBehaviour
 
     public int numPregunta;
     public int contPregunta;
+
     public int vida;
+
     public int preguntasCorrectas;
+
+    public Usuario usuario = new Usuario();
 
     public Image imagen;
 
-    public MyRutas.Rutass rutaList = new MyRutas.Rutass();
+    public ListPregunta listaPreguntas = new ListPregunta();
+
+    public Respuesta respuestaEst = new Respuesta();
+    public Solucion solucionEst;
 
     public Texture2D[] img;
 
@@ -35,22 +40,26 @@ public class GameManagerGeneric : MonoBehaviour
 
     public void leerSimple()
     {
-        rutaList = DatosEntreEscenas.instace.rutaList;
+        listaPreguntas = DatosEntreEscenas.instace.listaPreguntas;
         numPregunta = DatosEntreEscenas.instace.numPregunta;
-        contPregunta = DatosEntreEscenas.instace.contPrguntas;
+        contPregunta = DatosEntreEscenas.instace.contPreguntas;
         img = DatosEntreEscenas.instace.img;
         vida = DatosEntreEscenas.instace.vida;
         preguntasCorrectas = DatosEntreEscenas.instace.preguntasCorrectas;
+        usuario = DatosEntreEscenas.instace.usuario;
+        respuestaEst = DatosEntreEscenas.instace.respuestaEst;
     }
 
     public void guardarSimple()
     {
-        DatosEntreEscenas.instace.rutaList = rutaList;
+        DatosEntreEscenas.instace.listaPreguntas = listaPreguntas;
         DatosEntreEscenas.instace.numPregunta = numPregunta + 1;
-        DatosEntreEscenas.instace.contPrguntas = contPregunta + 1;
+        DatosEntreEscenas.instace.contPreguntas = contPregunta + 1;
         DatosEntreEscenas.instace.img = img;
         DatosEntreEscenas.instace.vida = vida;
         DatosEntreEscenas.instace.preguntasCorrectas = preguntasCorrectas;
+        DatosEntreEscenas.instace.usuario = usuario;
+        DatosEntreEscenas.instace.respuestaEst = respuestaEst;
     }
 
     // Start is called before the first frame update
@@ -73,25 +82,52 @@ public class GameManagerGeneric : MonoBehaviour
 
     private void MostrarPregunta()
     {
-        enunciado.text = rutaList.data[numPregunta].idruta.ToString();
+        if (numPregunta < listaPreguntas.data.Count)
+        {
 
-        optionA.text = rutaList.data[numPregunta].origen.nombreciudad;
-        optionB.text = rutaList.data[numPregunta].origen.idciudad.ToString();
-        optionC.text = rutaList.data[numPregunta].origen.visado.ToString();
-        optionD.text = rutaList.data[numPregunta].origen.nombreciudad;
+            enunciado.text = listaPreguntas.data[numPregunta].enunciado;
 
-        imagen.sprite = Sprite.Create(img[numPregunta], new Rect(0, 0, img[numPregunta].width, img[numPregunta].height), Vector2.zero);
+            optionA.text = listaPreguntas.data[numPregunta].opciones[0].enunciadoopcion;
+            optionB.text = listaPreguntas.data[numPregunta].opciones[1].enunciadoopcion;
+            optionC.text = listaPreguntas.data[numPregunta].opciones[2].enunciadoopcion;
+            optionD.text = listaPreguntas.data[numPregunta].opciones[3].enunciadoopcion;
 
-        txtVida.text = vida.ToString();
-        txtPreguntasCorrectas.text = preguntasCorrectas.ToString();
+            imagen.sprite = Sprite.Create(img[numPregunta], new Rect(0, 0, img[numPregunta].width, img[numPregunta].height), Vector2.zero);
+
+            txtVida.text = vida.ToString();
+            txtPreguntasCorrectas.text = preguntasCorrectas.ToString();
+        }
+        else
+        {
+            respuestaEst.acertadas = preguntasCorrectas;
+            respuestaEst.nota = (5.0f * preguntasCorrectas) / numPregunta;
+        }
     }
 
-    public void responder(string opcion)
+    public void responder(string seleccion, string seleccioOpcion)
     {
-        switch (opcion)
+
+        solucionEst = new Solucion();
+
+        solucionEst.enunciadoPre = listaPreguntas.data[numPregunta].enunciado;
+        solucionEst.respuestaEst = seleccioOpcion;
+
+        for (int i = 0; i < listaPreguntas.data[numPregunta].opciones.Count; i++)
+        {
+            if (listaPreguntas.data[numPregunta].opciones[i].respuesta)
+            {
+                solucionEst.respuestaPre = listaPreguntas.data[numPregunta].opciones[i].enunciadoopcion;
+                break;
+            }
+        }
+
+        respuestaEst.soluciones.Add(solucionEst);
+
+        switch (seleccion)
         {
             case "OpcionA":
-                if (rutaList.data[numPregunta].origen.nombreciudad == "")
+
+                if (listaPreguntas.data[numPregunta].opciones[0].respuesta)
                 {
                     acerto();
                 }
@@ -100,9 +136,9 @@ public class GameManagerGeneric : MonoBehaviour
                     fallo();
                 }
                 break;
-            case "OpcionB": break;
-            case "OpcionC":
-                if (!rutaList.data[numPregunta].origen.visado)
+            case "OpcionB":
+
+                if (listaPreguntas.data[numPregunta].opciones[1].respuesta)
                 {
                     acerto();
                 }
@@ -110,8 +146,29 @@ public class GameManagerGeneric : MonoBehaviour
                 {
                     fallo();
                 }
-                break; ;
-            case "OpcionD": break;
+                break;
+            case "OpcionC":
+
+                if (listaPreguntas.data[numPregunta].opciones[2].respuesta)
+                {
+                    acerto();
+                }
+                else
+                {
+                    fallo();
+                }
+                break;
+            case "OpcionD":
+
+                if (listaPreguntas.data[numPregunta].opciones[3].respuesta)
+                {
+                    acerto();
+                }
+                else
+                {
+                    fallo();
+                }
+                break;
         }
     }
 
@@ -119,14 +176,14 @@ public class GameManagerGeneric : MonoBehaviour
     {
         guardarSimple();
 
-        if (contPregunta == 5)
+        if (contPregunta == 4)
         {
-            DatosEntreEscenas.instace.contPrguntas = 0;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            DatosEntreEscenas.instace.contPreguntas = 0;
+            LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex);
         }
 
     }

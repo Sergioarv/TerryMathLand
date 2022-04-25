@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class OnMouseClick : MonoBehaviour
 {
@@ -12,7 +13,10 @@ public class OnMouseClick : MonoBehaviour
     {
         if (!activo) return;
 
-        gameManagerGeneric.responder(this.name);
+        string seleccion = this.gameObject.name;
+        string seleccionOpcion = this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text;
+
+        gameManagerGeneric.responder(seleccion, seleccionOpcion);
 
         optiones = GameObject.FindGameObjectsWithTag("Opcion");
 
