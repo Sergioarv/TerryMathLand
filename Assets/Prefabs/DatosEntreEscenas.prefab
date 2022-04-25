@@ -43,6 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bdf8dbc0cec5194fbb941be5ae9d69e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respuestasC: 0
+  numPregunta: 0
+  contPreguntas: 0
+  vida: 0
+  preguntasCorrectas: 0
   rutaList:
     data: []
+  img: []

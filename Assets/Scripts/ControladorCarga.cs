@@ -1,26 +1,26 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
 
 public class ControladorCarga : MonoBehaviour
 {
     public web web;
 
-
     public GameObject PantallaDeCarga;
     public Slider sliderLoad;
     public GameObject errorTextObj;
+    public TextMeshProUGUI txtSliderLoad;
     public TMP_InputField userInput;
 
     public Texture2D[] img;
 
-    public MyRutas.Rutass rutaList = new MyRutas.Rutass();
+    public ListPregunta listaPreguntas = new ListPregunta();
 
-    public pasajero p = new pasajero();
+    public Usuario usuario = new Usuario();
+
     public bool busco = false;
     public bool buscoP = false;
 
@@ -131,11 +131,13 @@ public class ControladorCarga : MonoBehaviour
             sliderLoad.gameObject.SetActive(true);
             sliderLoad.value = 0.0f;
 
-            if (rutaList.data.Count > 0)
+            if (listaPreguntas.data.Count > 0)
             {
                 StartCoroutine(web.CorrutinaVerificarUsuario(txtUser));
 
-                if (p == null || p.nombre == "")
+                yield return new WaitForSeconds(2);
+
+                if (usuario == null || usuario.nombre == "")
                 {
                     PantallaDeCarga.SetActive(false);
                     errorTextObj.SetActive(true);
@@ -144,7 +146,22 @@ public class ControladorCarga : MonoBehaviour
                 }
                 else
                 {
-                    AsyncOperation loading = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+                    while (sliderLoad.value < 1f)
+                    {
+                        sliderLoad.value += 0.003f;
+                        txtSliderLoad.text = (int)(sliderLoad.value * 100) + "%";
+
+                        yield return null;
+                    }
+
+                    LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
+
+                    //AsyncOperation operation = SceneManager.LoadSceneAsync("ScreenLoad");
+                    /*
+                    LevelLoading.nextLevel = 1;
+                    AsyncOperation loading = SceneManager.LoadSceneAsync("ScreenLoad");
+                    //AsyncOperation loading = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+                    
 
                     while (!loading.isDone)
                     {
@@ -152,6 +169,7 @@ public class ControladorCarga : MonoBehaviour
                         sliderLoad.value += progress;
                         yield return null;
                     }
+                    */
                 }
             }
             else
@@ -160,6 +178,8 @@ public class ControladorCarga : MonoBehaviour
             }
         }
     }
+
+    
     /*
     private IEnumerator CargaEscenaSimple()
     {

@@ -8,13 +8,15 @@ public class DatosEntreEscenas : MonoBehaviour
     public static DatosEntreEscenas instace;
 
     public int numPregunta;
-    public int contPrguntas;
+    public int contPreguntas;
     public int vida;
     public int preguntasCorrectas;
 
-    public pasajero p = new pasajero();
+    public Usuario usuario = new Usuario();
 
-    public MyRutas.Rutass rutaList = new MyRutas.Rutass();
+    public ListPregunta listaPreguntas = new ListPregunta();
+
+    public Respuesta respuestaEst = new Respuesta();
 
     public Texture2D[] img;
 
