@@ -17,7 +17,7 @@ TagManager:
   - 
   - 
   - tilemap
-  - 
+  - jugador
   - 
   - 
   - 
@@ -55,4 +55,7 @@ TagManager:
     locked: 0
   - name: Opciones
     uniqueID: 1586176597
+    locked: 0
+  - name: Jugador
+    uniqueID: 2191839481
     locked: 0

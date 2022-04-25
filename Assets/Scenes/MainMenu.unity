@@ -461,11 +461,15 @@ MonoBehaviour:
   PantallaDeCarga: {fileID: 1391071428}
   sliderLoad: {fileID: 1090500838}
   errorTextObj: {fileID: 935753665}
-  txtSliderLoad: {fileID: 767699430}
+  txtSliderLoad: {fileID: 430811821}
   userInput: {fileID: 1257185207}
   img: []
-  rutaList:
+  listaPreguntas:
     data: []
+  usuario:
+    idusuario: 0
+    nombre: 
+    respuestas: []
   busco: 0
   buscoP: 0
 --- !u!4 &300603143

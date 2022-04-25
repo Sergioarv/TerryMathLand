@@ -12,9 +12,7 @@ public class ControladorPersonaje : MonoBehaviour //<>
     bool mirandoDerecha;
 
     bool tocandoElSuelo = false;
-    float radioVerificaSuelo = 0.2f;
     public LayerMask sueloLayer;
-    public Transform verificadorSuelo;
     public float fuerzaSalto;
 
 
@@ -33,19 +31,14 @@ public class ControladorPersonaje : MonoBehaviour //<>
         if (tocandoElSuelo && Input.GetAxis("Jump") > 0) 
         {
             tocandoElSuelo = false;
-            animatorPlayer.SetBool("tocandoSuelo", tocandoElSuelo);
             rbPlayer.AddForce(new UnityEngine.Vector2(0, fuerzaSalto));
         }
     }
 
     private void FixedUpdate()
     {
-        tocandoElSuelo = Physics2D.OverlapCircle(verificadorSuelo.position, radioVerificaSuelo, sueloLayer);
-        animatorPlayer.SetBool("tocandoSuelo", tocandoElSuelo);
-        animatorPlayer.SetFloat("velocidadVertical", rbPlayer.velocity.y);
 
         float movimiento = Input.GetAxis("Horizontal");
-        animatorPlayer.SetFloat("velocidad", Mathf.Abs(movimiento));
         rbPlayer.velocity = new UnityEngine.Vector2(movimiento * velocidadMAX, rbPlayer.velocity.y);
 
 

@@ -13,19 +13,19 @@ public class OnMouseClick : MonoBehaviour
     {
         if (!activo) return;
 
-        Debug.Log(this.gameObject);
-
         string seleccion = this.gameObject.name;
         string seleccionOpcion = this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text;
-
-        gameManagerGeneric.responder(seleccion, seleccionOpcion);
-
+              
         optiones = GameObject.FindGameObjectsWithTag("Opcion");
+
+        Debug.Log(optiones.Length);
 
         optiones[0].GetComponent<OnMouseClick>().activo = false;
         optiones[1].GetComponent<OnMouseClick>().activo = false;
         optiones[2].GetComponent<OnMouseClick>().activo = false;
         optiones[3].GetComponent<OnMouseClick>().activo = false;
+
+        gameManagerGeneric.responder(seleccion, seleccionOpcion);
     }
 
 }
