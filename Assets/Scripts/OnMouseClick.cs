@@ -13,6 +13,8 @@ public class OnMouseClick : MonoBehaviour
     {
         if (!activo) return;
 
+        Debug.Log(this.gameObject);
+
         string seleccion = this.gameObject.name;
         string seleccionOpcion = this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text;
 

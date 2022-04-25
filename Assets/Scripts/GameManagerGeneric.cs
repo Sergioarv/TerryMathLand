@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
+using System.Collections;
 
 public class GameManagerGeneric : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class GameManagerGeneric : MonoBehaviour
 
     public TextMeshProUGUI txtVida;
     public TextMeshProUGUI txtPreguntasCorrectas;
+
+    public AudioSource aplausos;
+    public AudioSource trompetas;
+
+    private string[] opcionesName = { "OpcionA", "OpcionB", "OpcionC", "OpcionD" };
 
     public int numPregunta;
     public int contPregunta;
@@ -106,70 +112,42 @@ public class GameManagerGeneric : MonoBehaviour
 
     public void responder(string seleccion, string seleccioOpcion)
     {
-
-        solucionEst = new Solucion();
-
-        solucionEst.enunciadoPre = listaPreguntas.data[numPregunta].enunciado;
-        solucionEst.respuestaEst = seleccioOpcion;
-
-        for (int i = 0; i < listaPreguntas.data[numPregunta].opciones.Count; i++)
+        try
         {
-            if (listaPreguntas.data[numPregunta].opciones[i].respuesta)
+            solucionEst = new Solucion();
+
+            solucionEst.enunciadoPre = listaPreguntas.data[numPregunta].enunciado;
+            solucionEst.respuestaEst = seleccioOpcion;
+
+            for (int i = 0; i < listaPreguntas.data[numPregunta].opciones.Count; i++)
             {
-                solucionEst.respuestaPre = listaPreguntas.data[numPregunta].opciones[i].enunciadoopcion;
-                break;
+                if (listaPreguntas.data[numPregunta].opciones[i].respuesta)
+                {
+                    solucionEst.respuestaPre = listaPreguntas.data[numPregunta].opciones[i].enunciadoopcion;
+                    break;
+                }
+            }
+
+            respuestaEst.soluciones.Add(solucionEst);
+
+            for (int i = 0; i < opcionesName.Length; i++)
+            {
+                if (seleccion.Equals(opcionesName[i]))
+                {
+                    if (listaPreguntas.data[numPregunta].opciones[i].respuesta)
+                    {
+                        acerto();
+                        break;
+                    }
+                    else
+                    {
+                        fallo();
+                        break;
+                    }
+                }
             }
         }
-
-        respuestaEst.soluciones.Add(solucionEst);
-
-        switch (seleccion)
-        {
-            case "OpcionA":
-
-                if (listaPreguntas.data[numPregunta].opciones[0].respuesta)
-                {
-                    acerto();
-                }
-                else
-                {
-                    fallo();
-                }
-                break;
-            case "OpcionB":
-
-                if (listaPreguntas.data[numPregunta].opciones[1].respuesta)
-                {
-                    acerto();
-                }
-                else
-                {
-                    fallo();
-                }
-                break;
-            case "OpcionC":
-
-                if (listaPreguntas.data[numPregunta].opciones[2].respuesta)
-                {
-                    acerto();
-                }
-                else
-                {
-                    fallo();
-                }
-                break;
-            case "OpcionD":
-
-                if (listaPreguntas.data[numPregunta].opciones[3].respuesta)
-                {
-                    acerto();
-                }
-                else
-                {
-                    fallo();
-                }
-                break;
-        }
+        catch (ArgumentOutOfRangeException) { }
     }
 
     public void cargarEscena()
@@ -191,12 +169,14 @@ public class GameManagerGeneric : MonoBehaviour
     public void acerto()
     {
         preguntasCorrectas++;
-        cargarEscena();
+        Instantiate(aplausos);
+        Invoke("cargarEscena", 8);
     }
 
     public void fallo()
     {
         vida--;
-        cargarEscena();
+        Instantiate(trompetas);
+        Invoke("cargarEscena", 5);
     }
 }
