@@ -1,18 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
-public class ControladorPersonaje : MonoBehaviour //<>
+public class ControladorPersonaje : MonoBehaviour
 {
-    public float velocidadMAX;
+    public float velocidadMAX = 3.6f;
     Rigidbody2D rbPlayer;
-    Animator animatorPlayer;
-    bool mirandoDerecha;
+    Vector2 direccion;
 
+    Animator animatorPlayer;
+    
     bool tocandoElSuelo = false;
-    public LayerMask sueloLayer;
+    
     public float fuerzaSalto;
 
 
@@ -21,23 +18,26 @@ public class ControladorPersonaje : MonoBehaviour //<>
     {
         rbPlayer = GetComponent<Rigidbody2D>();
         animatorPlayer = GetComponent<Animator>();
-
-        mirandoDerecha = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        direccion = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        /*
         if (tocandoElSuelo && Input.GetAxis("Jump") > 0) 
         {
             tocandoElSuelo = false;
             rbPlayer.AddForce(new UnityEngine.Vector2(0, fuerzaSalto));
         }
+        */
     }
 
     private void FixedUpdate()
     {
 
+        rbPlayer.MovePosition(rbPlayer.position + direccion * velocidadMAX * Time.fixedDeltaTime);
+        /*
         float movimiento = Input.GetAxis("Horizontal");
         rbPlayer.velocity = new UnityEngine.Vector2(movimiento * velocidadMAX, rbPlayer.velocity.y);
 
@@ -50,14 +50,17 @@ public class ControladorPersonaje : MonoBehaviour //<>
         {
             volteo();
         }
+        */
     }
 
     void volteo() 
     {
+        /*
         mirandoDerecha = !mirandoDerecha;
         UnityEngine.Vector3 escala = transform.localScale;
         escala.x *= -1;
         transform.localScale = escala;
+        */
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

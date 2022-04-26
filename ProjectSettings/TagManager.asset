@@ -50,11 +50,11 @@ TagManager:
   - name: TileMap
     uniqueID: 4250941897
     locked: 0
-  - name: UI
-    uniqueID: 1646952239
-    locked: 0
   - name: Opciones
     uniqueID: 1586176597
+    locked: 0
+  - name: UI
+    uniqueID: 1646952239
     locked: 0
   - name: Jugador
     uniqueID: 2191839481
