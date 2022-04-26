@@ -147,7 +147,9 @@ public class GameManagerGeneric : MonoBehaviour
                 }
             }
         }
-        catch (ArgumentOutOfRangeException) { }
+        catch (ArgumentOutOfRangeException) {
+            Debug.Log("Excepcion");
+        }
     }
 
     public void cargarEscena()
