@@ -20,36 +20,42 @@ public class ControladorPersonaje : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
     {
         float movX = Input.GetAxis("Horizontal");
 
-        if(movX != 0)
+        if (movX != 0)
         {
-            rbPlayer.velocity = new Vector2(movX * velocidadMAX + Time.fixedDeltaTime, rbPlayer.velocity.y);
+            rbPlayer.velocity = new Vector2(movX * velocidadMAX + Time.deltaTime, rbPlayer.velocity.y);
             animatorPlayer.SetBool("Run", true);
         }
         else
         {
-            rbPlayer.velocity = new Vector2(0 * velocidadMAX + Time.fixedDeltaTime, rbPlayer.velocity.y);
+            rbPlayer.velocity = new Vector2(0 * velocidadMAX + Time.deltaTime, rbPlayer.velocity.y);
             animatorPlayer.SetBool("Run", false);
         }
 
-        if(Input.GetKey("space") && VerificarSuelo.tocandoSuelo)
+        if (Input.GetKey("space") && VerificarSuelo.tocandoSuelo)
         {
+            Debug.Log("Salto tocando suelo");
             rbPlayer.AddForce(new Vector2(0, fuerzaSalto));
             animatorPlayer.SetBool("Jump", true);
             animatorPlayer.SetBool("Run", false);
-        } else if (VerificarSuelo.tocandoSuelo)
+        }
+        else if (VerificarSuelo.tocandoSuelo)
         {
+            Debug.Log("Tocando suelo");
             animatorPlayer.SetBool("Jump", false);
         }
+        else if (Input.GetKey("space") && !VerificarSuelo.tocandoSuelo)
+        {
+            Debug.Log("Salto sin suelo");
+        }
 
-
-        if (movX > 0 && !mirandoDerecha) 
+        if (movX > 0 && !mirandoDerecha)
         {
             volteo();
         }
@@ -59,10 +65,11 @@ public class ControladorPersonaje : MonoBehaviour
         }
     }
 
-    void volteo() 
+    void volteo()
     {
         mirandoDerecha = !mirandoDerecha;
         spritePlayer.flipX = mirandoDerecha;
     }
+
 
 }

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4587386786196937420}
   - component: {fileID: 4587386786196937421}
-  - component: {fileID: 7683761851712997792}
   m_Layer: 0
   m_Name: TX Tileset Ground_11
   m_TagString: Untagged
@@ -83,35 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &7683761851712997792
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4587386786196937419}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 7434346ff51474f47b889d465f63caf2, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.5, y: 0.45}
-      - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5, y: 0.45}
 --- !u!1 &4587386786392292978
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,9 +93,10 @@ GameObject:
   - component: {fileID: 4587386786392292979}
   - component: {fileID: 7253147367895925676}
   - component: {fileID: 7152754116714961710}
+  - component: {fileID: 8279911373569447784}
   m_Layer: 0
   m_Name: Plataforma3
-  m_TagString: Untagged
+  m_TagString: Suelo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,8 +151,20 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.37357682, y: 0.5}
+  - {x: -1.36, y: 0.5}
   - {x: 1.3734694, y: 0.5}
+--- !u!114 &8279911373569447784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4587386786392292978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e3ac7a5216c65459f0eb2f85c5224a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4587386786594470191
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +175,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4587386786594470192}
   - component: {fileID: 4587386786594470193}
-  - component: {fileID: 4815751180709815738}
   m_Layer: 0
   m_Name: TX Tileset Ground_9
   m_TagString: Untagged
@@ -265,38 +247,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &4815751180709815738
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4587386786594470191}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 7434346ff51474f47b889d465f63caf2, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.5, y: 0.45}
-      - {x: -0.45557308, y: -0.22553253}
-      - {x: -0.26509452, y: -0.2656997}
-      - {x: -0.05092913, y: -0.33895552}
-      - {x: -0.0010929108, y: -0.4969597}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.5, y: 0.45}
 --- !u!1 &4587386787664528529
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +257,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4587386787664528530}
   - component: {fileID: 4587386787664528531}
-  - component: {fileID: 8889450127539293358}
   m_Layer: 0
   m_Name: TX Tileset Ground_18
   m_TagString: Untagged
@@ -380,38 +329,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &8889450127539293358
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4587386787664528529}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 7434346ff51474f47b889d465f63caf2, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.46875, y: 0.45}
-      - {x: -0.5, y: 0.45}
-      - {x: -0.5, y: -0.5}
-      - {x: -0.05058676, y: -0.48788095}
-      - {x: 0.18643928, y: -0.27804816}
-      - {x: 0.4434564, y: -0.061432704}
-      - {x: 0.5, y: 0.36875}
 --- !u!1 &7761169686921591129
 GameObject:
   m_ObjectHideFlags: 0
