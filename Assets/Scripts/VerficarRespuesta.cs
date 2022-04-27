@@ -23,8 +23,6 @@ public class VerificarRespuesta : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Contacto");
-        //if (!activo) return;
         if (Input.GetKey(KeyCode.E) && activo)
         {
             string seleccion = this.gameObject.name;
