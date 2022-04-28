@@ -1989,9 +1989,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613657598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1209892861}
   m_Father: {fileID: 2004531152}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2008,7 +2009,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.3}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2019,7 +2020,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.25}
+  m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
 --- !u!114 &613657601
 MonoBehaviour:
@@ -2033,6 +2034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61856a989df6974cb65fb44458666d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mano: {fileID: 613657598}
 --- !u!1 &634038969
 GameObject:
   m_ObjectHideFlags: 0
@@ -3930,6 +3932,36 @@ PolygonCollider2D:
       - {x: -0.34375, y: 0}
       - {x: 0.34375, y: 0}
       - {x: 0.34375, y: 1.1875}
+--- !u!1 &1209892860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1209892861}
+  m_Layer: 9
+  m_Name: ManoPunto
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1209892861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209892860}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 613657599}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1210221963
 GameObject:
   m_ObjectHideFlags: 0
@@ -11826,7 +11858,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004531151}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.07, y: -2.85, z: 0}
+  m_LocalPosition: {x: 2.966, y: -6.883, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 613657599}
@@ -11897,6 +11929,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadMAX: 3.6
+  mano: {fileID: 613657598}
+  posMano: {x: 0, y: 0}
 --- !u!70 &2004531155
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -11910,7 +11944,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.002966404, y: 0.3149653}
+  m_Offset: {x: 0, y: 0.3}
   m_Size: {x: 0.6, y: 0.6}
   m_Direction: 0
 --- !u!50 &2004531156
