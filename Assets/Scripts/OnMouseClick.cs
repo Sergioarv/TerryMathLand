@@ -18,8 +18,6 @@ public class OnMouseClick : MonoBehaviour
               
         optiones = GameObject.FindGameObjectsWithTag("Opcion");
 
-        Debug.Log(optiones.Length);
-
         optiones[0].GetComponent<OnMouseClick>().activo = false;
         optiones[1].GetComponent<OnMouseClick>().activo = false;
         optiones[2].GetComponent<OnMouseClick>().activo = false;

@@ -59,8 +59,8 @@ public class GameManagerGeneric : MonoBehaviour
     public void guardarSimple()
     {
         DatosEntreEscenas.instace.listaPreguntas = listaPreguntas;
-        DatosEntreEscenas.instace.numPregunta = numPregunta + 1;
-        DatosEntreEscenas.instace.contPreguntas = contPregunta + 1;
+        DatosEntreEscenas.instace.numPregunta = numPregunta;
+        DatosEntreEscenas.instace.contPreguntas = contPregunta;
         DatosEntreEscenas.instace.img = img;
         DatosEntreEscenas.instace.vida = vida;
         DatosEntreEscenas.instace.preguntasCorrectas = preguntasCorrectas;
@@ -102,12 +102,13 @@ public class GameManagerGeneric : MonoBehaviour
 
             txtVida.text = vida.ToString();
             txtPreguntasCorrectas.text = preguntasCorrectas.ToString();
-        }
+        }/*
         else
         {
             respuestaEst.acertadas = preguntasCorrectas;
             respuestaEst.nota = (5.0f * preguntasCorrectas) / numPregunta;
         }
+        */
     }
 
     public void responder(string seleccion, string seleccioOpcion)
@@ -146,8 +147,12 @@ public class GameManagerGeneric : MonoBehaviour
                     }
                 }
             }
+
+            numPregunta++;
+            contPregunta++;
         }
-        catch (ArgumentOutOfRangeException) {
+        catch (ArgumentOutOfRangeException)
+        {
             Debug.Log("Excepcion");
         }
     }
@@ -156,16 +161,24 @@ public class GameManagerGeneric : MonoBehaviour
     {
         guardarSimple();
 
-        if (contPregunta == 4)
+        if (numPregunta == listaPreguntas.data.Count)
         {
-            DatosEntreEscenas.instace.contPreguntas = 0;
-            LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
+            Debug.Log("No hay mas preguntas, Cargar GameOver y guardar datos");
+            respuestaEst.acertadas = preguntasCorrectas;
+            respuestaEst.nota = (5.0f * preguntasCorrectas) / numPregunta;
         }
         else
         {
-            LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+            if (contPregunta == 5)
+            {
+                DatosEntreEscenas.instace.contPreguntas = 0;
+                LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else
+            {
+                LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+            }
         }
-
     }
 
     public void acerto()

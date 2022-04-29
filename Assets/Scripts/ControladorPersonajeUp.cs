@@ -43,8 +43,6 @@ public class ControladorPersonajeUp : MonoBehaviour
         {
             animatorPlayer.SetFloat("UltimoX", movX);
             animatorPlayer.SetFloat("UltimoY", movY);
-
-            
         }
 
         direcccion = new Vector2(movX, movY).normalized;
