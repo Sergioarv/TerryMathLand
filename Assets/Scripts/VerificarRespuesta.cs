@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class VerficarRespuesta : MonoBehaviour
+public class VerificarRespuesta : MonoBehaviour
 {
     public GameManagerGeneric gameManagerGeneric;
     private GameObject[] optiones;
@@ -21,27 +21,26 @@ public class VerficarRespuesta : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Jugador"))
+
+        if (!collision.CompareTag("Jugador")) return;
+
+        if (Input.GetKey(KeyCode.E) && activo)
         {
-            Debug.Log("Respondio" + this.name);
-
-            if (!activo) return;
-
             string seleccion = this.gameObject.name;
             string seleccionOpcion = this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text;
 
             optiones = GameObject.FindGameObjectsWithTag("Opcion");
 
-            Debug.Log(optiones.Length);
-
-            optiones[0].GetComponent<OnMouseClick>().activo = false;
-            optiones[1].GetComponent<OnMouseClick>().activo = false;
-            optiones[2].GetComponent<OnMouseClick>().activo = false;
-            optiones[3].GetComponent<OnMouseClick>().activo = false;
+            optiones[0].GetComponent<VerificarRespuesta>().activo = false;
+            optiones[1].GetComponent<VerificarRespuesta>().activo = false;
+            optiones[2].GetComponent<VerificarRespuesta>().activo = false;
+            optiones[3].GetComponent<VerificarRespuesta>().activo = false;
 
             gameManagerGeneric.responder(seleccion, seleccionOpcion);
         }
+
+        return;
     }
 }

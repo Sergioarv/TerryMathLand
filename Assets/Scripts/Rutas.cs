@@ -48,7 +48,7 @@ public class Rutas : MonoBehaviour
             errorTextObj.SetActive(true);
         }
     }
-
+    /*
     [ContextMenu("Escribir simple")]
     public void escribirSimple()
     {
@@ -57,7 +57,7 @@ public class Rutas : MonoBehaviour
 
     private IEnumerator CorrutinaEscribirSimple()
     {
-
+        
         MyRutas.Origen newCiudad = new MyRutas.Origen();
         newCiudad.idciudad = 14;
 

@@ -8,6 +8,10 @@ TagManager:
   - Imagen
   - Jugador
   - Suelo
+  - SueloElevado
+  - EspacioMuerto
+  - Solucion
+  - BordeSolucion
   layers:
   - Default
   - TransparentFX
@@ -20,10 +24,10 @@ TagManager:
   - tilemap
   - jugador
   - plataforma
-  - 
-  - 
-  - 
-  - 
+  - opciones
+  - wall
+  - bordeSolucion
+  - activeLevel
   - 
   - 
   - 

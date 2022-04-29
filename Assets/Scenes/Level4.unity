@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 7427959}
   - component: {fileID: 7427961}
   - component: {fileID: 7427960}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T6 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 22722809}
   - component: {fileID: 22722810}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Grass C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 132210161}
   - component: {fileID: 132210160}
   - component: {fileID: 132210162}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ActiveLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 187668615}
   - component: {fileID: 187668617}
   - component: {fileID: 187668616}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Rune Pillar Broken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 211546788}
   - component: {fileID: 211546790}
   - component: {fileID: 211546789}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -636,6 +636,90 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &243482360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 243482361}
+  - component: {fileID: 243482363}
+  - component: {fileID: 243482362}
+  m_Layer: 12
+  m_Name: Bordes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &243482361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243482360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1755021880}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &243482362
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243482360}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -7.77, y: -1.4959688}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.21435356, y: 2.9429092}
+  m_EdgeRadius: 0
+--- !u!61 &243482363
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243482360}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -9.482863, y: -1.4959688}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.21435356, y: 2.9429092}
+  m_EdgeRadius: 0
 --- !u!1 &260462691
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 260462692}
   - component: {fileID: 260462693}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Grass C (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -666,7 +750,7 @@ Transform:
   m_Children:
   - {fileID: 22722809}
   m_Father: {fileID: 1724727004}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &260462693
 SpriteRenderer:
@@ -718,6 +802,117 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &391274566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 391274567}
+  - component: {fileID: 391274570}
+  - component: {fileID: 391274569}
+  - component: {fileID: 391274568}
+  m_Layer: 12
+  m_Name: EspacioMuerto
+  m_TagString: EspacioMuerto
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &391274567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391274566}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1210221964}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &391274568
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391274566}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.2200594, y: 2.924184}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 26.631178, y: 1.9023223}
+  m_EdgeRadius: 0
+--- !u!61 &391274569
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391274566}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -10.983653, y: -0.8917105}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.6932049, y: 1.2133284}
+  m_EdgeRadius: 0
+--- !u!61 &391274570
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391274566}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 2.3111897, y: -0.88835144}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 19.849716, y: 1.3671703}
+  m_EdgeRadius: 0
 --- !u!1 &396690243
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +924,7 @@ GameObject:
   - component: {fileID: 396690244}
   - component: {fileID: 396690246}
   - component: {fileID: 396690245}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T7 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -844,7 +1039,7 @@ GameObject:
   - component: {fileID: 401528753}
   - component: {fileID: 401528755}
   - component: {fileID: 401528754}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Nubes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1420,7 +1615,7 @@ GameObject:
   - component: {fileID: 423294693}
   - component: {fileID: 423294695}
   - component: {fileID: 423294694}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T7 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1524,6 +1719,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &540190695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 540190696}
+  m_Layer: 12
+  m_Name: SueloElevado
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &540190696
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540190695}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 608362817}
+  m_Father: {fileID: 1210221964}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &548665766
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,7 +1760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 548665768}
   - component: {fileID: 548665767}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Mundo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1581,7 +1807,7 @@ GameObject:
   m_Component:
   - component: {fileID: 565238623}
   - component: {fileID: 565238624}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Grass C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1596,12 +1822,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565238622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.39, y: 0.84, z: 0}
+  m_LocalPosition: {x: 0.059999943, y: -0.09000003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1547227273}
-  m_Father: {fileID: 1724727004}
-  m_RootOrder: 6
+  m_Father: {fileID: 977679087}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &565238624
 SpriteRenderer:
@@ -1641,7 +1867,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -44025399
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300148, guid: c3a40e1c46727b94e959990527f8e7fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1664,7 +1890,7 @@ GameObject:
   - component: {fileID: 567321604}
   - component: {fileID: 567321605}
   - component: {fileID: 567321606}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: TX Props Stone Bench E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1776,7 +2002,7 @@ GameObject:
   m_Component:
   - component: {fileID: 576087725}
   - component: {fileID: 576087726}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Grass C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1858,7 +2084,7 @@ GameObject:
   - component: {fileID: 580486049}
   - component: {fileID: 580486051}
   - component: {fileID: 580486050}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T7 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1877,7 +2103,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1724727004}
-  m_RootOrder: 17
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &580486050
 PolygonCollider2D:
@@ -1963,6 +2189,59 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &608362816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 608362817}
+  - component: {fileID: 608362818}
+  m_Layer: 12
+  m_Name: Borde
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &608362817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608362816}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 540190696}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &608362818
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608362816}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -9.4, y: 0}
+  - {x: -12.25, y: 0}
+  - {x: -12.25, y: 1.77}
+  - {x: 12.27, y: 1.77}
+  - {x: 12.27, y: 0}
+  - {x: -7.86, y: 0}
 --- !u!1 &613657598
 GameObject:
   m_ObjectHideFlags: 0
@@ -2035,6 +2314,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mano: {fileID: 613657598}
+  animatorPlayer: {fileID: 2004531157}
+  posSolucion: {fileID: 1701357352}
+  gameManagerGeneric: {fileID: 1446576500}
 --- !u!1 &634038969
 GameObject:
   m_ObjectHideFlags: 0
@@ -2045,7 +2327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 634038970}
   - component: {fileID: 634038971}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Grass G
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2126,7 +2408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 645577509}
   - component: {fileID: 645577510}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Grass K
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2208,7 +2490,7 @@ GameObject:
   - component: {fileID: 663197570}
   - component: {fileID: 663197572}
   - component: {fileID: 663197571}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T7 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2233,7 +2515,7 @@ Transform:
   - {fileID: 7427959}
   - {fileID: 396690244}
   m_Father: {fileID: 1724727004}
-  m_RootOrder: 19
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &663197571
 PolygonCollider2D:
@@ -2329,7 +2611,7 @@ GameObject:
   - component: {fileID: 673106233}
   - component: {fileID: 673106235}
   - component: {fileID: 673106234}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2355,7 +2637,7 @@ Transform:
   - {fileID: 807916703}
   - {fileID: 187668615}
   m_Father: {fileID: 1724727004}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &673106234
 PolygonCollider2D:
@@ -2440,6 +2722,77 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &719635664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 719635665}
+  - component: {fileID: 719635667}
+  - component: {fileID: 719635666}
+  m_Layer: 12
+  m_Name: Pared
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &719635665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719635664}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1210221964}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &719635666
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719635664}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -7.7, y: -1.6}
+  - {x: 13, y: -1.6}
+--- !u!68 &719635667
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719635664}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -12.504208, y: 2.0045953}
+  - {x: -12.504, y: -0.56}
+  - {x: -12.4, y: -0.56}
+  - {x: -12.4, y: -1.6}
+  - {x: -9.58, y: -1.6}
 --- !u!1 &807916702
 GameObject:
   m_ObjectHideFlags: 0
@@ -2451,7 +2804,7 @@ GameObject:
   - component: {fileID: 807916703}
   - component: {fileID: 807916705}
   - component: {fileID: 807916704}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T7 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2565,7 +2918,7 @@ GameObject:
   m_Component:
   - component: {fileID: 824973300}
   - component: {fileID: 824973301}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Grass C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2646,7 +2999,7 @@ GameObject:
   m_Component:
   - component: {fileID: 844714643}
   - component: {fileID: 844714644}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Tree T2 Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2809,7 +3162,7 @@ GameObject:
   - component: {fileID: 869418489}
   - component: {fileID: 869418491}
   - component: {fileID: 869418490}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T7 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2834,7 +3187,7 @@ Transform:
   - {fileID: 974217266}
   - {fileID: 1224638207}
   m_Father: {fileID: 1724727004}
-  m_RootOrder: 18
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!60 &869418490
 PolygonCollider2D:
@@ -2930,7 +3283,7 @@ GameObject:
   - component: {fileID: 974217266}
   - component: {fileID: 974217268}
   - component: {fileID: 974217267}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T6 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3044,7 +3397,7 @@ GameObject:
   - component: {fileID: 977679087}
   - component: {fileID: 977679088}
   - component: {fileID: 977679089}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Pillar Broken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3059,9 +3412,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977679086}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.45, y: 0.93, z: 0}
+  m_LocalPosition: {x: -4.52, y: 1.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 565238623}
   m_Father: {fileID: 1724727004}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3146,6 +3500,127 @@ PolygonCollider2D:
       - {x: 0.5, y: 0}
       - {x: 0.5, y: 1.3125}
       - {x: 0.3125, y: 1.78125}
+--- !u!1 &999800431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 999800432}
+  - component: {fileID: 999800433}
+  m_Layer: 12
+  m_Name: SueloElevadoTrigger
+  m_TagString: SueloElevado
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &999800432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999800431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1210221964}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &999800433
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999800431}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -9.35, y: -3}
+      - {x: -9.35, y: 0}
+      - {x: -12.27, y: 0}
+      - {x: -12.27, y: 1.78}
+      - {x: 12.3, y: 1.78}
+      - {x: 12.3, y: 0}
+      - {x: -7.6, y: 0}
+      - {x: -7.6, y: -2.9905198}
+--- !u!1 &1004836844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1004836845}
+  - component: {fileID: 1004836846}
+  m_Layer: 13
+  m_Name: Borde
+  m_TagString: BordeSolucion
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1004836845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004836844}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1701357353}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1004836846
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004836844}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.41819358}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1023385532
 GameObject:
   m_ObjectHideFlags: 0
@@ -3156,7 +3631,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1023385533}
   - component: {fileID: 1023385534}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Grass C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3356,7 +3831,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1048711940}
   - component: {fileID: 1048711941}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Grass C (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3376,7 +3851,7 @@ Transform:
   m_Children:
   - {fileID: 824973300}
   m_Father: {fileID: 1724727004}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1048711941
 SpriteRenderer:
@@ -3438,7 +3913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1087876420}
   - component: {fileID: 1087876421}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Grass C (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3458,7 +3933,7 @@ Transform:
   m_Children:
   - {fileID: 1023385533}
   m_Father: {fileID: 1724727004}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1087876421
 SpriteRenderer:
@@ -3521,7 +3996,7 @@ GameObject:
   - component: {fileID: 1103504107}
   - component: {fileID: 1103504109}
   - component: {fileID: 1103504108}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T7 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3636,7 +4111,7 @@ GameObject:
   - component: {fileID: 1183812620}
   - component: {fileID: 1183812622}
   - component: {fileID: 1183812621}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T6 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3749,7 +4224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1187555437}
   - component: {fileID: 1187555438}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Tree T2 Lower (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3769,7 +4244,7 @@ Transform:
   m_Children:
   - {fileID: 2083551499}
   m_Father: {fileID: 1724727004}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1187555438
 SpriteRenderer:
@@ -3832,7 +4307,7 @@ GameObject:
   - component: {fileID: 1207345742}
   - component: {fileID: 1207345743}
   - component: {fileID: 1207345744}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: TX Props Stone Lantern (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3956,7 +4431,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209892860}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 613657599}
@@ -3971,7 +4446,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1210221964}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Colisiones
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3989,7 +4464,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1588839791}
+  - {fileID: 719635665}
+  - {fileID: 1755021880}
+  - {fileID: 540190696}
+  - {fileID: 999800432}
+  - {fileID: 391274567}
   m_Father: {fileID: 548665768}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4004,7 +4483,7 @@ GameObject:
   - component: {fileID: 1224638207}
   - component: {fileID: 1224638209}
   - component: {fileID: 1224638208}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T7 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4119,7 +4598,7 @@ GameObject:
   - component: {fileID: 1301691304}
   - component: {fileID: 1301691306}
   - component: {fileID: 1301691305}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7650,7 +8129,7 @@ GameObject:
   - component: {fileID: 1309843395}
   - component: {fileID: 1309843397}
   - component: {fileID: 1309843396}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7763,7 +8242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1348954074}
   - component: {fileID: 1348954075}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Grass C (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7786,7 +8265,7 @@ Transform:
   - {fileID: 1986752996}
   - {fileID: 645577509}
   m_Father: {fileID: 1724727004}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1348954075
 SpriteRenderer:
@@ -7849,7 +8328,7 @@ GameObject:
   - component: {fileID: 1353583762}
   - component: {fileID: 1353583764}
   - component: {fileID: 1353583763}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7965,7 +8444,7 @@ GameObject:
   - component: {fileID: 1381845454}
   - component: {fileID: 1381845456}
   - component: {fileID: 1381845455}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10178,7 +10657,7 @@ GameObject:
   - component: {fileID: 1479636196}
   - component: {fileID: 1479636198}
   - component: {fileID: 1479636197}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T7 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10292,7 +10771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1519285337}
   - component: {fileID: 1519285338}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Tree T2 Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10374,7 +10853,7 @@ GameObject:
   - component: {fileID: 1533666314}
   - component: {fileID: 1533666316}
   - component: {fileID: 1533666315}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10487,7 +10966,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1547227273}
   - component: {fileID: 1547227274}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Grass C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10546,7 +11025,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -44025399
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300148, guid: c3a40e1c46727b94e959990527f8e7fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -10558,81 +11037,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1588839790
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1588839791}
-  - component: {fileID: 1588839792}
-  m_Layer: 0
-  m_Name: Wall
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1588839791
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588839790}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.77, y: 1.03, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1210221964}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &1588839792
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1588839790}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.49354172, y: 1}
-      - {x: -0.68978506, y: 0.9692099}
-      - {x: -0.6427912, y: -2.6245484}
-      - {x: 2.1829152, y: -2.6245484}
-      - {x: 2.174986, y: -4.0085015}
-      - {x: 2.3878937, y: -4.04688}
-      - {x: 2.4035835, y: -1.0522041}
-      - {x: -0.49208164, y: -1.0342002}
-      - {x: -0.4625702, y: 0.7671211}
-      - {x: 24.040174, y: 0.746928}
-      - {x: 24.025402, y: -1.0366718}
-      - {x: 3.9199395, y: -1.0551637}
-      - {x: 3.9185004, y: -4.016628}
-      - {x: 4.1149955, y: -4.02164}
-      - {x: 4.130621, y: -2.3995292}
-      - {x: 23.919247, y: -2.422463}
-      - {x: 23.895802, y: -3.007365}
-      - {x: 24.197124, y: -2.9940023}
-      - {x: 24.256388, y: 0.9637494}
 --- !u!1 &1601828561
 GameObject:
   m_ObjectHideFlags: 0
@@ -10644,7 +11048,7 @@ GameObject:
   - component: {fileID: 1601828562}
   - component: {fileID: 1601828564}
   - component: {fileID: 1601828563}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10757,9 +11161,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1701357353}
   - component: {fileID: 1701357354}
-  m_Layer: 0
-  m_Name: TX Shadow Crate Small
-  m_TagString: Untagged
+  - component: {fileID: 1701357355}
+  m_Layer: 13
+  m_Name: Solucion
+  m_TagString: Solucion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10772,11 +11177,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701357352}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.78, y: 0.51, z: 0}
+  m_LocalPosition: {x: 9.7, y: 0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1724727004}
-  m_RootOrder: 16
+  m_Children:
+  - {fileID: 1004836845}
+  m_Father: {fileID: 1468233225300689834}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1701357354
 SpriteRenderer:
@@ -10818,7 +11224,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300006, guid: ed7554aeefd5da44a9fe1ee9b93afe77, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.3529412}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -10828,6 +11234,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1701357355
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701357352}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.421875}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.96875, y: 0.84375}
+    newSize: {x: 0.96875, y: 0.84375}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 0.8}
+  m_EdgeRadius: 0
 --- !u!1 &1724727003
 GameObject:
   m_ObjectHideFlags: 0
@@ -10837,7 +11269,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1724727004}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: Objetos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10861,7 +11293,6 @@ Transform:
   - {fileID: 1815824580}
   - {fileID: 1207345742}
   - {fileID: 977679087}
-  - {fileID: 565238623}
   - {fileID: 260462692}
   - {fileID: 1087876420}
   - {fileID: 1048711940}
@@ -10871,12 +11302,42 @@ Transform:
   - {fileID: 1932767577}
   - {fileID: 1187555437}
   - {fileID: 673106233}
-  - {fileID: 1701357353}
   - {fileID: 580486049}
   - {fileID: 869418489}
   - {fileID: 663197570}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1755021879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1755021880}
+  m_Layer: 12
+  m_Name: Escalera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1755021880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755021879}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 243482361}
+  m_Father: {fileID: 1210221964}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1783696464
 GameObject:
@@ -10889,7 +11350,7 @@ GameObject:
   - component: {fileID: 1783696465}
   - component: {fileID: 1783696467}
   - component: {fileID: 1783696466}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T6 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11003,7 +11464,7 @@ GameObject:
   - component: {fileID: 1815824580}
   - component: {fileID: 1815824581}
   - component: {fileID: 1815824582}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: TX Props Stone Lantern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11114,7 +11575,7 @@ GameObject:
   - component: {fileID: 1868530971}
   - component: {fileID: 1868530973}
   - component: {fileID: 1868530972}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11363,7 +11824,7 @@ GameObject:
   - component: {fileID: 1889887977}
   - component: {fileID: 1889887979}
   - component: {fileID: 1889887978}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11478,7 +11939,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1932767577}
   - component: {fileID: 1932767578}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Tree T2 Lower (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11498,7 +11959,7 @@ Transform:
   m_Children:
   - {fileID: 1519285337}
   m_Father: {fileID: 1724727004}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1932767578
 SpriteRenderer:
@@ -11560,7 +12021,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1937635099}
   - component: {fileID: 1937635100}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Tree T2 Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11580,7 +12041,7 @@ Transform:
   m_Children:
   - {fileID: 844714643}
   m_Father: {fileID: 1724727004}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1937635100
 SpriteRenderer:
@@ -11643,7 +12104,7 @@ GameObject:
   - component: {fileID: 1981878804}
   - component: {fileID: 1981878805}
   - component: {fileID: 1981878806}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Bush T2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11662,7 +12123,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1724727004}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1981878805
 SpriteRenderer:
@@ -11758,7 +12219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1986752996}
   - component: {fileID: 1986752997}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Grass J
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11843,6 +12304,7 @@ GameObject:
   - component: {fileID: 2004531155}
   - component: {fileID: 2004531154}
   - component: {fileID: 2004531157}
+  - component: {fileID: 2004531158}
   m_Layer: 9
   m_Name: Jugador
   m_TagString: Jugador
@@ -11858,7 +12320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004531151}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.966, y: -6.883, z: 0}
+  m_LocalPosition: {x: -23.41, y: -7.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 613657599}
@@ -11987,6 +12449,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2004531158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004531151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06641f2004af5446bbda87404eb2b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2067651036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12066,7 +12540,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2083551499}
   - component: {fileID: 2083551500}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Tree T2 Upper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12148,7 +12622,7 @@ GameObject:
   - component: {fileID: 2087828896}
   - component: {fileID: 2087828898}
   - component: {fileID: 2087828897}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TX Props Stone T6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12462,7 +12936,7 @@ GameObject:
   - component: {fileID: 2125403899}
   - component: {fileID: 2125403900}
   - component: {fileID: 2125403901}
-  m_Layer: 8
+  m_Layer: 12
   m_Name: TX Props Statue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12883,7 +13357,7 @@ GameObject:
   - component: {fileID: 1468233224293503565}
   - component: {fileID: 1468233224293503667}
   - component: {fileID: 1468233224293503666}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: OpcionA
   m_TagString: Opcion
   m_Icon: {fileID: 0}
@@ -12898,7 +13372,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1468233224293503564}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.17, y: -3.37, z: 0}
+  m_LocalPosition: {x: -5.05, y: -3.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1468233224157015891}
@@ -13334,7 +13808,7 @@ GameObject:
   - component: {fileID: 1468233224940711655}
   - component: {fileID: 1468233224940711653}
   - component: {fileID: 1468233224940711652}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: OpcionD
   m_TagString: Opcion
   m_Icon: {fileID: 0}
@@ -13952,6 +14426,7 @@ Transform:
   - {fileID: 1468233225486458861}
   - {fileID: 1468233224940711655}
   - {fileID: 1468233225661631039}
+  - {fileID: 1701357353}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14116,7 +14591,7 @@ GameObject:
   - component: {fileID: 1468233225486458861}
   - component: {fileID: 1468233225486458835}
   - component: {fileID: 1468233225486458834}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: OpcionC
   m_TagString: Opcion
   m_Icon: {fileID: 0}
@@ -14198,8 +14673,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1468233225661631039}
   - component: {fileID: 1468233225661631037}
-  - component: {fileID: 4787813103375392975}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Ilustracion
   m_TagString: Imagen
   m_Icon: {fileID: 0}
@@ -14232,7 +14706,7 @@ GameObject:
   - component: {fileID: 1468233225761173566}
   - component: {fileID: 1468233225761173564}
   - component: {fileID: 1468233225761173567}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: OpcionB
   m_TagString: Opcion
   m_Icon: {fileID: 0}
@@ -14616,32 +15090,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!61 &4787813103375392975
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1468233225661631038}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 10, y: 7}
-  m_EdgeRadius: 0
 --- !u!114 &5154321769294392577
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -37,24 +37,14 @@ public class ControladorPersonajeUp : MonoBehaviour
         animatorPlayer.SetFloat("MovY", movY);
 
 
-        spritePlayer.sortingOrder = animatorPlayer.GetFloat("UltimoY") == 1 ? 1 : 0;
+        spritePlayer.sortingOrder = animatorPlayer.GetFloat("UltimoY") == 1 && animatorPlayer.GetFloat("UltimoX") == 0 ? 1 : 0;
 
         if (movX != 0 || movY != 0)
         {
             animatorPlayer.SetFloat("UltimoX", movX);
             animatorPlayer.SetFloat("UltimoY", movY);
 
-            if (movX != 0)
-            {
-                float vX = movX * 0.3f;
-                mano.transform.localPosition = new Vector2(vX, 0);
-            }else if(movY !=0)
-            {
-                float vY = movY * 0.3f;
-                mano.transform.localPosition = new Vector2(0f, vY);
-            }
-
-            Debug.Log(mano.transform.localPosition);
+            
         }
 
         direcccion = new Vector2(movX, movY).normalized;
@@ -65,7 +55,27 @@ public class ControladorPersonajeUp : MonoBehaviour
         rbPlayer.MovePosition(rbPlayer.position + direcccion * velocidadMAX * Time.deltaTime);
 
         volteo();
+        posicionMano();
+    }
 
+    void posicionMano()
+    {
+
+        int hijosMano = mano.transform.childCount;
+
+        if (movX != 0)
+        {
+            float vX = movX * 0.3f;
+            mano.transform.localPosition = new Vector2(vX, 0);
+            mano.transform.GetChild(0).localPosition = new Vector2(vX, 0.4f);
+            if (hijosMano > 1) mano.transform.GetChild(1).localPosition = new Vector2(vX, 0.4f);
+        }
+        else if (movY != 0)
+        {
+            float vY = movY * 0.3f;
+            mano.transform.localPosition = new Vector2(0f, vY);
+            if (hijosMano > 1) mano.transform.GetChild(1).localPosition = new Vector2(0, vY);
+        }
     }
 
     void volteo()
