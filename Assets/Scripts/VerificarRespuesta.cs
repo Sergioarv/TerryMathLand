@@ -26,7 +26,7 @@ public class VerificarRespuesta : MonoBehaviour
 
         if (!collision.CompareTag("Jugador")) return;
 
-        if (Input.GetKey(KeyCode.E) && activo)
+        if (Input.GetKey(KeyCode.F) && activo)
         {
             string seleccion = this.gameObject.name;
             string seleccionOpcion = this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text;

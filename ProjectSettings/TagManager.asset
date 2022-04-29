@@ -12,6 +12,7 @@ TagManager:
   - EspacioMuerto
   - Solucion
   - BordeSolucion
+  - ManoJugador
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - wall
   - bordeSolucion
   - activeLevel
-  - 
+  - manoJugador
   - 
   - 
   - 
