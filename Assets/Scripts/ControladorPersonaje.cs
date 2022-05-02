@@ -12,6 +12,7 @@ public class ControladorPersonaje : MonoBehaviour
     bool mirandoDerecha;
 
     float movX;
+    float dirX;
 
     public GameObject mano;
     public Vector2 posMano;
@@ -34,12 +35,15 @@ public class ControladorPersonaje : MonoBehaviour
     private void FixedUpdate()
     {
         movX = Input.GetAxisRaw("Horizontal");
+        animatorPlayer.SetFloat("MovX", movX);
+        mano.GetComponent<ManoLanzadora>().dirX = movX;
 
         if (movX != 0)
         {
             rbPlayer.velocity = new Vector2(movX * velocidadMAX + Time.deltaTime, rbPlayer.velocity.y);
             animatorPlayer.SetBool("Run", true);
             animatorPlayer.SetFloat("UltimoX", movX);
+            dirX = movX;
         }
         else
         {
@@ -98,15 +102,18 @@ public class ControladorPersonaje : MonoBehaviour
 
     void posicionMano()
     {
-
-        int hijosMano = mano.transform.childCount;
+        int hijosMano = mano.transform.childCount;     
 
         if (movX != 0)
         {
             float vX = movX * 0.3f;
             mano.transform.localPosition = new Vector2(vX, 0);
-            mano.transform.GetChild(0).localPosition = new Vector2(vX, 0.4f);
-            if (hijosMano > 1) mano.transform.GetChild(1).localPosition = new Vector2(vX, 0.4f);
+            mano.transform.GetChild(0).localPosition = vX < 0 ? new Vector2(0.16f, 0f) : new Vector2(0.56f, 0f);
+            if(hijosMano > 1)
+            {
+                mano.transform.GetChild(1).gameObject.GetComponent<OpcionLanzable>().dirX = dirX;
+                mano.transform.GetChild(1).localPosition = vX < 0 ? new Vector2(0.16f, 0f) : new Vector2(0.56f, 0f);
+            } 
         }
     }
 
