@@ -102,13 +102,7 @@ public class GameManagerGeneric : MonoBehaviour
 
             txtVida.text = vida.ToString();
             txtPreguntasCorrectas.text = preguntasCorrectas.ToString();
-        }/*
-        else
-        {
-            respuestaEst.acertadas = preguntasCorrectas;
-            respuestaEst.nota = (5.0f * preguntasCorrectas) / numPregunta;
         }
-        */
     }
 
     public void responder(string seleccion, string seleccioOpcion)

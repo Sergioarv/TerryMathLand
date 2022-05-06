@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class ControladorPersonaje : MonoBehaviour
 {
@@ -61,15 +62,19 @@ public class ControladorPersonaje : MonoBehaviour
         {
             animatorPlayer.SetBool("Jump", false);
         }
-        else if (Input.GetKey("space") && !VerificarSuelo.tocandoSuelo)
-        {
-            Debug.Log("Salto sin suelo");
-        }
 
         volteo();
         posicionMano();
     }
 
+    public IEnumerator congelarMovimiento()
+    {
+        velocidadMAX = 0;
+        fuerzaSalto = 0;
+        yield return new WaitForSeconds(1f);
+        velocidadMAX = 3.6f;
+        fuerzaSalto = 4f;
+    }
     void volteo()
     {
         if (movX > 0.1f && !mirandoDerecha)
@@ -102,19 +107,23 @@ public class ControladorPersonaje : MonoBehaviour
 
     void posicionMano()
     {
-        int hijosMano = mano.transform.childCount;     
+        int hijosMano = mano.transform.childCount;
 
         if (movX != 0)
         {
             float vX = movX * 0.3f;
             mano.transform.localPosition = new Vector2(vX, 0);
             mano.transform.GetChild(0).localPosition = vX < 0 ? new Vector2(0.16f, 0f) : new Vector2(0.56f, 0f);
-            if(hijosMano > 1)
+            if (hijosMano > 1)
             {
                 mano.transform.GetChild(1).gameObject.GetComponent<OpcionLanzable>().dirX = dirX;
                 mano.transform.GetChild(1).localPosition = vX < 0 ? new Vector2(0.16f, 0f) : new Vector2(0.56f, 0f);
-            } 
+            }
         }
     }
 
+    public void detenerLanzamiento()
+    {
+        animatorPlayer.SetBool("Tirar", true);
+    }
 }

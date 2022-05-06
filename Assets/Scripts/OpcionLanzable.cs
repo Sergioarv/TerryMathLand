@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class OpcionLanzable : MonoBehaviour
 {
@@ -11,29 +12,39 @@ public class OpcionLanzable : MonoBehaviour
 
     public GameObject objetivo;
     public float dirX;
+    public bool respondio = false;
 
     Rigidbody2D rbOpcion;
+    Animator animatorOpcion;
+
+    GameManagerGeneric gameManagerGeneric;
 
     private void Start()
     {
         rbOpcion = GetComponent<Rigidbody2D>();
+        animatorOpcion = GetComponent<Animator>();
+        gameManagerGeneric = GameObject.FindObjectOfType<GameManagerGeneric>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        if (cae && lanzado && respondio)
+        {
+            string seleccion = this.name;
+            string seleccionOpcion = this.transform.GetComponentInChildren<TextMeshProUGUI>().text;
+            gameManagerGeneric.responder(seleccion, seleccionOpcion);
 
+            respondio = false;
+
+            animatorOpcion.SetBool("Lanzado", true);
+            Invoke("destruirBomba", 0.8f);
+        }
     }
 
     public void lanzarObjeto()
     {
-        rbOpcion.AddForce(new Vector2((dirX * 2), 1.67f), ForceMode2D.Impulse);
+        rbOpcion.AddForce(new Vector2((dirX * 1.2f), 2.2f), ForceMode2D.Impulse);
         lanzado = true;
-
-        if (cae && lanzado)
-        {
-            Debug.Log("Boom");
-            lanzar = false;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -46,7 +57,11 @@ public class OpcionLanzable : MonoBehaviour
         if (collision.CompareTag("Suelo"))
         {
             cae = true;
-            Debug.Log("Cayo");
+        }
+
+        if (collision.CompareTag("Solucion"))
+        {
+            respondio = true;
         }
     }
 
@@ -60,8 +75,17 @@ public class OpcionLanzable : MonoBehaviour
         if (collision.CompareTag("Suelo"))
         {
             cae = false;
-            Debug.Log("No Cayo");
         }
 
+        if (collision.CompareTag("Solucion"))
+        {
+            respondio = false;
+        }
+    }
+
+    public void destruirBomba()
+    {
+        Destroy(gameObject);
+        lanzado = false;
     }
 }

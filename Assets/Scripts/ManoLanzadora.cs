@@ -40,11 +40,10 @@ public class ManoLanzadora : MonoBehaviour
                 objetoEnMano.transform.position = mano.transform.GetChild(0).position;
                 objetoEnMano.transform.SetParent(transform);
                 if (objetoEnMano.GetComponent<Rigidbody2D>() != null) objetoEnMano.GetComponent<Rigidbody2D>().simulated = false;
+                objetoEnMano.GetComponents<Collider2D>()[0].enabled = false;
                 objetoEnMano.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 spriteBomba = objetoEnMano.GetComponent<SpriteRenderer>();
                 mirandoDerecha = spriteBomba.flipX;
-
-                animatorBomba.SetBool("Lanzable", false);
 
                 animatorPlayer.SetBool("Sostener", true);
             }
@@ -54,9 +53,8 @@ public class ManoLanzadora : MonoBehaviour
             // Verifica si al sostener un objeto se presiona la tecla F para soltar
             if (Input.GetKeyDown(KeyCode.F))
             {
-                TraspazarObjetoSostenido.sueloElevado = false;
                 objetoEnMano.GetComponent<OpcionLanzable>().esLanzable = true;
-                if (objetoEnMano.GetComponent<Collider2D>().enabled == false) objetoEnMano.GetComponent<Collider2D>().enabled = true;
+                if (objetoEnMano.GetComponents<Collider2D>()[0].enabled == false) objetoEnMano.GetComponents<Collider2D>()[0].enabled = true;
                 if (objetoEnMano.GetComponent<Rigidbody2D>() != null) objetoEnMano.GetComponent<Rigidbody2D>().simulated = true;
                 objetoEnMano.transform.SetParent(objetoPadre.transform);
                 objetoEnMano.GetComponent<SpriteRenderer>().sortingOrder = 0;
@@ -64,15 +62,19 @@ public class ManoLanzadora : MonoBehaviour
 
                 objetoEnMano.transform.position = new Vector2(objetoEnMano.transform.position.x, objetoEnMano.transform.position.y);
 
-                animatorBomba.SetBool("Lanzable", false);
+                dirX = 0;
+                animatorBomba.SetFloat("Mov", dirX);
 
+                animatorBomba = null;
                 objetoEnMano = null;
+
                 animatorPlayer.SetBool("Sostener", false);
+
             } // Verifica si tenemos un objeto y lo lanzamos
             else if (Input.GetMouseButtonDown(0))
             {
                 objetoEnMano.GetComponent<OpcionLanzable>().esLanzable = true;
-                if (objetoEnMano.GetComponent<Collider2D>().enabled == false) objetoEnMano.GetComponent<Collider2D>().enabled = true;
+                if (objetoEnMano.GetComponents<Collider2D>()[0].enabled == false) objetoEnMano.GetComponents<Collider2D>()[0].enabled = true;
                 objetoEnMano.transform.SetParent(objetoPadre.transform);
                 objetoEnMano.GetComponent<SpriteRenderer>().sortingOrder = 0;
                 spriteBomba = null;
@@ -80,16 +82,20 @@ public class ManoLanzadora : MonoBehaviour
                 if (objetoEnMano.GetComponent<Rigidbody2D>() != null) objetoEnMano.GetComponent<Rigidbody2D>().simulated = true;
                 objetoEnMano.GetComponent<OpcionLanzable>().lanzarObjeto();
 
-                animatorBomba.SetBool("Lanzable", true);
+                dirX = 0;
+                animatorBomba.SetFloat("Mov", dirX);
 
+                animatorBomba = null;
                 objetoEnMano = null;
                 animatorPlayer.SetBool("Sostener", false);
+                animatorPlayer.SetBool("Tirar", true);
+
+                StartCoroutine(GetComponentInParent<ControladorPersonaje>().congelarMovimiento());
             }
         }
 
         if (objetoEnMano != null)
         {
-            objetoEnMano.GetComponent<Collider2D>().enabled = TraspazarObjetoSostenido.sueloElevado ? false : true;
             animatorBomba.SetFloat("Mov", dirX);
         }
     }

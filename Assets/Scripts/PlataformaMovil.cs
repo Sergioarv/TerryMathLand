@@ -22,9 +22,9 @@ public class PlataformaMovil : MonoBehaviour
 
         if (Vector2.Distance(transform.position, puntosMovimiento[i].transform.position) < 0.01f)
         {
-            if(tiempoEspera <= 0)
+            if (tiempoEspera <= 0)
             {
-                if(puntosMovimiento[i] != puntosMovimiento[puntosMovimiento.Length - 1])
+                if (puntosMovimiento[i] != puntosMovimiento[puntosMovimiento.Length - 1])
                 {
                     i++;
                 }
@@ -44,11 +44,13 @@ public class PlataformaMovil : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.collider.transform.SetParent(transform);
+        if (collision.collider.CompareTag("Jugador"))
+            collision.collider.transform.SetParent(transform);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        collision.collider.transform.SetParent(null);
+        if (collision.collider.CompareTag("Jugador"))
+            collision.collider.transform.SetParent(null);
     }
 }

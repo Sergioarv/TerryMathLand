@@ -42,7 +42,6 @@ public class ManoJugador : MonoBehaviour
         } // Verifica si ya hay un objeto en la mano
         else if (objetoEnMano != null)
         {
-            //Debug.Log(Vector2.Distance(objetoEnMano.transform.position, posSolucion.transform.position));
             //verificarSolucion si se presiona la letra f para soltar el objeto
             if (Input.GetKeyDown(KeyCode.F))
             {
