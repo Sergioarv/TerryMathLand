@@ -151,7 +151,7 @@ public class GameManagerGeneric : MonoBehaviour
             respuestaEst.nota = (5.0f * preguntasCorrectas) / numPregunta;
             respuestaEst.fecha = System.DateTime.Now;
 
-            StartCoroutine(web.CorrutinaGuardarRespuesta(respuestaEst));
+            StartCoroutine(web.CorrutinaGuardarRespuesta(respuestaEst, usuario));
         }
         else
         {

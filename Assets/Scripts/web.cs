@@ -114,9 +114,22 @@ public class web : MonoBehaviour
         }
     }
 
-    public IEnumerator CorrutinaGuardarRespuesta(Respuesta respuesta)
+    public IEnumerator CorrutinaGuardarRespuesta(Respuesta respuesta, Usuario usuario)
     {
-        Debug.Log(respuesta);
-        yield return null;
+        respuesta.usuario = usuario;
+        string newRespuesta = JsonUtility.ToJson(respuesta).ToString();
+
+        UnityWebRequest web = UnityWebRequest.Put("http://localhost:8080/respuesta", newRespuesta);
+        web.SetRequestHeader("Content-Type", "application/json;charset=UTF-8;application/x-www-form-urlencoded");
+        web.SetRequestHeader("Accept", "application/json");
+        yield return web.SendWebRequest();
+        if (!web.isNetworkError && !web.isHttpError)
+        {
+            Debug.Log(web.downloadHandler.text);
+        }
+        else
+        {
+            Debug.LogWarning("Hubo un error al escribir ruta");
+        }
     }
 }
