@@ -642,12 +642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   esLanzable: 1
-  lanzar: 0
-  lanzado: 0
-  cae: 0
-  objetivo: {fileID: 0}
   dirX: 0
-  respondio: 0
 --- !u!58 &22537180
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1375,8 +1370,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e758374548a91645a7aae0473d83614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 394706006}
-  activeLevel: {fileID: 842747308}
   minModX: 12.5
   maxModX: -12.5
   minModY: 6.8
@@ -2324,12 +2317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   esLanzable: 1
-  lanzar: 0
-  lanzado: 0
-  cae: 0
-  objetivo: {fileID: 0}
   dirX: 0
-  respondio: 0
 --- !u!58 &306418046
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2902,10 +2890,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60b74b5674c8df479b7cf10da7ccb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMAX: 3.6
-  fuerzaSalto: 4
-  mano: {fileID: 1543053271}
-  posMano: {x: 0, y: 0}
 --- !u!212 &394706005
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3124,12 +3108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   esLanzable: 1
-  lanzar: 0
-  lanzado: 0
-  cae: 0
-  objetivo: {fileID: 0}
   dirX: 0
-  respondio: 0
 --- !u!58 &409304765
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7315,7 +7294,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae2f92ef2953c4478850809c8ce620b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controladorAtaque: {fileID: 1214117255}
   ataque:
   - {fileID: 5031824521685434533, guid: 3504196ac339d854ab5a21d4d85066ea, type: 3}
   - {fileID: 7578471194144226248, guid: aee442e2f554fc64a8050d52f21d170f, type: 3}
@@ -7327,8 +7305,6 @@ MonoBehaviour:
   - {fileID: 7931792862179362902, guid: e2ff1c59db056e2419c8e80def944181, type: 3}
   - {fileID: 5086409506837119708, guid: fdd559adffb13c54b88e85a077a34786, type: 3}
   - {fileID: 3600054211707157893, guid: 2590d8ccc992f664a994c570ea3e63b5, type: 3}
-  jugador: {fileID: 0}
-  tiempoEspera: 5
 --- !u!61 &1014437213
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7578,12 +7554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   esLanzable: 1
-  lanzar: 0
-  lanzado: 0
-  cae: 0
-  objetivo: {fileID: 0}
   dirX: 0
-  respondio: 0
 --- !u!58 &1029095411
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8135,6 +8106,7 @@ MonoBehaviour:
     type: 3}
   trompetas: {fileID: 7914580339792599032, guid: 7545be6f3684eec47b01dd1888fb5566,
     type: 3}
+  web: {fileID: 0}
   numPregunta: 0
   contPregunta: 0
   vida: 0
@@ -9465,6 +9437,49 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.5}
       - {x: 0.5, y: -0.5}
       - {x: 0.5, y: 0.5}
+--- !u!1 &1467151982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1467151984}
+  - component: {fileID: 1467151983}
+  m_Layer: 0
+  m_Name: Web
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1467151983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467151982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bd60c2acaf52b0458d13ae56e642d24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1467151984
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467151982}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1493830936
 GameObject:
   m_ObjectHideFlags: 0
@@ -10044,13 +10059,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9f50efbdb9eb04a82dc050effeb854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mano: {fileID: 1543053271}
   objetoASostener: {fileID: 0}
-  animatorPlayer: {fileID: 394706002}
-  animatorBomba: {fileID: 0}
-  posSolucion: {fileID: 0}
   dirX: 0
-  gameManagerGeneric: {fileID: 1112032717}
 --- !u!61 &1543053274
 BoxCollider2D:
   m_ObjectHideFlags: 0

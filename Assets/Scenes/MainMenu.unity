@@ -263,7 +263,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1646952239
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -457,7 +457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5796ce221ac0e034bb828e67a0038f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  web: {fileID: 1926635358}
   PantallaDeCarga: {fileID: 1391071428}
   sliderLoad: {fileID: 1090500838}
   errorTextObj: {fileID: 935753665}
@@ -470,8 +469,6 @@ MonoBehaviour:
     idusuario: 0
     nombre: 
     respuestas: []
-  busco: 0
-  buscoP: 0
 --- !u!4 &300603143
 Transform:
   m_ObjectHideFlags: 0
@@ -2216,7 +2213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd60c2acaf52b0458d13ae56e642d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ctrCarga: {fileID: 300603142}
 --- !u!4 &1926635359
 Transform:
   m_ObjectHideFlags: 0

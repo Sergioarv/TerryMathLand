@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ataque : MonoBehaviour
 {
-    public float velocidad;
+    private float velocidad = 10f;
     public Vector2 posObjetivo;
 
     GameManagerGeneric gameManagerGeneric;

@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlataformaMovil : MonoBehaviour
 {
 
-    public float velocidad = 3f;
+    private float velocidad = 3f;
     private float tiempoEspera;
-    public float inicioTiempoEspera = 4f;
+    private float inicioTiempoEspera = 4f;
     private int i = 0;
     public Transform[] puntosMovimiento;
 

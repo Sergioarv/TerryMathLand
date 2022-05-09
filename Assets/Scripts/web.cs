@@ -8,7 +8,12 @@ using TMPro;
 
 public class web : MonoBehaviour
 {
-    public ControladorCarga ctrCarga;
+    private ControladorCarga ctrCarga;
+
+    private void Awake()
+    {
+        ctrCarga = GameObject.FindObjectOfType<ControladorCarga>();
+    }
 
     public IEnumerator CorrutinaCargar()
     {
@@ -100,15 +105,18 @@ public class web : MonoBehaviour
         {
             ctrCarga.usuario = JsonUtility.FromJson<Usuario>(web.downloadHandler.text);
             DatosEntreEscenas.instace.usuario = ctrCarga.usuario;
-            ctrCarga.buscoP = true;
         }
         else
         {
             ctrCarga.errorTextObj.SetActive(true);
             ctrCarga.errorTextObj.GetComponent<Image>().enabled = false;
             ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Por favor recargue la pagina, no hemos encontrado la base de datos";
-            ctrCarga.buscoP = true;
         }
     }
 
+    public IEnumerator CorrutinaGuardarRespuesta(Respuesta respuesta)
+    {
+        Debug.Log(respuesta);
+        yield return null;
+    }
 }

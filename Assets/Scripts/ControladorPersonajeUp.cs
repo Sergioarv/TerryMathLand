@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ControladorPersonajeUp : MonoBehaviour
 {
-    public float velocidadMAX = 3.6f;
+    private float velocidadMAX = 3.6f;
 
     Rigidbody2D rbPlayer;
     SpriteRenderer spritePlayer;
@@ -12,8 +12,7 @@ public class ControladorPersonajeUp : MonoBehaviour
 
     Vector2 direcccion;
 
-    public GameObject mano;
-    public Vector2 posMano;
+    private GameObject mano;
 
     bool mirandoDerecha;
     float movX;
@@ -25,7 +24,7 @@ public class ControladorPersonajeUp : MonoBehaviour
         animatorPlayer = GetComponent<Animator>();
         spritePlayer = GetComponent<SpriteRenderer>();
         mirandoDerecha = spritePlayer.flipX;
-        posMano = mano.transform.position;
+        mano = GameObject.Find("Mano");
     }
 
     private void Update()

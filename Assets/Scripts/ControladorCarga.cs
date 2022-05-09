@@ -7,34 +7,29 @@ using System.Collections.Generic;
 
 public class ControladorCarga : MonoBehaviour
 {
-    public web web;
-
     public GameObject PantallaDeCarga;
     public Slider sliderLoad;
     public GameObject errorTextObj;
     public TextMeshProUGUI txtSliderLoad;
     public TMP_InputField userInput;
 
+    private web web;
     public Texture2D[] img;
 
     public ListPregunta listaPreguntas = new ListPregunta();
 
     public Usuario usuario = new Usuario();
 
-    public bool busco = false;
-    public bool buscoP = false;
-
     private void Awake()
     {
-        leerSimple();
+        web = GameObject.FindObjectOfType<web>();
     }
 
     private void Start()
     {
-
+        leerSimple();
     }
 
-    [ContextMenu("Leer simple")]
     public void leerSimple()
     {
         StartCoroutine(web.CorrutinaCargar());

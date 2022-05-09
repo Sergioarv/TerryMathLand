@@ -6,17 +6,25 @@ using TMPro;
 public class ManoJugador : MonoBehaviour
 {
 
-    public GameObject mano;
+    private GameObject mano;
     private GameObject objetoEnMano = null;
     public GameObject objetoASostener = null;
     private GameObject objetoPadre;
     private Vector2 posInicialObjeto;
-    public Animator animatorPlayer;
-    public GameObject posSolucion;
+    private Animator animatorPlayer;
+    private GameObject posSolucion;
 
     private Rigidbody2D rgbOpcion;
 
-    public GameManagerGeneric gameManagerGeneric;
+    private GameManagerGeneric gameManagerGeneric;
+
+    private void Start()
+    {
+        mano = GameObject.Find("Mano");
+        animatorPlayer = GameObject.Find("Jugador").GetComponent<Animator>();
+        posSolucion = GameObject.Find("Solucion");
+        gameManagerGeneric = GameObject.FindObjectOfType<GameManagerGeneric>();
+    }
 
     private void Update()
     {

@@ -5,14 +5,14 @@ using TMPro;
 
 public class VerificarRespuesta : MonoBehaviour
 {
-    public GameManagerGeneric gameManagerGeneric;
+    private GameManagerGeneric gameManagerGeneric;
     private GameObject[] optiones;
-    public bool activo = true;
+    private bool activo = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManagerGeneric = GameObject.FindObjectOfType<GameManagerGeneric>();
     }
 
     // Update is called once per frame

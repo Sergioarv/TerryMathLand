@@ -6,25 +6,28 @@ using TMPro;
 public class ManoLanzadora : MonoBehaviour
 {
 
-    public GameObject mano;
+    private GameObject mano;
     private GameObject objetoEnMano = null;
     public GameObject objetoASostener = null;
     private GameObject objetoPadre;
 
-    public Animator animatorPlayer;
-    public Animator animatorBomba;
+    private Animator animatorPlayer;
+    private Animator animatorBomba;
 
-    public GameObject posSolucion;
     private SpriteRenderer spriteBomba;
 
     private Rigidbody2D rgbOpcion;
 
     public float dirX;
 
-    bool mirandoDerecha;
+    private GameManagerGeneric gameManagerGeneric;
 
-    public GameManagerGeneric gameManagerGeneric;
-
+    private void Start()
+    {
+        mano = GameObject.Find("Mano");
+        animatorPlayer = GameObject.Find("Jugador").GetComponent<Animator>();
+        gameManagerGeneric = GameObject.FindObjectOfType<GameManagerGeneric>();
+    }
     private void Update()
     {
         // Verifica si esta frente a un objeto sostenible, si no hay objetos en la mano
@@ -43,7 +46,6 @@ public class ManoLanzadora : MonoBehaviour
                 objetoEnMano.GetComponents<Collider2D>()[0].enabled = false;
                 objetoEnMano.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 spriteBomba = objetoEnMano.GetComponent<SpriteRenderer>();
-                mirandoDerecha = spriteBomba.flipX;
 
                 animatorPlayer.SetBool("Sostener", true);
             }

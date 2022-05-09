@@ -5,9 +5,14 @@ using TMPro;
 
 public class OnMouseClick : MonoBehaviour
 {
-    public GameManagerGeneric gameManagerGeneric;
+    private GameManagerGeneric gameManagerGeneric;
     private GameObject[] optiones;
-    public bool activo = true;
+    private bool activo = true;
+
+    private void Awake()
+    {
+        gameManagerGeneric = GameObject.FindObjectOfType<GameManagerGeneric>();
+    }
 
     private void OnMouseDown()
     {

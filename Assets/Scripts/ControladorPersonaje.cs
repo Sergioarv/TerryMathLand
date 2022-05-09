@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class ControladorPersonaje : MonoBehaviour
 {
-    public float velocidadMAX = 3.6f;
-    public float fuerzaSalto = 4f;
+    private float velocidadMAX = 3.6f;
+    private float fuerzaSalto = 4f;
 
     Rigidbody2D rbPlayer;
     SpriteRenderer spritePlayer;
@@ -15,17 +15,15 @@ public class ControladorPersonaje : MonoBehaviour
     float movX;
     float dirX;
 
-    public GameObject mano;
-    public Vector2 posMano;
+    private GameObject mano;
 
     void Start()
     {
         rbPlayer = GetComponent<Rigidbody2D>();
         animatorPlayer = GetComponent<Animator>();
         spritePlayer = GetComponent<SpriteRenderer>();
-
+        mano = GameObject.Find("Mano");
         mirandoDerecha = spritePlayer.flipX;
-        posMano = mano.transform.position;
     }
 
     void Update()
@@ -37,7 +35,7 @@ public class ControladorPersonaje : MonoBehaviour
     {
         movX = Input.GetAxisRaw("Horizontal");
         animatorPlayer.SetFloat("MovX", movX);
-        mano.GetComponent<ManoLanzadora>().dirX = movX;
+        if(mano.GetComponent<ManoLanzadora>() != null) mano.GetComponent<ManoLanzadora>().dirX = movX;
 
         if (movX != 0)
         {

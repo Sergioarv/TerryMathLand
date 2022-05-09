@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
-    public Transform player;
-    public Transform activeLevel;
+    private GameObject player;
+    private GameObject activeLevel;
 
     private BoxCollider2D bounds;
 
@@ -30,12 +30,13 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        
+        player = GameObject.Find("Jugador");
+        activeLevel = GameObject.Find("ActiveLevel");
     }
 
     void Update()
     {
-        bounds = activeLevel.GetComponent<BoxCollider2D>();
+        bounds = activeLevel.transform.GetComponent<BoxCollider2D>();
 
         minPosX = bounds.bounds.min.x + minModX;
         maxPosX = bounds.bounds.max.x + maxModX;
@@ -43,9 +44,9 @@ public class CameraController : MonoBehaviour
         maxPosY = bounds.bounds.max.y + maxModY;
 
         Vector3 clampedPos = new Vector3(
-            Mathf.Clamp(player.position.x, minPosX, maxPosX),
-            Mathf.Clamp(player.position.y, minPosY, maxPosY),
-            Mathf.Clamp(player.position.z, -10f, -10f)
+            Mathf.Clamp(player.transform.position.x, minPosX, maxPosX),
+            Mathf.Clamp(player.transform.position.y, minPosY, maxPosY),
+            Mathf.Clamp(player.transform.position.z, -10f, -10f)
             );
 
         transform.position = new Vector3(clampedPos.x, clampedPos.y, clampedPos.z);

@@ -19,6 +19,8 @@ public class GameManagerGeneric : MonoBehaviour
     public AudioSource aplausos;
     public AudioSource trompetas;
 
+    public web web;
+
     private string[] opcionesName = { "OpcionA", "OpcionB", "OpcionC", "OpcionD" };
 
     public int numPregunta;
@@ -44,6 +46,12 @@ public class GameManagerGeneric : MonoBehaviour
         leerSimple();
     }
 
+    void Start()
+    {
+        web = GameObject.FindObjectOfType<web>();
+        MostrarPregunta();
+    }
+
     public void leerSimple()
     {
         listaPreguntas = DatosEntreEscenas.instace.listaPreguntas;
@@ -66,24 +74,6 @@ public class GameManagerGeneric : MonoBehaviour
         DatosEntreEscenas.instace.preguntasCorrectas = preguntasCorrectas;
         DatosEntreEscenas.instace.usuario = usuario;
         DatosEntreEscenas.instace.respuestaEst = respuestaEst;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        MostrarPregunta();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    [ContextMenu("Next")]
-    private void next()
-    {
-        cargarEscena();
     }
 
     private void MostrarPregunta()
@@ -157,9 +147,11 @@ public class GameManagerGeneric : MonoBehaviour
 
         if (numPregunta == listaPreguntas.data.Count)
         {
-            Debug.Log("No hay mas preguntas, Cargar GameOver y guardar datos");
             respuestaEst.acertadas = preguntasCorrectas;
             respuestaEst.nota = (5.0f * preguntasCorrectas) / numPregunta;
+            respuestaEst.fecha = System.DateTime.Now;
+
+            StartCoroutine(web.CorrutinaGuardarRespuesta(respuestaEst));
         }
         else
         {

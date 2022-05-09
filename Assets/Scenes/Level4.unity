@@ -2313,11 +2313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61856a989df6974cb65fb44458666d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mano: {fileID: 613657598}
   objetoASostener: {fileID: 0}
-  animatorPlayer: {fileID: 2004531157}
-  posSolucion: {fileID: 1701357352}
-  gameManagerGeneric: {fileID: 1446576500}
 --- !u!1 &634038969
 GameObject:
   m_ObjectHideFlags: 0
@@ -10559,6 +10555,7 @@ MonoBehaviour:
     type: 3}
   trompetas: {fileID: 7914580339792599032, guid: 7545be6f3684eec47b01dd1888fb5566,
     type: 3}
+  web: {fileID: 0}
   numPregunta: 0
   contPregunta: 0
   vida: 0
@@ -12391,9 +12388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2676680e70df8eb4881eb99017fc014e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMAX: 3.6
-  mano: {fileID: 613657598}
-  posMano: {x: 0, y: 0}
 --- !u!50 &2004531156
 Rigidbody2D:
   serializedVersion: 4
@@ -12930,8 +12924,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e758374548a91645a7aae0473d83614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2004531152}
-  activeLevel: {fileID: 132210161}
   minModX: 12.6
   maxModX: -12.6
   minModY: 7.3

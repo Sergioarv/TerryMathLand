@@ -6,13 +6,11 @@ using TMPro;
 public class OpcionLanzable : MonoBehaviour
 {
     public bool esLanzable = true;
-    public bool lanzar = false;
-    public bool lanzado = false;
-    public bool cae = true;
+    private bool lanzado = false;
+    private bool cae = true;
 
-    public GameObject objetivo;
     public float dirX;
-    public bool respondio = false;
+    private bool respondio = false;
 
     Rigidbody2D rbOpcion;
     Animator animatorOpcion;
@@ -85,7 +83,7 @@ public class OpcionLanzable : MonoBehaviour
 
     public void destruirBomba()
     {
-        Destroy(gameObject);
+        this.gameObject.SetActive(false);
         lanzado = false;
     }
 }
