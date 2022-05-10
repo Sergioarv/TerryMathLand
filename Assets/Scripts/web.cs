@@ -116,10 +116,16 @@ public class web : MonoBehaviour
 
     public IEnumerator CorrutinaGuardarRespuesta(Respuesta respuesta, Usuario usuario)
     {
-        respuesta.usuario = usuario;
-        string newRespuesta = JsonUtility.ToJson(respuesta).ToString();
+        Debug.Log("Guardando creo");
+        Usuario newUsuario = new Usuario();
 
-        UnityWebRequest web = UnityWebRequest.Put("http://localhost:8080/respuesta", newRespuesta);
+        newUsuario.idusuario = usuario.idusuario;
+        newUsuario.nombre = usuario.nombre;
+        newUsuario.respuestas.Add(respuesta);
+
+        string newRespuesta = JsonUtility.ToJson(newUsuario).ToString();
+
+        UnityWebRequest web = UnityWebRequest.Put("http://localhost:8080/usuario", newRespuesta);
         web.SetRequestHeader("Content-Type", "application/json;charset=UTF-8;application/x-www-form-urlencoded");
         web.SetRequestHeader("Accept", "application/json");
         yield return web.SendWebRequest();

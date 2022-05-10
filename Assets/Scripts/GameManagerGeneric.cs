@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
-using System.Collections;
+using System.Globalization;
 
 public class GameManagerGeneric : MonoBehaviour
 {
@@ -149,7 +149,6 @@ public class GameManagerGeneric : MonoBehaviour
         {
             respuestaEst.acertadas = preguntasCorrectas;
             respuestaEst.nota = (5.0f * preguntasCorrectas) / numPregunta;
-            respuestaEst.fecha = System.DateTime.Now;
 
             StartCoroutine(web.CorrutinaGuardarRespuesta(respuestaEst, usuario));
         }

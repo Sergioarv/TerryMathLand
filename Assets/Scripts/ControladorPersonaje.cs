@@ -59,6 +59,9 @@ public class ControladorPersonaje : MonoBehaviour
         else if (VerificarSuelo.tocandoSuelo)
         {
             animatorPlayer.SetBool("Jump", false);
+        }else if (VerificarSuelo.tocandoOpcion)
+        {
+            animatorPlayer.SetBool("Jump", false);
         }
 
         volteo();
@@ -72,6 +75,7 @@ public class ControladorPersonaje : MonoBehaviour
         yield return new WaitForSeconds(1f);
         velocidadMAX = 3.6f;
         fuerzaSalto = 4f;
+        animatorPlayer.SetBool("Tirar", false);
     }
     void volteo()
     {

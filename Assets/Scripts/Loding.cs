@@ -11,18 +11,30 @@ public class Loding : MonoBehaviour
     public Slider sliderLoad;
     public TextMeshProUGUI txtSliderLoad;
     public TextMeshProUGUI consejo;
+    public GameObject mensajeContinuar;
     private int numPregunta;
+
+    private int levelToLoad;
+    private bool next = false;
 
     void Start()
     {
-        int levelToLoad = LevelLoading.nextLevel;
+        levelToLoad = LevelLoading.nextLevel;
 
         numPregunta = DatosEntreEscenas.instace.numPregunta;
 
-        StartCoroutine(LoadLevel(levelToLoad));
+        StartCoroutine(LoadLevel());
     }
 
-    private IEnumerator LoadLevel(int level)
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && next)
+        {
+            AsyncOperation operation = SceneManager.LoadSceneAsync(levelToLoad);
+        }
+    }
+
+    private IEnumerator LoadLevel()
     {
         sliderLoad.value = 0;
 
@@ -59,6 +71,7 @@ public class Loding : MonoBehaviour
             yield return null;
         }
 
-        AsyncOperation operation = SceneManager.LoadSceneAsync(level);
+        next = true;
+        mensajeContinuar.SetActive(true);
     }
 }
