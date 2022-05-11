@@ -5,9 +5,14 @@ using TMPro;
 
 public class OnMouseClick : MonoBehaviour
 {
-    public GameManagerGeneric gameManagerGeneric;
+    private GameManagerGeneric gameManagerGeneric;
     private GameObject[] optiones;
-    public bool activo = true;
+    private bool activo = true;
+
+    private void Awake()
+    {
+        gameManagerGeneric = GameObject.FindObjectOfType<GameManagerGeneric>();
+    }
 
     private void OnMouseDown()
     {
@@ -15,15 +20,15 @@ public class OnMouseClick : MonoBehaviour
 
         string seleccion = this.gameObject.name;
         string seleccionOpcion = this.gameObject.GetComponentInChildren<TextMeshProUGUI>().text;
-
-        gameManagerGeneric.responder(seleccion, seleccionOpcion);
-
+              
         optiones = GameObject.FindGameObjectsWithTag("Opcion");
 
         optiones[0].GetComponent<OnMouseClick>().activo = false;
         optiones[1].GetComponent<OnMouseClick>().activo = false;
         optiones[2].GetComponent<OnMouseClick>().activo = false;
         optiones[3].GetComponent<OnMouseClick>().activo = false;
+
+        gameManagerGeneric.responder(seleccion, seleccionOpcion);
     }
 
 }

@@ -8,7 +8,18 @@ using TMPro;
 
 public class web : MonoBehaviour
 {
-    public ControladorCarga ctrCarga;
+    private ControladorCarga ctrCarga;
+
+    //private string urlBase = "http://localhost:8080";
+    private string urlBase = "https://bk-terrymathmand.herokuapp.com";
+    private string urlPreguntas = "/pregunta";
+    private string urlUsuario = "/usuario/usuarionombre?nombre=";
+    private string urlRespuesta = "/usuario";
+
+    private void Awake()
+    {
+        ctrCarga = GameObject.FindObjectOfType<ControladorCarga>();
+    }
 
     public IEnumerator CorrutinaCargar()
     {
@@ -16,7 +27,7 @@ public class web : MonoBehaviour
         ctrCarga.sliderLoad.value = 0f;
         ctrCarga.txtSliderLoad.text = ctrCarga.sliderLoad.value.ToString() + "%";
 
-        UnityWebRequest web = UnityWebRequest.Get("http://localhost:8080/pregunta");
+        UnityWebRequest web = UnityWebRequest.Get(urlBase + urlPreguntas);
         web.SendWebRequest();
 
         while (!web.isDone)
@@ -86,7 +97,7 @@ public class web : MonoBehaviour
 
     public IEnumerator CorrutinaVerificarUsuario(string nombre)
     {
-        UnityWebRequest web = UnityWebRequest.Get("http://localhost:8080/usuario/usuarionombre?nombre=" + nombre);
+        UnityWebRequest web = UnityWebRequest.Get(urlBase + urlUsuario + nombre);
         web.SendWebRequest();
 
         while (!web.isDone)
@@ -100,15 +111,38 @@ public class web : MonoBehaviour
         {
             ctrCarga.usuario = JsonUtility.FromJson<Usuario>(web.downloadHandler.text);
             DatosEntreEscenas.instace.usuario = ctrCarga.usuario;
-            ctrCarga.buscoP = true;
         }
         else
         {
             ctrCarga.errorTextObj.SetActive(true);
             ctrCarga.errorTextObj.GetComponent<Image>().enabled = false;
             ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Por favor recargue la pagina, no hemos encontrado la base de datos";
-            ctrCarga.buscoP = true;
         }
     }
 
+    public IEnumerator CorrutinaGuardarRespuesta(Respuesta respuesta, Usuario usuario)
+    {
+        Debug.Log("Guardando creo");
+        Usuario newUsuario = new Usuario();
+
+        newUsuario.idusuario = usuario.idusuario;
+        newUsuario.nombre = usuario.nombre;
+        newUsuario.respuestas.Add(respuesta);
+
+        string newRespuesta = JsonUtility.ToJson(newUsuario).ToString();
+
+        UnityWebRequest web = UnityWebRequest.Put(urlBase + urlRespuesta, newRespuesta);
+        web.SetRequestHeader("Content-Type", "application/json;charset=UTF-8;application/x-www-form-urlencoded");
+        web.SetRequestHeader("Accept", "application/json");
+        yield return web.SendWebRequest();
+        if (!web.isNetworkError && !web.isHttpError)
+        {
+            DatosEntreEscenas.instace.usuario = JsonUtility.FromJson<Usuario>(web.downloadHandler.text);
+            DatosEntreEscenas.instace.guardoRespuestas = true;
+        }
+        else
+        {
+            Debug.LogWarning("Hubo un error al escribir ruta");
+        }
+    }
 }

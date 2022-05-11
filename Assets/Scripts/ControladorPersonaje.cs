@@ -1,80 +1,140 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class ControladorPersonaje : MonoBehaviour //<>
+public class ControladorPersonaje : MonoBehaviour
 {
-    public float velocidadMAX;
+    private float velocidadMAX = 3.6f;
+    private float fuerzaSalto = 4f;
+    private float esperaSalto = 2f;
+    private float tiempoEsperaSalto;
+
     Rigidbody2D rbPlayer;
+    SpriteRenderer spritePlayer;
     Animator animatorPlayer;
+
     bool mirandoDerecha;
 
-    bool tocandoElSuelo = false;
-    float radioVerificaSuelo = 0.2f;
-    public LayerMask sueloLayer;
-    public Transform verificadorSuelo;
-    public float fuerzaSalto;
+    float movX;
+    float dirX;
 
+    private GameObject mano;
 
-    // Start is called before the first frame update
     void Start()
     {
         rbPlayer = GetComponent<Rigidbody2D>();
         animatorPlayer = GetComponent<Animator>();
-
-        mirandoDerecha = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (tocandoElSuelo && Input.GetAxis("Jump") > 0) 
-        {
-            tocandoElSuelo = false;
-            animatorPlayer.SetBool("tocandoSuelo", tocandoElSuelo);
-            rbPlayer.AddForce(new UnityEngine.Vector2(0, fuerzaSalto));
-        }
+        spritePlayer = GetComponent<SpriteRenderer>();
+        mano = GameObject.Find("Mano");
+        mirandoDerecha = spritePlayer.flipX;
     }
 
     private void FixedUpdate()
     {
-        tocandoElSuelo = Physics2D.OverlapCircle(verificadorSuelo.position, radioVerificaSuelo, sueloLayer);
-        animatorPlayer.SetBool("tocandoSuelo", tocandoElSuelo);
-        animatorPlayer.SetFloat("velocidadVertical", rbPlayer.velocity.y);
-
-        float movimiento = Input.GetAxis("Horizontal");
-        animatorPlayer.SetFloat("velocidad", Mathf.Abs(movimiento));
-        rbPlayer.velocity = new UnityEngine.Vector2(movimiento * velocidadMAX, rbPlayer.velocity.y);
-
-
-        if (movimiento > 0 && !mirandoDerecha) 
+        if (tiempoEsperaSalto > 0)
         {
-            volteo();
+            tiempoEsperaSalto -= Time.deltaTime;
         }
-        else if (movimiento < 0 && mirandoDerecha)
+
+        if(tiempoEsperaSalto < 0)
         {
-            volteo();
+            tiempoEsperaSalto = 0;
+        }
+
+        movX = Input.GetAxisRaw("Horizontal");
+        animatorPlayer.SetFloat("MovX", movX);
+        if(mano.GetComponent<ManoLanzadora>() != null) mano.GetComponent<ManoLanzadora>().dirX = movX;
+
+        if (movX != 0)
+        {
+            rbPlayer.velocity = new Vector2(movX * velocidadMAX + Time.deltaTime, rbPlayer.velocity.y);
+            animatorPlayer.SetBool("Run", true);
+            animatorPlayer.SetFloat("UltimoX", movX);
+            dirX = movX;
+        }
+        else
+        {
+            rbPlayer.velocity = new Vector2(0 * velocidadMAX + Time.deltaTime, rbPlayer.velocity.y);
+            animatorPlayer.SetBool("Run", false);
+        }
+
+        if (Input.GetKey("space") && VerificarSuelo.tocandoSuelo && tiempoEsperaSalto == 0)
+        {
+            rbPlayer.AddForce(new Vector2(0, fuerzaSalto));
+            animatorPlayer.SetBool("Jump", true);
+            animatorPlayer.SetBool("Run", false);
+            tiempoEsperaSalto = esperaSalto;
+        }
+        else if (VerificarSuelo.tocandoSuelo)
+        {
+            animatorPlayer.SetBool("Jump", false);
+        }
+        else if (VerificarSuelo.tocandoOpcion)
+        {
+            animatorPlayer.SetBool("Jump", false);
+        }
+
+        volteo();
+        posicionMano();
+    }
+
+    public IEnumerator congelarMovimiento()
+    {
+        velocidadMAX = 0;
+        fuerzaSalto = 0;
+        yield return new WaitForSeconds(1f);
+        velocidadMAX = 3.6f;
+        fuerzaSalto = 4f;
+        animatorPlayer.SetBool("Tirar", false);
+    }
+    void volteo()
+    {
+        if (movX > 0.1f && !mirandoDerecha)
+        {
+            spritePlayer.flipX = true;
+            mirandoDerecha = true;
+        }
+
+        if (movX < 0.1f && mirandoDerecha)
+        {
+            spritePlayer.flipX = false;
+            mirandoDerecha = false;
+        }
+
+        if (movX == 0)
+        {
+            if (animatorPlayer.GetFloat("UltimoX") == 1 && !mirandoDerecha)
+            {
+                spritePlayer.flipX = true;
+                mirandoDerecha = true;
+            }
+
+            if (animatorPlayer.GetFloat("UltimoX") == -1 && mirandoDerecha)
+            {
+                spritePlayer.flipX = false;
+                mirandoDerecha = false;
+            }
         }
     }
 
-    void volteo() 
+    void posicionMano()
     {
-        mirandoDerecha = !mirandoDerecha;
-        UnityEngine.Vector3 escala = transform.localScale;
-        escala.x *= -1;
-        transform.localScale = escala;
+        int hijosMano = mano.transform.childCount;
+
+        if (movX != 0)
+        {
+            float vX = movX * 0.3f;
+            mano.transform.localPosition = new Vector2(vX, 0);
+            mano.transform.GetChild(0).localPosition = vX < 0 ? new Vector2(0.16f, 0f) : new Vector2(0.56f, 0f);
+            if (hijosMano > 1)
+            {
+                mano.transform.GetChild(1).gameObject.GetComponent<OpcionLanzable>().dirX = dirX;
+                mano.transform.GetChild(1).localPosition = vX < 0 ? new Vector2(0.16f, 0f) : new Vector2(0.56f, 0f);
+            }
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void detenerLanzamiento()
     {
-        if (collision.CompareTag("Opcion"))
-        {
-            Debug.Log("Respondio" + collision.name);
-            GameManagerGeneric gameManagerGeneric = FindObjectOfType<GameManagerGeneric>();
-
-            gameManagerGeneric.cargarEscena();
-        }
+        animatorPlayer.SetBool("Tirar", true);
     }
 }

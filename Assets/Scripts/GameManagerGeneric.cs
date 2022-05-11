@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
+using System.Globalization;
 
 public class GameManagerGeneric : MonoBehaviour
 {
@@ -14,6 +15,13 @@ public class GameManagerGeneric : MonoBehaviour
 
     public TextMeshProUGUI txtVida;
     public TextMeshProUGUI txtPreguntasCorrectas;
+
+    public AudioSource aplausos;
+    public AudioSource trompetas;
+
+    public web web;
+
+    private string[] opcionesName = { "OpcionA", "OpcionB", "OpcionC", "OpcionD" };
 
     public int numPregunta;
     public int contPregunta;
@@ -38,6 +46,12 @@ public class GameManagerGeneric : MonoBehaviour
         leerSimple();
     }
 
+    void Start()
+    {
+        web = GameObject.FindObjectOfType<web>();
+        MostrarPregunta();
+    }
+
     public void leerSimple()
     {
         listaPreguntas = DatosEntreEscenas.instace.listaPreguntas;
@@ -53,31 +67,13 @@ public class GameManagerGeneric : MonoBehaviour
     public void guardarSimple()
     {
         DatosEntreEscenas.instace.listaPreguntas = listaPreguntas;
-        DatosEntreEscenas.instace.numPregunta = numPregunta + 1;
-        DatosEntreEscenas.instace.contPreguntas = contPregunta + 1;
+        DatosEntreEscenas.instace.numPregunta = numPregunta;
+        DatosEntreEscenas.instace.contPreguntas = contPregunta;
         DatosEntreEscenas.instace.img = img;
         DatosEntreEscenas.instace.vida = vida;
         DatosEntreEscenas.instace.preguntasCorrectas = preguntasCorrectas;
         DatosEntreEscenas.instace.usuario = usuario;
         DatosEntreEscenas.instace.respuestaEst = respuestaEst;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        MostrarPregunta();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    [ContextMenu("Next")]
-    private void next()
-    {
-        cargarEscena();
     }
 
     private void MostrarPregunta()
@@ -97,78 +93,51 @@ public class GameManagerGeneric : MonoBehaviour
             txtVida.text = vida.ToString();
             txtPreguntasCorrectas.text = preguntasCorrectas.ToString();
         }
-        else
-        {
-            respuestaEst.acertadas = preguntasCorrectas;
-            respuestaEst.nota = (5.0f * preguntasCorrectas) / numPregunta;
-        }
     }
 
     public void responder(string seleccion, string seleccioOpcion)
     {
-
-        solucionEst = new Solucion();
-
-        solucionEst.enunciadoPre = listaPreguntas.data[numPregunta].enunciado;
-        solucionEst.respuestaEst = seleccioOpcion;
-
-        for (int i = 0; i < listaPreguntas.data[numPregunta].opciones.Count; i++)
+        try
         {
-            if (listaPreguntas.data[numPregunta].opciones[i].respuesta)
+            solucionEst = new Solucion();
+
+            solucionEst.enunciadoPre = listaPreguntas.data[numPregunta].enunciado;
+            solucionEst.respuestaEst = seleccioOpcion;
+
+            for (int i = 0; i < listaPreguntas.data[numPregunta].opciones.Count; i++)
             {
-                solucionEst.respuestaPre = listaPreguntas.data[numPregunta].opciones[i].enunciadoopcion;
-                break;
+                if (listaPreguntas.data[numPregunta].opciones[i].respuesta)
+                {
+                    solucionEst.respuestaPre = listaPreguntas.data[numPregunta].opciones[i].enunciadoopcion;
+                    break;
+                }
             }
+
+            respuestaEst.soluciones.Add(solucionEst);
+
+            for (int i = 0; i < opcionesName.Length; i++)
+            {
+                if (seleccion.Equals(opcionesName[i]))
+                {
+                    if (listaPreguntas.data[numPregunta].opciones[i].respuesta)
+                    {
+                        acerto();
+                        break;
+                    }
+                    else
+                    {
+                        fallo();
+                        break;
+                    }
+                }
+            }
+
+            numPregunta++;
+            contPregunta++;
         }
-
-        respuestaEst.soluciones.Add(solucionEst);
-
-        switch (seleccion)
+        catch (ArgumentOutOfRangeException)
         {
-            case "OpcionA":
-
-                if (listaPreguntas.data[numPregunta].opciones[0].respuesta)
-                {
-                    acerto();
-                }
-                else
-                {
-                    fallo();
-                }
-                break;
-            case "OpcionB":
-
-                if (listaPreguntas.data[numPregunta].opciones[1].respuesta)
-                {
-                    acerto();
-                }
-                else
-                {
-                    fallo();
-                }
-                break;
-            case "OpcionC":
-
-                if (listaPreguntas.data[numPregunta].opciones[2].respuesta)
-                {
-                    acerto();
-                }
-                else
-                {
-                    fallo();
-                }
-                break;
-            case "OpcionD":
-
-                if (listaPreguntas.data[numPregunta].opciones[3].respuesta)
-                {
-                    acerto();
-                }
-                else
-                {
-                    fallo();
-                }
-                break;
+            Debug.Log("Excepcion");
         }
     }
 
@@ -176,27 +145,42 @@ public class GameManagerGeneric : MonoBehaviour
     {
         guardarSimple();
 
-        if (contPregunta == 4)
+        if (numPregunta == listaPreguntas.data.Count)
         {
-            DatosEntreEscenas.instace.contPreguntas = 0;
-            LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
+            respuestaEst.acertadas = preguntasCorrectas;
+            respuestaEst.nota = (5.0f * preguntasCorrectas) / numPregunta;
+            DatosEntreEscenas.instace.respuestaEst = respuestaEst;
+
+            //StartCoroutine(web.CorrutinaGuardarRespuesta(respuestaEst, usuario));
+
+            SceneManager.LoadScene("GameOver");
+
         }
         else
         {
-            LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+            if (contPregunta == 5)
+            {
+                DatosEntreEscenas.instace.contPreguntas = 0;
+                LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
-
     }
 
     public void acerto()
     {
         preguntasCorrectas++;
-        cargarEscena();
+        Instantiate(aplausos);
+        Invoke("cargarEscena", 8);
     }
 
     public void fallo()
     {
         vida--;
-        cargarEscena();
+        Instantiate(trompetas);
+        Invoke("cargarEscena", 5);
     }
 }
