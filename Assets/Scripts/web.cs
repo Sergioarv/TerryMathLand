@@ -10,6 +10,12 @@ public class web : MonoBehaviour
 {
     private ControladorCarga ctrCarga;
 
+    //private string urlBase = "http://localhost:8080";
+    private string urlBase = "https://bk-terrymathmand.herokuapp.com";
+    private string urlPreguntas = "/pregunta";
+    private string urlUsuario = "/usuario/usuarionombre?nombre=";
+    private string urlRespuesta = "/usuario";
+
     private void Awake()
     {
         ctrCarga = GameObject.FindObjectOfType<ControladorCarga>();
@@ -21,7 +27,7 @@ public class web : MonoBehaviour
         ctrCarga.sliderLoad.value = 0f;
         ctrCarga.txtSliderLoad.text = ctrCarga.sliderLoad.value.ToString() + "%";
 
-        UnityWebRequest web = UnityWebRequest.Get("http://localhost:8080/pregunta");
+        UnityWebRequest web = UnityWebRequest.Get(urlBase + urlPreguntas);
         web.SendWebRequest();
 
         while (!web.isDone)
@@ -91,7 +97,7 @@ public class web : MonoBehaviour
 
     public IEnumerator CorrutinaVerificarUsuario(string nombre)
     {
-        UnityWebRequest web = UnityWebRequest.Get("http://localhost:8080/usuario/usuarionombre?nombre=" + nombre);
+        UnityWebRequest web = UnityWebRequest.Get(urlBase + urlUsuario + nombre);
         web.SendWebRequest();
 
         while (!web.isDone)
@@ -125,7 +131,7 @@ public class web : MonoBehaviour
 
         string newRespuesta = JsonUtility.ToJson(newUsuario).ToString();
 
-        UnityWebRequest web = UnityWebRequest.Put("http://localhost:8080/usuario", newRespuesta);
+        UnityWebRequest web = UnityWebRequest.Put(urlBase + urlRespuesta, newRespuesta);
         web.SetRequestHeader("Content-Type", "application/json;charset=UTF-8;application/x-www-form-urlencoded");
         web.SetRequestHeader("Accept", "application/json");
         yield return web.SendWebRequest();

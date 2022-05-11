@@ -5,8 +5,8 @@ public class ControladorPersonaje : MonoBehaviour
 {
     private float velocidadMAX = 3.6f;
     private float fuerzaSalto = 4f;
-    public float esperaSalto = 4f;
-    public bool saltando = false;
+    private float esperaSalto = 2f;
+    private float tiempoEsperaSalto;
 
     Rigidbody2D rbPlayer;
     SpriteRenderer spritePlayer;
@@ -28,24 +28,18 @@ public class ControladorPersonaje : MonoBehaviour
         mirandoDerecha = spritePlayer.flipX;
     }
 
-    void Update()
-    {
-        if(esperaSalto > 0)
-        {
-            esperaSalto -= 1f * Time.deltaTime;
-        }else if(esperaSalto == 0)
-        {
-            saltando = false;
-            esperaSalto = -1;
-        }
-        else if(esperaSalto == -1)
-        {
-            esperaSalto = -1;
-        }
-    }
-
     private void FixedUpdate()
     {
+        if (tiempoEsperaSalto > 0)
+        {
+            tiempoEsperaSalto -= Time.deltaTime;
+        }
+
+        if(tiempoEsperaSalto < 0)
+        {
+            tiempoEsperaSalto = 0;
+        }
+
         movX = Input.GetAxisRaw("Horizontal");
         animatorPlayer.SetFloat("MovX", movX);
         if(mano.GetComponent<ManoLanzadora>() != null) mano.GetComponent<ManoLanzadora>().dirX = movX;
@@ -63,18 +57,18 @@ public class ControladorPersonaje : MonoBehaviour
             animatorPlayer.SetBool("Run", false);
         }
 
-        if (Input.GetKey("space") && VerificarSuelo.tocandoSuelo && !saltando)
+        if (Input.GetKey("space") && VerificarSuelo.tocandoSuelo && tiempoEsperaSalto == 0)
         {
             rbPlayer.AddForce(new Vector2(0, fuerzaSalto));
             animatorPlayer.SetBool("Jump", true);
             animatorPlayer.SetBool("Run", false);
-            saltando = true;
+            tiempoEsperaSalto = esperaSalto;
         }
         else if (VerificarSuelo.tocandoSuelo)
         {
             animatorPlayer.SetBool("Jump", false);
-            if(esperaSalto == -1) esperaSalto = 4f;
-        }else if (VerificarSuelo.tocandoOpcion)
+        }
+        else if (VerificarSuelo.tocandoOpcion)
         {
             animatorPlayer.SetBool("Jump", false);
         }

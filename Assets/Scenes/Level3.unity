@@ -2185,8 +2185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e05210f753fa334bb4abbd2b46d09c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManagerGeneric: {fileID: 2033597415}
-  activo: 1
 --- !u!1 &591716021
 GameObject:
   m_ObjectHideFlags: 0
@@ -2608,8 +2606,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e758374548a91645a7aae0473d83614, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2141755018}
-  activeLevel: {fileID: 571272448}
   minModX: 12.5
   maxModX: -12.5
   minModY: 7.2
@@ -5886,8 +5882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e05210f753fa334bb4abbd2b46d09c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManagerGeneric: {fileID: 2033597415}
-  activo: 1
 --- !u!1 &879269806
 GameObject:
   m_ObjectHideFlags: 0
@@ -7657,8 +7651,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e05210f753fa334bb4abbd2b46d09c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManagerGeneric: {fileID: 2033597415}
-  activo: 1
 --- !u!1 &1324076123
 GameObject:
   m_ObjectHideFlags: 0
@@ -7981,8 +7973,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e05210f753fa334bb4abbd2b46d09c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManagerGeneric: {fileID: 2033597415}
-  activo: 1
 --- !u!1 &1389402268
 GameObject:
   m_ObjectHideFlags: 0
@@ -11501,6 +11491,7 @@ MonoBehaviour:
     type: 3}
   trompetas: {fileID: 7914580339792599032, guid: 7545be6f3684eec47b01dd1888fb5566,
     type: 3}
+  web: {fileID: 0}
   numPregunta: 0
   contPregunta: 0
   vida: 0
@@ -12120,11 +12111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61856a989df6974cb65fb44458666d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mano: {fileID: 2104545364}
   objetoASostener: {fileID: 0}
-  animatorPlayer: {fileID: 2141755019}
-  posSolucion: {fileID: 0}
-  gameManagerGeneric: {fileID: 2033597415}
 --- !u!61 &2104545366
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12294,10 +12281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60b74b5674c8df479b7cf10da7ccb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMAX: 3.6
-  fuerzaSalto: 4
-  mano: {fileID: 2104545364}
-  posMano: {x: 0, y: 0}
 --- !u!212 &2141755017
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -2890,8 +2890,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60b74b5674c8df479b7cf10da7ccb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esperaSalto: 4
-  saltando: 0
+  esperaSalto: 2
+  tiempoEsperaSalto: 0
 --- !u!212 &394706005
 SpriteRenderer:
   m_ObjectHideFlags: 0

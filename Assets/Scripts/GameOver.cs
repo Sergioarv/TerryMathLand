@@ -13,10 +13,10 @@ public class GameOver : MonoBehaviour
 
     web web;
 
-    public Respuesta respuestaEst = new Respuesta();
-    public int preguntasCorrectas;
-    public Usuario usuario = new Usuario();
-    public int numPregunta;
+    private Respuesta respuestaEst = new Respuesta();
+    private int preguntasCorrectas;
+    private Usuario usuario = new Usuario();
+    private int numPregunta;
 
     int cantidadRegistros = 5;
 
@@ -48,7 +48,6 @@ public class GameOver : MonoBehaviour
         respuestaEst = DatosEntreEscenas.instace.respuestaEst;
     }
 
-    [ContextMenu("Crear Tabla")]
     void crearTabla()
     {
         if (usuario.respuestas.Count < cantidadRegistros) cantidadRegistros = usuario.respuestas.Count;
@@ -62,7 +61,6 @@ public class GameOver : MonoBehaviour
         llenarTabla();
     }
 
-    [ContextMenu("LLenar")]
     void llenarTabla()
     {
         if (usuario.respuestas.Count < cantidadRegistros) cantidadRegistros = usuario.respuestas.Count;
