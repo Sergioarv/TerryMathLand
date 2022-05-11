@@ -68,7 +68,7 @@ public class Loding : MonoBehaviour
 
         while (sliderLoad.value < 1f && (numPregunta == 0 || numPregunta == 5 || numPregunta == 10 || numPregunta == 15 || numPregunta == 20))
         {
-            sliderLoad.value += 0.0006f;
+            sliderLoad.value += 0.006f;
             txtSliderLoad.text = (int)(sliderLoad.value * 100) + "%";
 
             yield return null;

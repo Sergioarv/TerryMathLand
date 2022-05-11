@@ -32,7 +32,7 @@ public class web : MonoBehaviour
 
         while (!web.isDone)
         {
-            ctrCarga.sliderLoad.value += ctrCarga.sliderLoad.value < 0.85 ? 0.0005f : 0f;
+            ctrCarga.sliderLoad.value += ctrCarga.sliderLoad.value < 0.85 ? 0.005f : 0f;
             ctrCarga.txtSliderLoad.text = (int) (ctrCarga.sliderLoad.value * 100) + "%";
             yield return null;
         }
@@ -71,7 +71,7 @@ public class web : MonoBehaviour
 
             while (!reg.isDone)
             {
-                ctrCarga.sliderLoad.value += ctrCarga.sliderLoad.value < 0.92 ? 0.0005f : 0f;
+                ctrCarga.sliderLoad.value += ctrCarga.sliderLoad.value < 0.92 ? 0.005f : 0f;
                 ctrCarga.txtSliderLoad.text = (int)(ctrCarga.sliderLoad.value * 100) + "%";
                 yield return null;
             }
