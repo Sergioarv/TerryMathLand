@@ -131,7 +131,8 @@ public class web : MonoBehaviour
         yield return web.SendWebRequest();
         if (!web.isNetworkError && !web.isHttpError)
         {
-            Debug.Log(web.downloadHandler.text);
+            DatosEntreEscenas.instace.usuario = JsonUtility.FromJson<Usuario>(web.downloadHandler.text);
+            DatosEntreEscenas.instace.guardoRespuestas = true;
         }
         else
         {

@@ -13,6 +13,7 @@ public class PlataformaMovil : MonoBehaviour
 
     void Start()
     {
+        inicioTiempoEspera = Random.Range(1f, 4f);
         tiempoEspera = inicioTiempoEspera;
     }
 

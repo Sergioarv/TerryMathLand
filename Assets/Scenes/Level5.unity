@@ -2890,6 +2890,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60b74b5674c8df479b7cf10da7ccb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esperaSalto: 4
+  saltando: 0
 --- !u!212 &394706005
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10059,6 +10061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9f50efbdb9eb04a82dc050effeb854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objetoEnMano: {fileID: 0}
   objetoASostener: {fileID: 0}
   dirX: 0
 --- !u!61 &1543053274

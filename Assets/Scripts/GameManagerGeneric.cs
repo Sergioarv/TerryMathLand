@@ -149,8 +149,12 @@ public class GameManagerGeneric : MonoBehaviour
         {
             respuestaEst.acertadas = preguntasCorrectas;
             respuestaEst.nota = (5.0f * preguntasCorrectas) / numPregunta;
+            DatosEntreEscenas.instace.respuestaEst = respuestaEst;
 
-            StartCoroutine(web.CorrutinaGuardarRespuesta(respuestaEst, usuario));
+            //StartCoroutine(web.CorrutinaGuardarRespuesta(respuestaEst, usuario));
+
+            SceneManager.LoadScene("GameOver");
+
         }
         else
         {
@@ -161,7 +165,7 @@ public class GameManagerGeneric : MonoBehaviour
             }
             else
             {
-                LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
     }

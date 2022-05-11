@@ -20,6 +20,8 @@ public class DatosEntreEscenas : MonoBehaviour
 
     public Texture2D[] img;
 
+    public bool guardoRespuestas = false;
+
     private void Awake()
     {
         if( instace == null)
@@ -34,17 +36,5 @@ public class DatosEntreEscenas : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

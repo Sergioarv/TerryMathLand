@@ -28,9 +28,12 @@ public class Loding : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && next)
+        if ((numPregunta == 0 || numPregunta == 5 || numPregunta == 10 || numPregunta == 15 || numPregunta == 20))
         {
-            AsyncOperation operation = SceneManager.LoadSceneAsync(levelToLoad);
+            if (Input.GetKeyDown(KeyCode.Space) && next)
+            {
+                SceneManager.LoadScene(levelToLoad);
+            }
         }
     }
 
