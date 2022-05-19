@@ -12,7 +12,7 @@ public class DatosEntreEscenas : MonoBehaviour
     public int vida;
     public int preguntasCorrectas;
 
-    public Usuario usuario = new Usuario();
+    public Estudiante usuario = new Estudiante();
 
     public ListPregunta listaPreguntas = new ListPregunta();
 

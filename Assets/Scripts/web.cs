@@ -10,11 +10,11 @@ public class web : MonoBehaviour
 {
     private ControladorCarga ctrCarga;
 
-    //private string urlBase = "http://localhost:8080";
-    private string urlBase = "https://bk-terrymathmand.herokuapp.com";
+    private string urlBase = "http://localhost:8080";
+    //private string urlBase = "https://bk-terrymathmand.herokuapp.com";
     private string urlPreguntas = "/pregunta";
-    private string urlUsuario = "/usuario/usuarionombre?nombre=";
-    private string urlRespuesta = "/usuario";
+    private string urlUsuario = "/estudiante/estudiantenombre?nombre=";
+    private string urlRespuesta = "/estudiante";
 
     private void Awake()
     {
@@ -36,7 +36,7 @@ public class web : MonoBehaviour
             ctrCarga.txtSliderLoad.text = (int) (ctrCarga.sliderLoad.value * 100) + "%";
             yield return null;
         }
-
+        Debug.Log(web.downloadHandler.text);
         if (!web.isNetworkError && !web.isHttpError)
         {
             ctrCarga.listaPreguntas = JsonUtility.FromJson<ListPregunta>(web.downloadHandler.text);
@@ -109,7 +109,8 @@ public class web : MonoBehaviour
 
         if (!web.isNetworkError && !web.isHttpError)
         {
-            ctrCarga.usuario = JsonUtility.FromJson<Usuario>(web.downloadHandler.text);
+            Debug.Log(web.downloadHandler.text);
+            ctrCarga.usuario = JsonUtility.FromJson<Estudiante>(web.downloadHandler.text);
             DatosEntreEscenas.instace.usuario = ctrCarga.usuario;
         }
         else
@@ -120,13 +121,13 @@ public class web : MonoBehaviour
         }
     }
 
-    public IEnumerator CorrutinaGuardarRespuesta(Respuesta respuesta, Usuario usuario)
+    public IEnumerator CorrutinaGuardarRespuesta(Respuesta respuesta, Estudiante usuario)
     {
         Debug.Log("Guardando creo");
         Usuario newUsuario = new Usuario();
 
-        newUsuario.idusuario = usuario.idusuario;
-        newUsuario.nombre = usuario.nombre;
+        newUsuario.idusuario = usuario.data.idusuario;
+        newUsuario.nombre = usuario.data.nombre;
         newUsuario.respuestas.Add(respuesta);
 
         string newRespuesta = JsonUtility.ToJson(newUsuario).ToString();
@@ -137,8 +138,10 @@ public class web : MonoBehaviour
         yield return web.SendWebRequest();
         if (!web.isNetworkError && !web.isHttpError)
         {
-            DatosEntreEscenas.instace.usuario = JsonUtility.FromJson<Usuario>(web.downloadHandler.text);
-            DatosEntreEscenas.instace.guardoRespuestas = true;
+            DatosEntreEscenas.instace.usuario = JsonUtility.FromJson<Estudiante>(web.downloadHandler.text);
+
+            GameObject.FindObjectOfType<GameOver>().leerSimple();
+            GameObject.FindObjectOfType<GameOver>().crearTabla();
         }
         else
         {

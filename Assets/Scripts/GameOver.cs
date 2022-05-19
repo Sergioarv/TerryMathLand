@@ -15,7 +15,7 @@ public class GameOver : MonoBehaviour
 
     private Respuesta respuestaEst = new Respuesta();
     private int preguntasCorrectas;
-    private Usuario usuario = new Usuario();
+    private Estudiante usuario = new Estudiante();
     private int numPregunta;
 
     int cantidadRegistros = 5;
@@ -31,15 +31,6 @@ public class GameOver : MonoBehaviour
         StartCoroutine(web.CorrutinaGuardarRespuesta(respuestaEst, usuario));
     }
 
-    private void Update()
-    {
-        if (DatosEntreEscenas.instace.guardoRespuestas)
-        {
-            crearTabla();
-            DatosEntreEscenas.instace.guardoRespuestas = false;
-        }
-    }
-
     public void leerSimple()
     {
         numPregunta = DatosEntreEscenas.instace.numPregunta;
@@ -48,9 +39,11 @@ public class GameOver : MonoBehaviour
         respuestaEst = DatosEntreEscenas.instace.respuestaEst;
     }
 
-    void crearTabla()
+    public void crearTabla()
     {
-        if (usuario.respuestas.Count < cantidadRegistros) cantidadRegistros = usuario.respuestas.Count;
+        DatosEntreEscenas.instace.guardoRespuestas = false;
+
+        if (usuario.data.respuestas.Count < cantidadRegistros) cantidadRegistros = usuario.data.respuestas.Count;
 
         for (int i = 0; i < cantidadRegistros; i++)
         {
@@ -63,16 +56,16 @@ public class GameOver : MonoBehaviour
 
     void llenarTabla()
     {
-        if (usuario.respuestas.Count < cantidadRegistros) cantidadRegistros = usuario.respuestas.Count;
+        if (usuario.data.respuestas.Count < cantidadRegistros) cantidadRegistros = usuario.data.respuestas.Count;
 
         for (int i = 0; i < cantidadRegistros; i++)
         {
-            tabla.GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>().text = usuario.respuestas[i].acertadas.ToString();
-            tabla.GetChild(i).GetChild(1).GetComponent<TextMeshProUGUI>().text = usuario.respuestas[i].nota.ToString();
-            System.DateTime fecha = usuario.respuestas[i].fecha;
+            tabla.GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>().text = usuario.data.respuestas[i].acertadas.ToString();
+            tabla.GetChild(i).GetChild(1).GetComponent<TextMeshProUGUI>().text = usuario.data.respuestas[i].nota.ToString();
+            System.DateTime fecha = usuario.data.respuestas[i].fecha;
             tabla.GetChild(i).GetChild(2).GetComponent<TextMeshProUGUI>().text = fecha.ToString();
         }
 
-        txtUsuario.text += usuario.nombre;
+        txtUsuario.text += usuario.data.nombre;
     }
 }

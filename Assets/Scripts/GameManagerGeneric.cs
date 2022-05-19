@@ -30,7 +30,7 @@ public class GameManagerGeneric : MonoBehaviour
 
     public int preguntasCorrectas;
 
-    public Usuario usuario = new Usuario();
+    public Estudiante usuario = new Estudiante();
 
     public Image imagen;
 

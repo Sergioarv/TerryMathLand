@@ -18,7 +18,7 @@ public class ControladorCarga : MonoBehaviour
 
     public ListPregunta listaPreguntas = new ListPregunta();
 
-    public Usuario usuario = new Usuario();
+    public Estudiante usuario = new Estudiante();
 
     private void Awake()
     {
@@ -63,7 +63,7 @@ public class ControladorCarga : MonoBehaviour
 
                 yield return new WaitForSeconds(2);
 
-                if (usuario == null || usuario.nombre == "")
+                if (usuario == null || usuario.data.nombre == "")
                 {
                     PantallaDeCarga.SetActive(false);
                     errorTextObj.SetActive(true);
