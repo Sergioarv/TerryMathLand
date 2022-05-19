@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using TMPro;
+using System.Globalization;
 
 public class web : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class web : MonoBehaviour
         while (!web.isDone)
         {
             ctrCarga.sliderLoad.value += ctrCarga.sliderLoad.value < 0.85 ? 0.005f : 0f;
-            ctrCarga.txtSliderLoad.text = (int) (ctrCarga.sliderLoad.value * 100) + "%";
+            ctrCarga.txtSliderLoad.text = (int)(ctrCarga.sliderLoad.value * 100) + "%";
             yield return null;
         }
         Debug.Log(web.downloadHandler.text);
@@ -109,7 +110,6 @@ public class web : MonoBehaviour
 
         if (!web.isNetworkError && !web.isHttpError)
         {
-            Debug.Log(web.downloadHandler.text);
             ctrCarga.usuario = JsonUtility.FromJson<Estudiante>(web.downloadHandler.text);
             DatosEntreEscenas.instace.usuario = ctrCarga.usuario;
         }
@@ -149,3 +149,4 @@ public class web : MonoBehaviour
         }
     }
 }
+

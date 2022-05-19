@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
+using System.Globalization;
 
 public class GameOver : MonoBehaviour
 {
@@ -39,6 +38,8 @@ public class GameOver : MonoBehaviour
         respuestaEst = DatosEntreEscenas.instace.respuestaEst;
     }
 
+    
+    [ContextMenu("Crear Tabla")]
     public void crearTabla()
     {
         DatosEntreEscenas.instace.guardoRespuestas = false;
@@ -62,8 +63,7 @@ public class GameOver : MonoBehaviour
         {
             tabla.GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>().text = usuario.data.respuestas[i].acertadas.ToString();
             tabla.GetChild(i).GetChild(1).GetComponent<TextMeshProUGUI>().text = usuario.data.respuestas[i].nota.ToString();
-            System.DateTime fecha = usuario.data.respuestas[i].fecha;
-            tabla.GetChild(i).GetChild(2).GetComponent<TextMeshProUGUI>().text = fecha.ToString();
+            tabla.GetChild(i).GetChild(2).GetComponent<TextMeshProUGUI>().text = usuario.data.respuestas[i].fecha.ToString();
         }
 
         txtUsuario.text += usuario.data.nombre;
