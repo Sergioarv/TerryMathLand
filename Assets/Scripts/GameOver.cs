@@ -10,7 +10,7 @@ public class GameOver : MonoBehaviour
 
     public TextMeshProUGUI txtUsuario;
 
-    web web;
+    private web web;
 
     private Respuesta respuestaEst = new Respuesta();
     private int preguntasCorrectas;
@@ -42,8 +42,6 @@ public class GameOver : MonoBehaviour
     [ContextMenu("Crear Tabla")]
     public void crearTabla()
     {
-        DatosEntreEscenas.instace.guardoRespuestas = false;
-
         if (usuario.data.respuestas.Count < cantidadRegistros) cantidadRegistros = usuario.data.respuestas.Count;
 
         for (int i = 0; i < cantidadRegistros; i++)

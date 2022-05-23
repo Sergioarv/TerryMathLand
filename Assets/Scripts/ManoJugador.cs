@@ -72,7 +72,7 @@ public class ManoJugador : MonoBehaviour
                 else
                 {
                     //Restablece la posicion del objeto sostenido en caso de no ser una opcion valida
-                    objetoEnMano.transform.position = posInicialObjeto;
+                    //objetoEnMano.transform.position = posInicialObjeto;
                 }
                 // El objeto sostenido deja de ser hijo (Se suelta)
                 objetoEnMano = null;
