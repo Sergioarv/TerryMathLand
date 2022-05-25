@@ -77,8 +77,12 @@ public class ManoLanzadora : MonoBehaviour
 
     public void soltarObjeto()
     {
+        float lado = 0f;
+        float ultimoX = animatorPlayer.GetFloat("UltimoX");
         objetoEnMano.GetComponent<OpcionLanzable>().esLanzable = true;
         if (objetoEnMano.GetComponents<Collider2D>()[0].enabled == false) objetoEnMano.GetComponents<Collider2D>()[0].enabled = true;
+        lado = ultimoX != 0 ? 0.16f * ultimoX : 0f;
+        objetoEnMano.transform.position = new Vector2(objetoEnMano.transform.position.x + lado, objetoEnMano.transform.position.y);
         if (objetoEnMano.GetComponent<Rigidbody2D>() != null) objetoEnMano.GetComponent<Rigidbody2D>().simulated = true;
         objetoEnMano.transform.SetParent(objetoPadre.transform);
         objetoEnMano.GetComponent<SpriteRenderer>().sortingOrder = 0;

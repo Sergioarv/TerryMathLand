@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,10 +29,10 @@ public class DatosEntreEscenas : MonoBehaviour
     {
         // Se verifica si la instancia es nula
         // Si es nula toma como valor la primera instancia creada por la escena
-        if ( instace == null)
+        if (instace == null)
         {
             // 'this' es el primer prefab de DatosEntreEscenas creado en el proyecto
-            instace = this; 
+            instace = this;
             /* Se le especifica al proyecto Unity no borrar la instancia al 
              cambiar de escena o volver a cargar la escena*/
             DontDestroyOnLoad(instace);
@@ -42,11 +43,23 @@ public class DatosEntreEscenas : MonoBehaviour
             /* Si la instancia contiene el primer prefab creado y 'this' es un 
              prefab distinto creado por una escena diferente a la primera la destruye
             y conserva la primera instancia */
-            if ( instace != this)
+            if (instace != this)
             {
                 // Destruye el objecto que ejecuta el script para no crear copias o clones
                 Destroy(gameObject);
             }
         }
+    }
+
+    internal void reiniciar()
+    {
+        numPregunta = 0;
+        contPreguntas = 0;
+        vida = 0;
+        preguntasCorrectas = 0;
+        usuario = new Estudiante();
+        listaPreguntas = new ListPregunta();
+        respuestaEst = new Respuesta();
+        img = null;
     }
 }

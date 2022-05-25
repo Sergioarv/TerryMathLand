@@ -42,7 +42,7 @@ public class ManoJugador : MonoBehaviour
                 objetoEnMano.GetComponent<OpcionSostenible>().esSostenible = false;
                 objetoEnMano.transform.position = mano.transform.GetChild(0).position;
                 objetoEnMano.transform.SetParent(transform);
-                //if (objetoEnMano.GetComponent<Rigidbody2D>() != null) objetoEnMano.GetComponent<Rigidbody2D>().simulated = false;
+
                 objetoEnMano.GetComponent<SpriteRenderer>().sortingOrder = 1;
                 //Inicia la animacion de Sostener
                 animatorPlayer.SetBool("Sostener", true);
@@ -53,26 +53,24 @@ public class ManoJugador : MonoBehaviour
             //verificarSolucion si se presiona la letra f para soltar el objeto
             if (Input.GetKeyDown(KeyCode.F))
             {
+                float bajar = 0f;
+                float lado = 0f;
+                float ultimoX = animatorPlayer.GetFloat("UltimoX");
                 TraspazarObjetoSostenido.sueloElevado = false;
                 objetoEnMano.GetComponent<OpcionSostenible>().esSostenible = true;
                 if (objetoEnMano.GetComponent<Collider2D>().enabled == false) objetoEnMano.GetComponent<Collider2D>().enabled = true;
-               // if (objetoEnMano.GetComponent<Rigidbody2D>() != null) objetoEnMano.GetComponent<Rigidbody2D>().simulated = true;
+                bajar = ultimoX == 0 ? 0 : 0.4f;
+                lado = ultimoX != 0 ? 0.075f * ultimoX : 0f;
+                objetoEnMano.transform.position = new Vector2(objetoEnMano.transform.position.x + lado, objetoEnMano.transform.position.y - bajar);
                 objetoEnMano.transform.SetParent(objetoPadre.transform);
                 objetoEnMano.GetComponent<SpriteRenderer>().sortingOrder = 0;
                 if (Vector2.Distance(objetoEnMano.transform.position, posSolucion.transform.position) < 0.62f)
                 {
-                    objetoEnMano.transform.position = new Vector2(objetoEnMano.transform.position.x, objetoEnMano.transform.position.y - 0.3f);
-
                     string seleccion = objetoEnMano.name;
                     string seleccionOpcion = objetoEnMano.transform.GetComponentInChildren<TextMeshProUGUI>().text;
 
                     //Verifica la solucion seleccionada
                     verificarSolucion(seleccion, seleccionOpcion);
-                }
-                else
-                {
-                    //Restablece la posicion del objeto sostenido en caso de no ser una opcion valida
-                    //objetoEnMano.transform.position = posInicialObjeto;
                 }
                 // El objeto sostenido deja de ser hijo (Se suelta)
                 objetoEnMano = null;

@@ -15,31 +15,26 @@ public class OpcionSostenible : MonoBehaviour
     {
         if(esSostenible)
         {
-            if ( (transform.position.y <= 1.1f && transform.position.y >= -2f) && (transform.position.x >= -12.8f && transform.position.x <= -11f ))
+            if ((transform.position.y <= 1.1f && transform.position.y >= -2f) && (transform.position.x >= -12.8f && transform.position.x <= -11f))
             {
                 transform.position = posInicialObjeto;
             }
-
-            if ((transform.position.y <= 0.6f && transform.position.y >= -2f) && (transform.position.x >= -12.8f && transform.position.x <= -10f))
+            else if ((transform.position.y <= -0.6f && transform.position.y >= -2f) && (transform.position.x >= -12.8f && transform.position.x <= -10f))
             {
                 transform.position = posInicialObjeto;
             }
-
-            if ((transform.position.y <= 0.6f && transform.position.y >= -2f) && (transform.position.x >= -7.25f && transform.position.x <= 12.7f))
+            else if ((transform.position.y <= -0.6f && transform.position.y >= -2f) && (transform.position.x >= -7.25f && transform.position.x <= 12.7f))
             {
                 transform.position = posInicialObjeto;
             }
-
-            if (transform.position.y >= 1.8f && (transform.position.x >= -13f && transform.position.x <= 12.7f))
+            else if (transform.position.y >= 1.8f && (transform.position.x >= -13f && transform.position.x <= 12.7f))
             {
                 transform.position = posInicialObjeto;
             }
-
-            if (transform.position.y >= 0.4f && (transform.position.x >= -5.4f && transform.position.x <= -3.66f))
+            else if (transform.position.y >= 0.7f && (transform.position.x > -5.4f && transform.position.x < -3.66f))
             {
                 transform.position = posInicialObjeto;
             }
-
         }
     }
 

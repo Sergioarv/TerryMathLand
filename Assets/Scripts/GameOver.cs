@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using System.Globalization;
+using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class GameOver : MonoBehaviour
     private Estudiante usuario = new Estudiante();
     private int numPregunta;
 
-    int cantidadRegistros = 5;
+    int cantidadRegistros = 4;
 
     void Awake()
     {
@@ -27,9 +28,11 @@ public class GameOver : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(respuestaEst.nota + "__" + DatosEntreEscenas.instace.respuestaEst.nota);
         StartCoroutine(web.CorrutinaGuardarRespuesta(respuestaEst, usuario));
     }
 
+    [ContextMenu("Leer")]
     public void leerSimple()
     {
         numPregunta = DatosEntreEscenas.instace.numPregunta;
@@ -65,5 +68,11 @@ public class GameOver : MonoBehaviour
         }
 
         txtUsuario.text += usuario.data.nombre;
+    }
+
+    public void reiniciarJuego()
+    {
+        DatosEntreEscenas.instace.reiniciar();
+        SceneManager.LoadScene("MainMenu");
     }
 }

@@ -13,4 +13,6 @@ public class Usuario
 public class Estudiante
 {
     public Usuario data = new Usuario();
+    public bool success;
+    public string message;
 }

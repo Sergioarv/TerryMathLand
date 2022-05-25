@@ -6,11 +6,13 @@ using TMPro;
 public class OpcionLanzable : MonoBehaviour
 {
     public bool esLanzable = true;
-    private bool lanzado = false;
-    private bool cae = true;
+    public bool lanzado = false;
+    public bool cae = true;
+
+    private GameObject[] optiones;
 
     public float dirX;
-    private bool respondio = false;
+    public bool respondio = false;
 
     Rigidbody2D rbOpcion;
     Animator animatorOpcion;
@@ -31,6 +33,13 @@ public class OpcionLanzable : MonoBehaviour
             string seleccion = this.name;
             string seleccionOpcion = this.transform.GetComponentInChildren<TextMeshProUGUI>().text;
             gameManagerGeneric.responder(seleccion, seleccionOpcion);
+
+            optiones = GameObject.FindGameObjectsWithTag("Opcion");
+
+            optiones[0].GetComponent<OpcionLanzable>().esLanzable = false;
+            optiones[1].GetComponent<OpcionLanzable>().esLanzable = false;
+            optiones[2].GetComponent<OpcionLanzable>().esLanzable = false;
+            optiones[3].GetComponent<OpcionLanzable>().esLanzable = false;
 
             respondio = false;
 
@@ -59,7 +68,11 @@ public class OpcionLanzable : MonoBehaviour
 
         if (collision.CompareTag("Solucion"))
         {
-            respondio = true;
+            if ( transform.position.y + 0.2f >= collision.transform.position.y)
+            {
+                Debug.Log("Por Encima");
+                respondio = true;
+            }
         }
     }
 

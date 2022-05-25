@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using TMPro;
-using System.Globalization;
 
 public class web : MonoBehaviour
 {
     // url de la api
     private string urlBase = "https://bk-terrymathmand.herokuapp.com";
+    //private string urlBase = "localhost:8080";
     // url para consultar la lista de preguntas
     private string urlPreguntas = "/pregunta";
     // url para verificar el estudiante por su nombre
@@ -145,6 +143,7 @@ public class web : MonoBehaviour
         // Verifica si la respuesta ha recibido un error de conexion o de http
         if (!web.isNetworkError && !web.isHttpError)
         {
+            Debug.Log(web.downloadHandler.text);
             // Se encarga de convertir el json recibido por la peticion a un Estudiante
             ctrCarga.usuario = JsonUtility.FromJson<Estudiante>(web.downloadHandler.text);
             // guarda el usuario con su nuevas respuestas
@@ -171,6 +170,7 @@ public class web : MonoBehaviour
         newUsuario.respuestas.Add(respuesta);
         // Se convierte el usuario a json
         string newRespuesta = JsonUtility.ToJson(newUsuario).ToString();
+        Debug.Log(newRespuesta);
         // Servicio de Unity encargado de realizar la cominucación con el back-end
         UnityWebRequest web = UnityWebRequest.Put(urlBase + urlRespuesta, newRespuesta);
         web.SetRequestHeader("Content-Type", "application/json;charset=UTF-8;application/x-www-form-urlencoded");
@@ -192,4 +192,3 @@ public class web : MonoBehaviour
         }
     }
 }
-
