@@ -70,7 +70,8 @@ public class ControladorPersonajeUp : MonoBehaviour
         else if (movY != 0)
         {
             float vY = movY * 0.3f;
-            mano.transform.localPosition = new Vector2(0f, vY);
+            mano.transform.localPosition = new Vector2(0, vY);
+            mano.transform.GetChild(0).localPosition = new Vector2(0, vY);
             if (hijosMano > 1) mano.transform.GetChild(1).localPosition = new Vector2(0, vY);
         }
     }

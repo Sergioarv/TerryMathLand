@@ -13,6 +13,7 @@ TagManager:
   - Solucion
   - BordeSolucion
   - ManoJugador
+  - ObjetosElevados
   layers:
   - Default
   - TransparentFX

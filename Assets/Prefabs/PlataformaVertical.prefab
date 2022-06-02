@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7962886405404677468}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6.5, z: 0}
+  m_LocalPosition: {x: 0, y: 8.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7962886406894696791}
@@ -70,6 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7962886405597106213}
   - component: {fileID: 7962886405597106214}
+  - component: {fileID: 397676495}
   m_Layer: 0
   m_Name: TX Tileset Ground_0
   m_TagString: Untagged
@@ -142,6 +143,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &397676495
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962886405597106212}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 7434346ff51474f47b889d465f63caf2, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.4308188, y: 0.50063133}
+      - {x: -0.49278855, y: 0.38333917}
+      - {x: -0.5, y: -0.5}
+      - {x: 0.5, y: -0.5}
+      - {x: 0.5, y: 0.5}
 --- !u!1 &7962886405660789429
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7962886405660789430}
   - component: {fileID: 7962886405660789431}
+  - component: {fileID: 1597406543}
   m_Layer: 0
   m_Name: TX Tileset Ground_2
   m_TagString: Untagged
@@ -223,6 +255,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &1597406543
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962886405660789429}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 7434346ff51474f47b889d465f63caf2, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.5, y: 0.5}
+      - {x: -0.5, y: -0.5}
+      - {x: 0.5, y: -0.5}
+      - {x: 0.49485064, y: 0.4022498}
+      - {x: 0.43159842, y: 0.5}
 --- !u!1 &7962886405816190175
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +296,6 @@ GameObject:
   - component: {fileID: 7962886405816190176}
   - component: {fileID: 7962886405816190177}
   - component: {fileID: 2650573339823525520}
-  - component: {fileID: 3261746339925877065}
   m_Layer: 0
   m_Name: Plataforma
   m_TagString: Suelo
@@ -272,8 +333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b3372eb1b482849a866915a94e9d0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 3
-  inicioTiempoEspera: 3.5
   puntosMovimiento:
   - {fileID: 7962886405194747307}
   - {fileID: 7962886405404677469}
@@ -295,38 +354,6 @@ EdgeCollider2D:
   m_Points:
   - {x: -0.37357682, y: 0.52}
   - {x: 1.3734694, y: 0.52}
---- !u!60 &3261746339925877065
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7962886405816190175}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 7434346ff51474f47b889d465f63caf2, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 1.5040933, y: 0.26802456}
-      - {x: 1.3348584, y: 0.43967295}
-      - {x: -0.37461334, y: 0.43290523}
-      - {x: -0.4860945, y: 0.2573018}
-      - {x: -0.4610172, y: -0.878754}
-      - {x: 0.6575079, y: -0.90411305}
-      - {x: 1.4834825, y: -0.73703843}
 --- !u!1 &7962886406115520876
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7962886406115520877}
   - component: {fileID: 7962886406115520878}
+  - component: {fileID: 1142037056}
   m_Layer: 0
   m_Name: TX Tileset Ground_152
   m_TagString: Untagged
@@ -409,6 +437,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &1142037056
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962886406115520876}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 7434346ff51474f47b889d465f63caf2, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.5, y: 0.5}
+      - {x: -0.5, y: 0.5}
+      - {x: -0.5, y: -0.5}
+      - {x: 0, y: -0.5}
+      - {x: 0.40625, y: -0.34375}
+      - {x: 0.5, y: -0.1875}
 --- !u!1 &7962886406858272460
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7962886406858272461}
   - component: {fileID: 7962886406858272462}
+  - component: {fileID: 868447359}
   m_Layer: 0
   m_Name: TX Tileset Ground_151
   m_TagString: Untagged
@@ -490,6 +550,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &868447359
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962886406858272460}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 7434346ff51474f47b889d465f63caf2, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.5, y: 0.5}
+      - {x: -0.5, y: -0.28125}
+      - {x: -0.4375, y: -0.4375}
+      - {x: -0.34375, y: -0.5}
+      - {x: 0.5, y: -0.5}
+      - {x: 0.5, y: 0.5}
 --- !u!1 &7962886406894696790
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +590,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7962886406894696791}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlataformaVertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}

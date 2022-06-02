@@ -9376,20 +9376,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7962886405404677469, guid: 953ff92ab2c35bb48908e431f480d84f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.5
-      objectReference: {fileID: 0}
     - target: {fileID: 7962886406894696790, guid: 953ff92ab2c35bb48908e431f480d84f,
         type: 3}
       propertyPath: m_Name
       value: PlataformaVertical
-      objectReference: {fileID: 0}
-    - target: {fileID: 7962886406894696790, guid: 953ff92ab2c35bb48908e431f480d84f,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7962886406894696791, guid: 953ff92ab2c35bb48908e431f480d84f,
         type: 3}
@@ -11566,15 +11556,15 @@ MonoBehaviour:
     type: 3}
   trompetas: {fileID: 7914580339792599032, guid: 7545be6f3684eec47b01dd1888fb5566,
     type: 3}
-  web: {fileID: 0}
   numPregunta: 0
   contPregunta: 0
   vida: 0
   preguntasCorrectas: 0
   usuario:
-    idusuario: 0
-    nombre: 
-    respuestas: []
+    data:
+      idusuario: 0
+      nombre: 
+      respuestas: []
   imagen: {fileID: 2135455484}
   listaPreguntas:
     data: []
@@ -12356,6 +12346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60b74b5674c8df479b7cf10da7ccb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tiempoEsperaSalto: 0
+  esperarSalto: 0
 --- !u!212 &2141755017
 SpriteRenderer:
   m_ObjectHideFlags: 0

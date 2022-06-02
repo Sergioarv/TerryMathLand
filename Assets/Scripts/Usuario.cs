@@ -10,7 +10,9 @@ public class Usuario
 }
 
 [Serializable]
-public class ListUsuario
+public class Estudiante
 {
-    public List<Usuario> data = new List<Usuario>();
+    public Usuario data = new Usuario();
+    public bool success;
+    public string message;
 }

@@ -466,9 +466,10 @@ MonoBehaviour:
   listaPreguntas:
     data: []
   usuario:
-    idusuario: 0
-    nombre: 
-    respuestas: []
+    data:
+      idusuario: 0
+      nombre: 
+      respuestas: []
 --- !u!4 &300603143
 Transform:
   m_ObjectHideFlags: 0

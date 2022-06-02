@@ -5,8 +5,9 @@ public class ControladorPersonaje : MonoBehaviour
 {
     private float velocidadMAX = 3.6f;
     private float fuerzaSalto = 4f;
-    private float esperaSalto = 2f;
+    private float esperaSalto = 0.35f;
     private float tiempoEsperaSalto;
+    private bool esperarSalto = false;
 
     Rigidbody2D rbPlayer;
     SpriteRenderer spritePlayer;
@@ -30,7 +31,7 @@ public class ControladorPersonaje : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (tiempoEsperaSalto > 0)
+        if (tiempoEsperaSalto > 0 && esperarSalto)
         {
             tiempoEsperaSalto -= Time.deltaTime;
         }
@@ -38,6 +39,7 @@ public class ControladorPersonaje : MonoBehaviour
         if(tiempoEsperaSalto < 0)
         {
             tiempoEsperaSalto = 0;
+            esperarSalto = false;
         }
 
         movX = Input.GetAxisRaw("Horizontal");
@@ -67,10 +69,13 @@ public class ControladorPersonaje : MonoBehaviour
         else if (VerificarSuelo.tocandoSuelo)
         {
             animatorPlayer.SetBool("Jump", false);
+            esperarSalto = tiempoEsperaSalto > 0 ? true : false;
         }
         else if (VerificarSuelo.tocandoOpcion)
         {
             animatorPlayer.SetBool("Jump", false);
+        }else if (!VerificarSuelo.tocandoSuelo && !VerificarSuelo.tocandoOpcion){
+            animatorPlayer.SetBool("Jump", true);
         }
 
         volteo();

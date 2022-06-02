@@ -18,7 +18,7 @@ public class ControladorCarga : MonoBehaviour
 
     public ListPregunta listaPreguntas = new ListPregunta();
 
-    public Usuario usuario = new Usuario();
+    public Estudiante usuario = new Estudiante();
 
     private void Awake()
     {
@@ -60,15 +60,14 @@ public class ControladorCarga : MonoBehaviour
             if (listaPreguntas.data.Count > 0)
             {
                 StartCoroutine(web.CorrutinaVerificarUsuario(txtUser));
+                yield return new WaitForSeconds(3);
 
-                yield return new WaitForSeconds(2);
-
-                if (usuario == null || usuario.nombre == "")
+                if (usuario.data == null || usuario.data.nombre == "" || !usuario.success)
                 {
                     PantallaDeCarga.SetActive(false);
                     errorTextObj.SetActive(true);
                     errorTextObj.GetComponent<Image>().enabled = false;
-                    errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Por favor verifique el nombre";
+                    errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = usuario.message;
                 }
                 else
                 {

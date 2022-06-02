@@ -19,8 +19,6 @@ public class GameManagerGeneric : MonoBehaviour
     public AudioSource aplausos;
     public AudioSource trompetas;
 
-    public web web;
-
     private string[] opcionesName = { "OpcionA", "OpcionB", "OpcionC", "OpcionD" };
 
     public int numPregunta;
@@ -30,14 +28,14 @@ public class GameManagerGeneric : MonoBehaviour
 
     public int preguntasCorrectas;
 
-    public Usuario usuario = new Usuario();
+    public Estudiante usuario = new Estudiante();
 
     public Image imagen;
 
     public ListPregunta listaPreguntas = new ListPregunta();
 
     public Respuesta respuestaEst = new Respuesta();
-    public Solucion solucionEst;
+    public Solucion solucionEst = new Solucion();
 
     public Texture2D[] img;
 
@@ -48,7 +46,6 @@ public class GameManagerGeneric : MonoBehaviour
 
     void Start()
     {
-        web = GameObject.FindObjectOfType<web>();
         MostrarPregunta();
     }
 
@@ -151,9 +148,7 @@ public class GameManagerGeneric : MonoBehaviour
             respuestaEst.nota = (5.0f * preguntasCorrectas) / numPregunta;
             DatosEntreEscenas.instace.respuestaEst = respuestaEst;
 
-            //StartCoroutine(web.CorrutinaGuardarRespuesta(respuestaEst, usuario));
-
-            SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("PantallaFinal");
 
         }
         else
