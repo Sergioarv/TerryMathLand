@@ -11,6 +11,6 @@ public static class LevelLoading
     {
         nextLevel = name;
 
-        SceneManager.LoadScene("ScreenLoad");
+        SceneManager.LoadScene("PantallaDeCarga");
     }
 }

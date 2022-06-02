@@ -73,6 +73,6 @@ public class GameOver : MonoBehaviour
     public void reiniciarJuego()
     {
         DatosEntreEscenas.instace.reiniciar();
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("PantallaPrincipal");
     }
 }

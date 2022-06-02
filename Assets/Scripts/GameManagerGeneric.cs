@@ -148,7 +148,7 @@ public class GameManagerGeneric : MonoBehaviour
             respuestaEst.nota = (5.0f * preguntasCorrectas) / numPregunta;
             DatosEntreEscenas.instace.respuestaEst = respuestaEst;
 
-            SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("PantallaFinal");
 
         }
         else

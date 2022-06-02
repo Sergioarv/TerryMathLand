@@ -7,7 +7,7 @@ using TMPro;
 public class web : MonoBehaviour
 {
     // url de la api
-    private string urlBase = "https://bk-terrymathmand.herokuapp.com";
+    private string urlBase = "https://bk-terrymathland.herokuapp.com";
     //private string urlBase = "localhost:8080";
     // url para consultar la lista de preguntas
     private string urlPreguntas = "/pregunta";
@@ -69,6 +69,7 @@ public class web : MonoBehaviour
         }
         else // Si la peticion recibe un error
         {
+            Debug.Log(urlBase + urlPreguntas);
             // activa el mensaje de error
             ctrCarga.errorTextObj.SetActive(true);
             ctrCarga.errorTextObj.GetComponent<Image>().enabled = true;
