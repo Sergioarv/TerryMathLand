@@ -580,7 +580,7 @@ Transform:
   m_GameObject: {fileID: 618992731}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.15, y: 1.15, z: 1}
   m_Children: []
   m_Father: {fileID: 519420032}
   m_RootOrder: 0
@@ -860,7 +860,6 @@ MonoBehaviour:
     type: 3}
   trompetas: {fileID: 7914580339792599032, guid: 7545be6f3684eec47b01dd1888fb5566,
     type: 3}
-  web: {fileID: 0}
   numPregunta: 0
   contPregunta: 0
   vida: 0
@@ -870,6 +869,8 @@ MonoBehaviour:
       idusuario: 0
       nombre: 
       respuestas: []
+    success: 0
+    message: 
   imagen: {fileID: 864150215630741940}
   listaPreguntas:
     data: []

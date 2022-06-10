@@ -41,7 +41,7 @@ public class GameManagerGeneric : MonoBehaviour
 
     private void Awake()
     {
-        leerSimple();
+        leerEntreEscenas();
     }
 
     void Start()
@@ -49,7 +49,7 @@ public class GameManagerGeneric : MonoBehaviour
         MostrarPregunta();
     }
 
-    public void leerSimple()
+    public void leerEntreEscenas()
     {
         listaPreguntas = DatosEntreEscenas.instace.listaPreguntas;
         numPregunta = DatosEntreEscenas.instace.numPregunta;
@@ -61,7 +61,7 @@ public class GameManagerGeneric : MonoBehaviour
         respuestaEst = DatosEntreEscenas.instace.respuestaEst;
     }
 
-    public void guardarSimple()
+    public void guardarEntreEscenas()
     {
         DatosEntreEscenas.instace.listaPreguntas = listaPreguntas;
         DatosEntreEscenas.instace.numPregunta = numPregunta;
@@ -140,7 +140,7 @@ public class GameManagerGeneric : MonoBehaviour
 
     public void cargarEscena()
     {
-        guardarSimple();
+        guardarEntreEscenas();
 
         if (numPregunta == listaPreguntas.data.Count)
         {

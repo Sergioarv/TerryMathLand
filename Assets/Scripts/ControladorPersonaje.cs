@@ -5,7 +5,7 @@ public class ControladorPersonaje : MonoBehaviour
 {
     private float velocidadMAX = 3.6f;
     private float fuerzaSalto = 4f;
-    private float esperaSalto = 0.35f;
+    private float esperaSalto = 0.25f;
     private float tiempoEsperaSalto;
     private bool esperarSalto = false;
 
