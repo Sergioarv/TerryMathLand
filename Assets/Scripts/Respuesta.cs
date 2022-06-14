@@ -9,7 +9,7 @@ public class Respuesta
     public List<Solucion> soluciones;
     public int acertadas;
     public double nota;
-    public DateTime fecha;
+    public string fecha;
 }
 
 [Serializable]

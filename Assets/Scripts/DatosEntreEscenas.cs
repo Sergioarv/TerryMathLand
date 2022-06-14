@@ -24,6 +24,11 @@ public class DatosEntreEscenas : MonoBehaviour
     // Lista de imágenes, guarda en memoria todas las imágenes cargadas de la base de datos
     public Texture2D[] img;
 
+    public ListRespuesta puntajes = new ListRespuesta();
+
+    public int preguntasPorNivel;
+    public int restante;
+
     // Método Awake, método propio de la clase que se ejecuta al cargar la escena que lo contiene
     private void Awake()
     {

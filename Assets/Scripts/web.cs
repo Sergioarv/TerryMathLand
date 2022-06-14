@@ -3,18 +3,20 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
+using System;
 
 public class web : MonoBehaviour
 {
     // url de la api
-    private string urlBase = "https://bk-terrymathland.herokuapp.com";
-    //private string urlBase = "localhost:8080";
+    //private string urlBase = "https://bk-terrymathland.herokuapp.com";
+    private string urlBase = "localhost:8080";
     // url para consultar la lista de preguntas
     private string urlPreguntas = "/pregunta";
     // url para verificar el estudiante por su nombre
     private string urlUsuario = "/estudiante/estudiantenombre?nombre=";
     // url para guardar la respuesta y soluciones del estudiante
-    private string urlRespuesta = "/estudiante";
+    private string urlRespuesta = "/respuesta/guardarRespuestaEstudiante";
     // game object 'ContoladorCarga' en la escena Main Menu
     private ControladorCarga ctrCarga;
 
@@ -62,6 +64,8 @@ public class web : MonoBehaviour
             DatosEntreEscenas.instace.contPreguntas = 0;
             DatosEntreEscenas.instace.vida = ctrCarga.listaPreguntas.data.Count;
             DatosEntreEscenas.instace.preguntasCorrectas = 0;
+            DatosEntreEscenas.instace.preguntasPorNivel = Mathf.RoundToInt(ctrCarga.listaPreguntas.data.Count / 5f);
+            DatosEntreEscenas.instace.restante = calcularRestante();
             // detiene la animacion de carga
             ctrCarga.PantallaDeCarga.SetActive(false);
             // llamado del método encargado de cargar las imagenes
@@ -77,6 +81,19 @@ public class web : MonoBehaviour
             // detiene la animacion de carga
             ctrCarga.PantallaDeCarga.SetActive(false);
         }
+    }
+
+    private int calcularRestante()
+    {
+        int entero = ctrCarga.listaPreguntas.data.Count/5;
+        float decimas = ctrCarga.listaPreguntas.data.Count/5f;
+
+        if (decimas - entero < 0.5f)
+        {
+          return (ctrCarga.listaPreguntas.data.Count - (entero * 5));
+        }
+
+        return 0;
     }
 
     // Método encargado de cargar las imagenes de la base de dato en el prefab 'DatosEntreEscenas'
@@ -182,7 +199,9 @@ public class web : MonoBehaviour
         if (!web.isNetworkError && !web.isHttpError)
         {
             // Se encarga de convertir el json recibido por la peticion a un Estudiante
-            DatosEntreEscenas.instace.usuario = JsonUtility.FromJson<Estudiante>(web.downloadHandler.text);
+            DatosEntreEscenas.instace.puntajes = JsonUtility.FromJson<ListRespuesta>(web.downloadHandler.text);
+            Debug.Log(DatosEntreEscenas.instace.puntajes);
+            new WaitForSeconds(1);
             // Se encarga de obtener el game object GameOver en el cual se crea y llena los ultimos puntajes del jugador
             GameObject.FindObjectOfType<GameOver>().leerSimple();
             GameObject.FindObjectOfType<GameOver>().crearTabla();
