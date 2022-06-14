@@ -70,7 +70,7 @@ public class GameOver : MonoBehaviour
         {
             total = (int)((puntajes.data[i].acertadas * 5) / puntajes.data[i].nota);
             tabla.GetChild(i+1).GetChild(0).GetComponent<TextMeshProUGUI>().text = puntajes.data[i].acertadas.ToString() + " de " + total;
-            tabla.GetChild(i+1).GetChild(1).GetComponent<TextMeshProUGUI>().text = puntajes.data[i].nota.ToString();
+            tabla.GetChild(i+1).GetChild(1).GetComponent<TextMeshProUGUI>().text = (Mathf.Round((float)(puntajes.data[i].nota * 10.0f)) * 0.1f).ToString();
             tabla.GetChild(i+1).GetChild(2).GetComponent<TextMeshProUGUI>().text = puntajes.data[i].fecha.ToString();
         }
 

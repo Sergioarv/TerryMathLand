@@ -149,8 +149,10 @@ public class GameManagerGeneric : MonoBehaviour
 
         if (numPregunta == listaPreguntas.data.Count)
         {
+            float nota = (5.0f * preguntasCorrectas) / numPregunta;
+
             respuestaEst.acertadas = preguntasCorrectas;
-            respuestaEst.nota = (5.0f * preguntasCorrectas) / numPregunta;
+            respuestaEst.nota = (Mathf.Round((float)(nota * 10.0f)) * 0.1f);
             DatosEntreEscenas.instace.respuestaEst = respuestaEst;
 
             SceneManager.LoadScene("PantallaFinal");
