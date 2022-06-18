@@ -17,6 +17,7 @@ public class GameOver : MonoBehaviour
     private int preguntasCorrectas;
     private Estudiante usuario = new Estudiante();
     private int numPregunta;
+    private ListRespuesta puntajes = new ListRespuesta();
 
     int cantidadRegistros = 4;
 
@@ -28,7 +29,6 @@ public class GameOver : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(respuestaEst.nota + "__" + DatosEntreEscenas.instace.respuestaEst.nota);
         StartCoroutine(web.CorrutinaGuardarRespuesta(respuestaEst, usuario));
     }
 
@@ -39,15 +39,16 @@ public class GameOver : MonoBehaviour
         preguntasCorrectas = DatosEntreEscenas.instace.preguntasCorrectas;
         usuario = DatosEntreEscenas.instace.usuario;
         respuestaEst = DatosEntreEscenas.instace.respuestaEst;
+        puntajes = DatosEntreEscenas.instace.puntajes;
     }
 
     
     [ContextMenu("Crear Tabla")]
     public void crearTabla()
     {
-        if (usuario.data.respuestas.Count < cantidadRegistros) cantidadRegistros = usuario.data.respuestas.Count;
+        if (puntajes.data.Count < cantidadRegistros) cantidadRegistros = puntajes.data.Count;
 
-        for (int i = 0; i < cantidadRegistros; i++)
+        for (int i = 0; i <= cantidadRegistros; i++)
         {
             GameObject inst = Instantiate(plantillaRegistros, tabla);
             inst.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, i * -95f);
@@ -58,13 +59,19 @@ public class GameOver : MonoBehaviour
 
     void llenarTabla()
     {
-        if (usuario.data.respuestas.Count < cantidadRegistros) cantidadRegistros = usuario.data.respuestas.Count;
+        if (puntajes.data.Count < cantidadRegistros) cantidadRegistros = puntajes.data.Count;
+
+        int total = (int)((respuestaEst.acertadas * 5) / respuestaEst.nota);
+        tabla.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = respuestaEst.acertadas.ToString() + " de " + total;
+        tabla.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = (Mathf.Round((float)(respuestaEst.nota * 10.0f)) * 0.1f).ToString();
+        tabla.GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text = "Puntaje de hoy";
 
         for (int i = 0; i < cantidadRegistros; i++)
         {
-            tabla.GetChild(i).GetChild(0).GetComponent<TextMeshProUGUI>().text = usuario.data.respuestas[i].acertadas.ToString();
-            tabla.GetChild(i).GetChild(1).GetComponent<TextMeshProUGUI>().text = usuario.data.respuestas[i].nota.ToString();
-            tabla.GetChild(i).GetChild(2).GetComponent<TextMeshProUGUI>().text = usuario.data.respuestas[i].fecha.ToString();
+            total = (int)((puntajes.data[i].acertadas * 5) / puntajes.data[i].nota);
+            tabla.GetChild(i+1).GetChild(0).GetComponent<TextMeshProUGUI>().text = puntajes.data[i].acertadas.ToString() + " de " + total;
+            tabla.GetChild(i+1).GetChild(1).GetComponent<TextMeshProUGUI>().text = (Mathf.Round((float)(puntajes.data[i].nota * 10.0f)) * 0.1f).ToString();
+            tabla.GetChild(i+1).GetChild(2).GetComponent<TextMeshProUGUI>().text = puntajes.data[i].fecha.ToString();
         }
 
         txtUsuario.text += usuario.data.nombre;

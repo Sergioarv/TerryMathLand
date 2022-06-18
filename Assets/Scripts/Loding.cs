@@ -13,6 +13,7 @@ public class Loding : MonoBehaviour
     public TextMeshProUGUI consejo;
     public GameObject mensajeContinuar;
     private int numPregunta;
+    private int preguntasPorNivel;
 
     private int levelToLoad;
     private bool next = false;
@@ -22,13 +23,15 @@ public class Loding : MonoBehaviour
         levelToLoad = LevelLoading.nextLevel;
 
         numPregunta = DatosEntreEscenas.instace.numPregunta;
+        preguntasPorNivel = DatosEntreEscenas.instace.preguntasPorNivel;
 
         StartCoroutine(LoadLevel());
     }
 
     private void Update()
     {
-        if ((numPregunta == 0 || numPregunta == 5 || numPregunta == 10 || numPregunta == 15 || numPregunta == 20))
+        if ((numPregunta == 0 || numPregunta == (preguntasPorNivel * 1) || numPregunta == (preguntasPorNivel * 2) 
+            || numPregunta == (preguntasPorNivel * 3) || numPregunta == (preguntasPorNivel * 4)))
         {
             if (Input.GetKeyDown(KeyCode.Space) && next)
             {
@@ -46,27 +49,28 @@ public class Loding : MonoBehaviour
             consejo.text = "Lee la pregunta y selecciona con el mouse el globo con la respuesta correcta";
         }
 
-        if (numPregunta == 5)
+        if (numPregunta == (preguntasPorNivel * 1))
         {
             consejo.text = "Lee la pregunta y tira con el mouse al blanco con la respuesta correcta";
         }
 
-        if (numPregunta == 10)
+        if (numPregunta == (preguntasPorNivel * 2))
         {
             consejo.text = "Lee la pregunta, busca la puerta con la respuesta correcta y presiona la tecla 'F'";
         }
 
-        if (numPregunta == 15)
+        if (numPregunta == (preguntasPorNivel * 3))
         {
             consejo.text = "Lee la pregunta, toma con la letra 'F' la caja con la respuesta correcta y llevala al altar y sueltala con la letra 'F'";
         }
 
-        if (numPregunta == 20)
+        if (numPregunta == (preguntasPorNivel * 4))
         {
             consejo.text = "Lee la pregunta, toma la bomba con la letra 'F' sube lo mas que puedas y mirando al enemigo lanza la bomba 'con click del mouse', recuerda exquivas sus ataques";
         }
 
-        while (sliderLoad.value < 1f && (numPregunta == 0 || numPregunta == 5 || numPregunta == 10 || numPregunta == 15 || numPregunta == 20))
+        while (sliderLoad.value < 1f && (numPregunta == 0 || numPregunta == (preguntasPorNivel * 1) || numPregunta == (preguntasPorNivel * 2)
+            || numPregunta == (preguntasPorNivel * 3) || numPregunta == (preguntasPorNivel * 4)))
         {
             sliderLoad.value += 0.006f;
             txtSliderLoad.text = (int)(sliderLoad.value * 100) + "%";

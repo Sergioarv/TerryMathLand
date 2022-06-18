@@ -23,10 +23,14 @@ public class GameManagerGeneric : MonoBehaviour
 
     public int numPregunta;
     public int contPregunta;
+    
+    public int restante;
 
     public int vida;
 
     public int preguntasCorrectas;
+
+    public int preguntasPorNivel;
 
     public Estudiante usuario = new Estudiante();
 
@@ -59,6 +63,8 @@ public class GameManagerGeneric : MonoBehaviour
         preguntasCorrectas = DatosEntreEscenas.instace.preguntasCorrectas;
         usuario = DatosEntreEscenas.instace.usuario;
         respuestaEst = DatosEntreEscenas.instace.respuestaEst;
+        preguntasPorNivel = DatosEntreEscenas.instace.preguntasPorNivel;
+        restante = DatosEntreEscenas.instace.restante;
     }
 
     public void guardarEntreEscenas()
@@ -128,7 +134,6 @@ public class GameManagerGeneric : MonoBehaviour
                     }
                 }
             }
-
             numPregunta++;
             contPregunta++;
         }
@@ -144,16 +149,21 @@ public class GameManagerGeneric : MonoBehaviour
 
         if (numPregunta == listaPreguntas.data.Count)
         {
+            float nota = (5.0f * preguntasCorrectas) / numPregunta;
+
             respuestaEst.acertadas = preguntasCorrectas;
-            respuestaEst.nota = (5.0f * preguntasCorrectas) / numPregunta;
+            respuestaEst.nota = (Mathf.Round((float)(nota * 10.0f)) * 0.1f);
             DatosEntreEscenas.instace.respuestaEst = respuestaEst;
 
             SceneManager.LoadScene("PantallaFinal");
-
+        }
+        else if (numPregunta >= listaPreguntas.data.Count - restante)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         else
         {
-            if (contPregunta == 5)
+            if (contPregunta == preguntasPorNivel)
             {
                 DatosEntreEscenas.instace.contPreguntas = 0;
                 LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
@@ -164,6 +174,7 @@ public class GameManagerGeneric : MonoBehaviour
             }
         }
     }
+
 
     public void acerto()
     {
