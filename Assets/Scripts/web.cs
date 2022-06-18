@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using System;
+using UnityEngine.SceneManagement;
 
 public class web : MonoBehaviour
 {
@@ -12,11 +13,13 @@ public class web : MonoBehaviour
     //private string urlBase = "https://bk-terrymathland.herokuapp.com";
     private string urlBase = "localhost:8080";
     // url para consultar la lista de preguntas
-    private string urlPreguntas = "/pregunta";
+    private string urlPreguntas = "/cartilla/obtenerPreguntas?idcartilla=";
     // url para verificar el estudiante por su nombre
     private string urlUsuario = "/estudiante/estudiantenombre?nombre=";
     // url para guardar la respuesta y soluciones del estudiante
     private string urlRespuesta = "/respuesta/guardarRespuestaEstudiante";
+    // url para listar las cartillas
+    private string urlListarCartillas = "/cartilla/listarCartillas";
     // game object 'ContoladorCarga' en la escena Main Menu
     private ControladorCarga ctrCarga;
 
@@ -29,8 +32,7 @@ public class web : MonoBehaviour
         ctrCarga = GameObject.FindObjectOfType<ControladorCarga>();
     }
 
-    // Método encargado de cargar las preguntas de la base de dato en el prefab 'DatosEntreEscenas'
-    public IEnumerator CorrutinaCargar()
+    public IEnumerator CorrutinaListarCartillas()
     {
         // inicia la animacion de carga
         ctrCarga.PantallaDeCarga.SetActive(true);
@@ -40,7 +42,68 @@ public class web : MonoBehaviour
         ctrCarga.txtSliderLoad.text = ctrCarga.sliderLoad.value.ToString() + "%";
 
         // Servicio de Unity encargado de realizar la cominucación con el back-end
-        UnityWebRequest web = UnityWebRequest.Get(urlBase + urlPreguntas);
+        UnityWebRequest web = UnityWebRequest.Get(urlBase + urlListarCartillas);
+        // Se encarga de enviar la solicitud
+        web.SendWebRequest();
+
+        // espera la respuesta de la petición
+        while (!web.isDone)
+        {
+            // realiza una pequeña animación de carga
+            ctrCarga.sliderLoad.value += ctrCarga.sliderLoad.value < 0.85 ? 0.005f : 0f;
+            ctrCarga.txtSliderLoad.text = (int)(ctrCarga.sliderLoad.value * 100) + "%";
+            yield return null;
+        }
+
+        // Verifica si la respuesta ha recibido un error de conexion o de http
+        if (!web.isNetworkError && !web.isHttpError)
+        {
+            // Se encarga de convertir el json recibido por la peticion a Lista de preguntas
+            ctrCarga.listaCartillas = JsonUtility.FromJson<ListaCartilla>(web.downloadHandler.text);
+
+            if (!ctrCarga.listaCartillas.success)
+            {
+                ctrCarga.PantallaDeCarga.SetActive(false);
+                ctrCarga.errorTextObj.SetActive(true);
+                ctrCarga.errorTextObj.GetComponent<Image>().enabled = false;
+                ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = ctrCarga.listaCartillas.message;
+            }
+
+            List<string> cartillas = new List<string>();
+
+            for (int i = 0; i < ctrCarga.listaCartillas.data.Count; i++)
+            {
+                cartillas.Add(ctrCarga.listaCartillas.data[i].nombre);
+            }
+
+            ctrCarga.comboBoxCartillas.AddOptions(cartillas);
+
+            // detiene la animacion de carga
+            ctrCarga.PantallaDeCarga.SetActive(false);
+        }
+        else // Si la peticion recibe un error
+        {
+            // activa el mensaje de error
+            ctrCarga.errorTextObj.SetActive(true);
+            ctrCarga.errorTextObj.GetComponent<Image>().enabled = true;
+            ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Hubo un error al cargar las preguntas, por favor recargue la pagina";
+            // detiene la animacion de carga
+            ctrCarga.PantallaDeCarga.SetActive(false);
+        }
+    }
+
+    // Método encargado de cargar las preguntas de la base de dato en el prefab 'DatosEntreEscenas'
+    public IEnumerator CorrutinaCargar(int idCartilla)
+    {
+        // inicia la animacion de carga
+        ctrCarga.PantallaDeCarga.SetActive(true);
+        // se establece a cero la barra de carga en 'ControladorCarga'
+        ctrCarga.sliderLoad.value = ctrCarga.sliderLoad.value;
+        // se accede al Text porcentaje en 'ControladorCarga' para mostrar el porcentaje de carga
+        ctrCarga.txtSliderLoad.text = ctrCarga.sliderLoad.value.ToString() + "%";
+
+        // Servicio de Unity encargado de realizar la cominucación con el back-end
+        UnityWebRequest web = UnityWebRequest.Get(urlBase + urlPreguntas+idCartilla);
         // Se encarga de enviar la solicitud
         web.SendWebRequest();
 
@@ -140,6 +203,7 @@ public class web : MonoBehaviour
         DatosEntreEscenas.instace.img = ctrCarga.img;
         // detiene la animacion de carga
         ctrCarga.PantallaDeCarga.SetActive(false);
+        LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     // Método encargado de verificar el estudiante de la base de dato
