@@ -10,8 +10,8 @@ using UnityEngine.SceneManagement;
 public class web : MonoBehaviour
 {
     // url de la api
-    //private string urlBase = "https://bk-terrymathland.herokuapp.com";
-    private string urlBase = "localhost:8080";
+    private string urlBase = "https://bk-terrymathland.herokuapp.com";
+    //private string urlBase = "localhost:8080";
     // url para consultar la lista de preguntas
     private string urlPreguntas = "/cartilla/obtenerPreguntas?idcartilla=";
     // url para verificar el estudiante por su nombre
