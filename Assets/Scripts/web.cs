@@ -22,6 +22,8 @@ public class web : MonoBehaviour
     private string urlListarCartillas = "/cartilla/listarCartillas";
     // game object 'ContoladorCarga' en la escena Main Menu
     private ControladorCarga ctrCarga;
+    // url para preguntas sin imagen
+    private string urlSinImagen = "https://res.cloudinary.com/dj8sqmb8n/image/upload/v1655933832/Sin_Imagen_ngqu9q.png";
 
     // Método Awake, método propio de la clase que se ejecuta al cargar la escena que lo contiene
     private void Awake()
@@ -169,8 +171,17 @@ public class web : MonoBehaviour
         // ciclo encargado de obtener las url de las imagenes en cada pregunta
         for (int i = 0; i < ctrCarga.listaPreguntas.data.Count;)
         {
+            string urlImg = "";
+            if (ctrCarga.listaPreguntas.data[i].urlImg == null || ctrCarga.listaPreguntas.data[i].urlImg == "") {
+                urlImg = urlSinImagen;
+            }
+            else
+            {
+                urlImg = ctrCarga.listaPreguntas.data[i].urlImg;
+            }
+            
             // Servicio de Unity encargado de realizar la cominucación con el back-end
-            UnityWebRequest reg = UnityWebRequestTexture.GetTexture(ctrCarga.listaPreguntas.data[i].urlImg);
+            UnityWebRequest reg = UnityWebRequestTexture.GetTexture(urlImg);
             // Se encarga de enviar la solicitud
             reg.SendWebRequest();
 
