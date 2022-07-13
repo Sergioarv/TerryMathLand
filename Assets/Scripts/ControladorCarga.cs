@@ -1,9 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections.Generic;
 
 public class ControladorCarga : MonoBehaviour
 {
@@ -56,7 +54,8 @@ public class ControladorCarga : MonoBehaviour
             errorTextObj.GetComponent<Image>().enabled = false;
             errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Por favor ingrese el nombre";
             PantallaDeCarga.SetActive(false);
-        } else if (idCartilla == -1)
+        }
+        else if (idCartilla == -1)
         {
             errorTextObj.SetActive(true);
             errorTextObj.GetComponent<Image>().enabled = false;
@@ -69,49 +68,34 @@ public class ControladorCarga : MonoBehaviour
             sliderLoad.gameObject.SetActive(true);
             sliderLoad.value = 0.0f;
 
-            //if (listaPreguntas.data.Count > 0)
-            //{
-                StartCoroutine(web.CorrutinaVerificarUsuario(txtUser));
-                yield return new WaitForSeconds(3);
+            StartCoroutine(web.CorrutinaVerificarUsuario(txtUser));
+            yield return new WaitForSeconds(3);
 
-                if (usuario.data == null || usuario.data.nombre == "" || !usuario.success)
-                {
-                    PantallaDeCarga.SetActive(false);
-                    errorTextObj.SetActive(true);
-                    errorTextObj.GetComponent<Image>().enabled = false;
-                    errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = usuario.message;
-                }
-                else
-                {
-                    //while (sliderLoad.value < 1f)
-                    //{
-                    //    sliderLoad.value += 0.003f;
-                    //    txtSliderLoad.text = (int)(sliderLoad.value * 100) + "%";
-
-                    //    yield return null;
-                    //}
-
-                    StartCoroutine(web.CorrutinaCargar(idCartilla));
-                    //LevelLoading.LoadLevel(SceneManager.GetActiveScene().buildIndex + 1);
-                }
-            //}
-            //else
-            //{
-            //    PantallaDeCarga.SetActive(false);
-            //}
+            if (usuario.data == null || usuario.data.nombre == "" || !usuario.success)
+            {
+                PantallaDeCarga.SetActive(false);
+                errorTextObj.SetActive(true);
+                errorTextObj.GetComponent<Image>().enabled = false;
+                errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = usuario.message;
+            }
+            else
+            {
+                StartCoroutine(web.CorrutinaCargar(idCartilla));
+            }
         }
     }
 
     public void comboBoxCambioDeItem(int index)
     {
+
         if (index == 0)
         {
             idCartilla = -1;
         }
         else
         {
-            idCartilla = listaCartillas.data[index-1].idcartilla;
+            idCartilla = listaCartillas.data[index - 1].idcartilla;
         }
-
+        
     }
 }

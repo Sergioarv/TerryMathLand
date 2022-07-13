@@ -3,7 +3,6 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
-using System.Globalization;
 
 public class GameManagerGeneric : MonoBehaviour
 {
@@ -139,7 +138,7 @@ public class GameManagerGeneric : MonoBehaviour
         }
         catch (ArgumentOutOfRangeException)
         {
-            Debug.Log("Excepcion");
+
         }
     }
 

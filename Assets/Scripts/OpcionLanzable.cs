@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class OpcionLanzable : MonoBehaviour
@@ -70,7 +68,6 @@ public class OpcionLanzable : MonoBehaviour
         {
             if ( transform.position.y + 0.2f >= collision.transform.position.y)
             {
-                Debug.Log("Por Encima");
                 respondio = true;
             }
         }

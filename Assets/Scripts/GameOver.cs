@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using TMPro;
-using System.Globalization;
 using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
@@ -61,15 +60,13 @@ public class GameOver : MonoBehaviour
     {
         if (puntajes.data.Count < cantidadRegistros) cantidadRegistros = puntajes.data.Count;
 
-        int total = (int)((respuestaEst.acertadas * 5) / respuestaEst.nota);
-        tabla.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = respuestaEst.acertadas.ToString() + " de " + total;
+        tabla.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = respuestaEst.acertadas.ToString() + " de " + numPregunta;
         tabla.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = (Mathf.Round((float)(respuestaEst.nota * 10.0f)) * 0.1f).ToString();
-        tabla.GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text = "Puntaje de hoy";
+        tabla.GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text = "Puntaje de último juego";
 
         for (int i = 0; i < cantidadRegistros; i++)
         {
-            total = (int)((puntajes.data[i].acertadas * 5) / puntajes.data[i].nota);
-            tabla.GetChild(i+1).GetChild(0).GetComponent<TextMeshProUGUI>().text = puntajes.data[i].acertadas.ToString() + " de " + total;
+            tabla.GetChild(i+1).GetChild(0).GetComponent<TextMeshProUGUI>().text = puntajes.data[i].acertadas.ToString() + " de " + puntajes.data[i].cantidadPreguntas;
             tabla.GetChild(i+1).GetChild(1).GetComponent<TextMeshProUGUI>().text = (Mathf.Round((float)(puntajes.data[i].nota * 10.0f)) * 0.1f).ToString();
             tabla.GetChild(i+1).GetChild(2).GetComponent<TextMeshProUGUI>().text = puntajes.data[i].fecha.ToString();
         }

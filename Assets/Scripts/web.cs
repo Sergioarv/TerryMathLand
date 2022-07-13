@@ -4,7 +4,6 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
-using System;
 using UnityEngine.SceneManagement;
 
 public class web : MonoBehaviour
@@ -123,18 +122,31 @@ public class web : MonoBehaviour
         {
             // Se encarga de convertir el json recibido por la peticion a Lista de preguntas
             ctrCarga.listaPreguntas = JsonUtility.FromJson<ListPregunta>(web.downloadHandler.text);
-            // guarda en el prefab 'DatosEntreEscenas' los parametros necesarios entre escenas
-            DatosEntreEscenas.instace.listaPreguntas = ctrCarga.listaPreguntas;
-            DatosEntreEscenas.instace.numPregunta = 0;
-            DatosEntreEscenas.instace.contPreguntas = 0;
-            DatosEntreEscenas.instace.vida = ctrCarga.listaPreguntas.data.Count;
-            DatosEntreEscenas.instace.preguntasCorrectas = 0;
-            DatosEntreEscenas.instace.preguntasPorNivel = Mathf.RoundToInt(ctrCarga.listaPreguntas.data.Count / 5f);
-            DatosEntreEscenas.instace.restante = calcularRestante();
-            // detiene la animacion de carga
-            ctrCarga.PantallaDeCarga.SetActive(false);
-            // llamado del método encargado de cargar las imagenes
-            StartCoroutine(CorrutinaCargarImagenes());
+            if (ctrCarga.listaPreguntas.data.Count > 0)
+            {
+                // guarda en el prefab 'DatosEntreEscenas' los parametros necesarios entre escenas
+                DatosEntreEscenas.instace.listaPreguntas = ctrCarga.listaPreguntas;
+                DatosEntreEscenas.instace.numPregunta = 0;
+                DatosEntreEscenas.instace.contPreguntas = 0;
+                DatosEntreEscenas.instace.vida = ctrCarga.listaPreguntas.data.Count;
+                DatosEntreEscenas.instace.preguntasCorrectas = 0;
+                DatosEntreEscenas.instace.preguntasPorNivel = Mathf.RoundToInt(ctrCarga.listaPreguntas.data.Count / 5f);
+                DatosEntreEscenas.instace.restante = calcularRestante();
+                // detiene la animacion de carga
+                ctrCarga.PantallaDeCarga.SetActive(false);
+                // llamado del método encargado de cargar las imagenes
+                StartCoroutine(CorrutinaCargarImagenes());
+            }
+            else
+            {
+                // activa el mensaje de error
+                ctrCarga.PantallaDeCarga.SetActive(false);
+                ctrCarga.errorTextObj.SetActive(true);
+                ctrCarga.errorTextObj.GetComponent<Image>().enabled = false;
+                ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Error no hay preguntas, intentelo más tarde";
+                // detiene la animacion de carga
+                ctrCarga.PantallaDeCarga.SetActive(false);
+            }
         }
         else // Si la peticion recibe un error
         {
@@ -236,7 +248,6 @@ public class web : MonoBehaviour
         // Verifica si la respuesta ha recibido un error de conexion o de http
         if (!web.isNetworkError && !web.isHttpError)
         {
-            Debug.Log(web.downloadHandler.text);
             // Se encarga de convertir el json recibido por la peticion a un Estudiante
             ctrCarga.usuario = JsonUtility.FromJson<Estudiante>(web.downloadHandler.text);
             // guarda el usuario con su nuevas respuestas
@@ -263,7 +274,6 @@ public class web : MonoBehaviour
         newUsuario.respuestas.Add(respuesta);
         // Se convierte el usuario a json
         string newRespuesta = JsonUtility.ToJson(newUsuario).ToString();
-        Debug.Log(newRespuesta);
         // Servicio de Unity encargado de realizar la cominucación con el back-end
         UnityWebRequest web = UnityWebRequest.Put(urlBase + urlRespuesta, newRespuesta);
         web.SetRequestHeader("Content-Type", "application/json;charset=UTF-8;application/x-www-form-urlencoded");
@@ -275,7 +285,6 @@ public class web : MonoBehaviour
         {
             // Se encarga de convertir el json recibido por la peticion a un Estudiante
             DatosEntreEscenas.instace.puntajes = JsonUtility.FromJson<ListRespuesta>(web.downloadHandler.text);
-            Debug.Log(DatosEntreEscenas.instace.puntajes);
             new WaitForSeconds(1);
             // Se encarga de obtener el game object GameOver en el cual se crea y llena los ultimos puntajes del jugador
             GameObject.FindObjectOfType<GameOver>().leerSimple();
@@ -283,7 +292,7 @@ public class web : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Hubo un error al escribir ruta");
+            //Debug.LogWarning("Hubo un error al guardar la respuesta");
         }
     }
 }
