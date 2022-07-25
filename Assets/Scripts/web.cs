@@ -13,8 +13,8 @@ public class web : MonoBehaviour
     //private string urlBase = "localhost:8080";
     // url para consultar la lista de preguntas
     private string urlPreguntas = "/cartilla/obtenerPreguntas?idcartilla=";
-    // url para verificar el estudiante por su nombre
-    private string urlUsuario = "/estudiante/estudiantenombre?nombre=";
+    // url para verificar el estudiante por su documento
+    private string urlUsuario = "/estudiante/estudiantedocumento?documento=";
     // url para guardar la respuesta y soluciones del estudiante
     private string urlRespuesta = "/respuesta/guardarRespuestaEstudiante";
     // url para listar las cartillas
@@ -230,10 +230,10 @@ public class web : MonoBehaviour
     }
 
     // Método encargado de verificar el estudiante de la base de dato
-    public IEnumerator CorrutinaVerificarUsuario(string nombre)
+    public IEnumerator CorrutinaVerificarUsuario(string documento)
     {
         // Servicio de Unity encargado de realizar la cominucación con el back-end
-        UnityWebRequest web = UnityWebRequest.Get(urlBase + urlUsuario + nombre);
+        UnityWebRequest web = UnityWebRequest.Get(urlBase + urlUsuario + documento);
         // encargado de enviar la solicitud
         web.SendWebRequest();
 
@@ -289,10 +289,6 @@ public class web : MonoBehaviour
             // Se encarga de obtener el game object GameOver en el cual se crea y llena los ultimos puntajes del jugador
             GameObject.FindObjectOfType<GameOver>().leerSimple();
             GameObject.FindObjectOfType<GameOver>().crearTabla();
-        }
-        else
-        {
-            //Debug.LogWarning("Hubo un error al guardar la respuesta");
         }
     }
 }

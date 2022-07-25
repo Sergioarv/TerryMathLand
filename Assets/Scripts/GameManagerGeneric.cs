@@ -22,34 +22,37 @@ public class GameManagerGeneric : MonoBehaviour
 
     public int numPregunta;
     public int contPregunta;
-    
     public int restante;
-
     public int vida;
-
     public int preguntasCorrectas;
-
     public int preguntasPorNivel;
-
     public Estudiante usuario = new Estudiante();
-
     public Image imagen;
-
     public ListPregunta listaPreguntas = new ListPregunta();
-
     public Respuesta respuestaEst = new Respuesta();
     public Solucion solucionEst = new Solucion();
-
     public Texture2D[] img;
 
     private void Awake()
     {
+        numPregunta = 0;
+        contPregunta = 0;
+        restante = 0;
+        vida = 0;
+        preguntasCorrectas = 0;
+        preguntasPorNivel = 0;
+        usuario = new Estudiante();
+        listaPreguntas = new ListPregunta();
+        respuestaEst = new Respuesta();
+        solucionEst = new Solucion();
+
         leerEntreEscenas();
     }
 
     void Start()
     {
         MostrarPregunta();
+
     }
 
     public void leerEntreEscenas()
@@ -76,6 +79,8 @@ public class GameManagerGeneric : MonoBehaviour
         DatosEntreEscenas.instace.preguntasCorrectas = preguntasCorrectas;
         DatosEntreEscenas.instace.usuario = usuario;
         DatosEntreEscenas.instace.respuestaEst = respuestaEst;
+        DatosEntreEscenas.instace.preguntasPorNivel = preguntasPorNivel;
+        DatosEntreEscenas.instace.restante = restante;
     }
 
     private void MostrarPregunta()

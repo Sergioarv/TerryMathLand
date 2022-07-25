@@ -50,7 +50,7 @@ public class Loding : MonoBehaviour
 
         if (numPregunta == (preguntasPorNivel * 1))
         {
-            consejo.text = "Lee la pregunta y tira con el mouse al blanco con la respuesta correcta";
+            consejo.text = "Lee la pregunta y selecciona la diana con la respuesta correcta";
         }
 
         if (numPregunta == (preguntasPorNivel * 2))
@@ -65,7 +65,7 @@ public class Loding : MonoBehaviour
 
         if (numPregunta == (preguntasPorNivel * 4))
         {
-            consejo.text = "Lee la pregunta, toma la bomba con la letra 'F' sube lo mas que puedas y mirando al enemigo lanza la bomba 'con click del mouse', recuerda exquivas sus ataques";
+            consejo.text = "Lee la pregunta, toma la bomba con la letra 'F' sube lo mas que puedas y mirando al enemigo lanza la bomba 'con click del mouse', recuerda esquivar sus ataques";
         }
 
         while (sliderLoad.value < 1f && (numPregunta == 0 || numPregunta == (preguntasPorNivel * 1) || numPregunta == (preguntasPorNivel * 2)

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Respuesta
 {
     public int idrespuesta;
-    public List<Solucion> soluciones;
+    public List<Solucion> soluciones = new List<Solucion>();
     public int acertadas;
     public int cantidadPreguntas;
     public double nota;

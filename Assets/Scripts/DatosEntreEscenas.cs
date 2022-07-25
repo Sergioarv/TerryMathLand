@@ -63,5 +63,8 @@ public class DatosEntreEscenas : MonoBehaviour
         listaPreguntas = new ListPregunta();
         respuestaEst = new Respuesta();
         img = null;
+        puntajes = new ListRespuesta();
+        preguntasPorNivel = 0;
+        restante = 0;
     }
 }

@@ -16,6 +16,8 @@ public class ManoJugador : MonoBehaviour
 
     private GameManagerGeneric gameManagerGeneric;
 
+    private GameObject[] optiones;
+
     private void Start()
     {
         mano = GameObject.Find("Mano");
@@ -64,6 +66,7 @@ public class ManoJugador : MonoBehaviour
                 objetoEnMano.GetComponent<SpriteRenderer>().sortingOrder = 0;
                 if (Vector2.Distance(objetoEnMano.transform.position, posSolucion.transform.position) < 0.62f)
                 {
+                    
                     string seleccion = objetoEnMano.name;
                     string seleccionOpcion = objetoEnMano.transform.GetComponentInChildren<TextMeshProUGUI>().text;
 
@@ -90,6 +93,13 @@ public class ManoJugador : MonoBehaviour
     {
         string seleccion = solucion;
         string seleccionOpcion = solucionOpcion;
+
+        optiones = GameObject.FindGameObjectsWithTag("Opcion");
+
+        optiones[0].GetComponent<OpcionSostenible>().esSostenible = false;
+        optiones[1].GetComponent<OpcionSostenible>().esSostenible = false;
+        optiones[2].GetComponent<OpcionSostenible>().esSostenible = false;
+        optiones[3].GetComponent<OpcionSostenible>().esSostenible = false;
 
         gameManagerGeneric.responder(seleccion, seleccionOpcion);
     }

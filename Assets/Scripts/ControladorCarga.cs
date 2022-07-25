@@ -52,10 +52,10 @@ public class ControladorCarga : MonoBehaviour
         {
             errorTextObj.SetActive(true);
             errorTextObj.GetComponent<Image>().enabled = false;
-            errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Por favor ingrese el nombre";
+            errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Por favor ingrese el documento";
             PantallaDeCarga.SetActive(false);
         }
-        else if (idCartilla == -1)
+        else if (idCartilla == -1 || idCartilla == 0)
         {
             errorTextObj.SetActive(true);
             errorTextObj.GetComponent<Image>().enabled = false;
@@ -87,7 +87,7 @@ public class ControladorCarga : MonoBehaviour
 
     public void comboBoxCambioDeItem(int index)
     {
-
+        
         if (index == 0)
         {
             idCartilla = -1;

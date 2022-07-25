@@ -30,9 +30,11 @@ public class OpcionLanzable : MonoBehaviour
         {
             string seleccion = this.name;
             string seleccionOpcion = this.transform.GetComponentInChildren<TextMeshProUGUI>().text;
+
             gameManagerGeneric.responder(seleccion, seleccionOpcion);
 
             optiones = GameObject.FindGameObjectsWithTag("Opcion");
+            GameObject.FindGameObjectsWithTag("Solucion")[0].GetComponent<Collider2D>().enabled = false;
 
             optiones[0].GetComponent<OpcionLanzable>().esLanzable = false;
             optiones[1].GetComponent<OpcionLanzable>().esLanzable = false;

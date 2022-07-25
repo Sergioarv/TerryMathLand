@@ -132,7 +132,7 @@ public class ControladorPersonaje : MonoBehaviour
             mano.transform.GetChild(0).localPosition = vX < 0 ? new Vector2(0.16f, 0f) : new Vector2(0.56f, 0f);
             if (hijosMano > 1)
             {
-                mano.transform.GetChild(1).gameObject.GetComponent<OpcionLanzable>().dirX = dirX;
+                mano.transform.GetChild(1).gameObject.GetComponent<OpcionLanzable>().dirX = animatorPlayer.GetFloat("UltimoX");
                 mano.transform.GetChild(1).localPosition = vX < 0 ? new Vector2(0.16f, 0f) : new Vector2(0.56f, 0f);
             }
         }

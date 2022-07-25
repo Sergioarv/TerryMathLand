@@ -10,7 +10,8 @@ public class VerificarSuelo : MonoBehaviour
         if (collision.CompareTag("Suelo"))
         {
             tocandoSuelo = true;
-        }else if (collision.CompareTag("Opcion"))
+        }
+        else if (collision.CompareTag("Opcion"))
         {
             tocandoOpcion = true;
         }
