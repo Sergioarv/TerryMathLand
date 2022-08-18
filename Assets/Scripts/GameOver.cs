@@ -62,7 +62,7 @@ public class GameOver : MonoBehaviour
 
         tabla.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = respuestaEst.acertadas.ToString() + " de " + numPregunta;
         tabla.GetChild(0).GetChild(1).GetComponent<TextMeshProUGUI>().text = (Mathf.Round((float)(respuestaEst.nota * 10.0f)) * 0.1f).ToString();
-        tabla.GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text = "Puntaje de último juego";
+        tabla.GetChild(0).GetChild(2).GetComponent<TextMeshProUGUI>().text = "Puntaje del último juego";
 
         for (int i = 0; i < cantidadRegistros; i++)
         {

@@ -35,7 +35,6 @@ public class ControladorCarga : MonoBehaviour
 
     public void leerSimple()
     {
-        //StartCoroutine(web.CorrutinaCargar());
         StartCoroutine(web.CorrutinaListarCartillas());
     }
 

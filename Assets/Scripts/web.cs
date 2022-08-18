@@ -87,7 +87,7 @@ public class web : MonoBehaviour
             // activa el mensaje de error
             ctrCarga.errorTextObj.SetActive(true);
             ctrCarga.errorTextObj.GetComponent<Image>().enabled = true;
-            ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Hubo un error al cargar las preguntas, por favor recargue la pagina";
+            ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Hubo un error al cargar las preguntas, por favor recargue la página";
             // detiene la animacion de carga
             ctrCarga.PantallaDeCarga.SetActive(false);
         }
@@ -143,7 +143,7 @@ public class web : MonoBehaviour
                 ctrCarga.PantallaDeCarga.SetActive(false);
                 ctrCarga.errorTextObj.SetActive(true);
                 ctrCarga.errorTextObj.GetComponent<Image>().enabled = false;
-                ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Error no hay preguntas, intentelo más tarde";
+                ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Error no hay preguntas, inténtelo más tarde";
                 // detiene la animacion de carga
                 ctrCarga.PantallaDeCarga.SetActive(false);
             }
@@ -154,7 +154,7 @@ public class web : MonoBehaviour
             // activa el mensaje de error
             ctrCarga.errorTextObj.SetActive(true);
             ctrCarga.errorTextObj.GetComponent<Image>().enabled = true;
-            ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Hubo un error al cargar las preguntas, por favor recargue la pagina";
+            ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Hubo un error al cargar las preguntas, por favor recargue la página";
             // detiene la animacion de carga
             ctrCarga.PantallaDeCarga.SetActive(false);
         }
@@ -217,7 +217,7 @@ public class web : MonoBehaviour
                 // activa el mensaje de error
                 ctrCarga.errorTextObj.SetActive(true);
                 ctrCarga.errorTextObj.GetComponent<Image>().enabled = true;
-                ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Hubo un error al cargar las imagenes, por favor recargue la pagina";
+                ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Hubo un error al cargar las imágenes, por favor recargue la página";
                 // detiene la animacion de carga
                 ctrCarga.PantallaDeCarga.SetActive(false);
             }
@@ -258,7 +258,7 @@ public class web : MonoBehaviour
             // activa el mensaje de error
             ctrCarga.errorTextObj.SetActive(true);
             ctrCarga.errorTextObj.GetComponent<Image>().enabled = false;
-            ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Por favor recargue la pagina, no hemos encontrado la base de datos";
+            ctrCarga.errorTextObj.GetComponentInChildren<TextMeshProUGUI>().text = "Por favor recargue la página, no hemos encontrado la base de datos";
         }
     }
 

@@ -45,27 +45,27 @@ public class Loding : MonoBehaviour
 
         if (numPregunta == 0)
         {
-            consejo.text = "Lee la pregunta y selecciona con el mouse el globo con la respuesta correcta";
+            consejo.text = "Lee la pregunta y selecciona con el mouse, el globo con la respuesta que considere correcta";
         }
 
         if (numPregunta == (preguntasPorNivel * 1))
         {
-            consejo.text = "Lee la pregunta y selecciona la diana con la respuesta correcta";
+            consejo.text = "Lee la pregunta y selecciona con el mouse, la diana con la respuesta que considere correcta";
         }
 
         if (numPregunta == (preguntasPorNivel * 2))
         {
-            consejo.text = "Lee la pregunta, busca la puerta con la respuesta correcta y presiona la tecla 'F'";
+            consejo.text = "Lee la pregunta, usando las teclas A y D para moverte y Espacio para saltar, busca la puerta con la respuesta que considere correcta y parandote sobre ella presiona la tecla 'F'";
         }
 
         if (numPregunta == (preguntasPorNivel * 3))
         {
-            consejo.text = "Lee la pregunta, toma con la letra 'F' la caja con la respuesta correcta y llevala al altar y sueltala con la letra 'F'";
+            consejo.text = "Lee la pregunta, usando las teclas A, D, W y S, para moverte, toma con la tecla 'F' la caja con la respuesta que considere correcta, llévala al altar y suéltala con la tecla de la letra 'F'";
         }
 
         if (numPregunta == (preguntasPorNivel * 4))
         {
-            consejo.text = "Lee la pregunta, toma la bomba con la letra 'F' sube lo mas que puedas y mirando al enemigo lanza la bomba 'con click del mouse', recuerda esquivar sus ataques";
+            consejo.text = "Lee la pregunta, usando las teclas A, D, W y S, para moverte y Espacio para saltar, toma la bomba con la tecla de la letra 'F' sube lo más alto que puedas y mirando al enemigo lanza la bomba 'con Click izquierdo del mouse', recuerda esquivar los ataques";
         }
 
         while (sliderLoad.value < 1f && (numPregunta == 0 || numPregunta == (preguntasPorNivel * 1) || numPregunta == (preguntasPorNivel * 2)
